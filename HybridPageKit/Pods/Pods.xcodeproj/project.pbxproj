@@ -1,0 +1,746 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		09889FECF24EA8F980F56577B82CE15B /* WKWebView + SafeScrollTo.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CE08899320070DFB1B10FFECB6612CD /* WKWebView + SafeScrollTo.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		09F61FEB19B7C5C0F90B0962279EB7C9 /* RNSHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 97046B0A23BEAD7F6311DB4745405F57 /* RNSHandler.m */; };
+		0C83B4204EAFC2EC87411CA3AE421571 /* RNSHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 2445A3EDE59E046AAA191AB08559084A /* RNSHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		11C99C2EF7223FA98E59B897599C6A29 /* WKWebView + SupportProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 95EA9BEB6C7EABD3B967CB469352CEAB /* WKWebView + SupportProtocol.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1A1C2C34EEDF056DB44C6A988ED25580 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAB14A55D4DB30C8D98DB7528D9807F4 /* WebKit.framework */; };
+		249066329F00B0FAF90C0C389841C4E5 /* WKWebView + DeleteMenuItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 6153F3289499B0A48987641C7E061940 /* WKWebView + DeleteMenuItems.m */; };
+		29223A3F05D709FE56DBE9F4F9F0C209 /* WKWebView + DeleteMenuItems.h in Headers */ = {isa = PBXBuildFile; fileRef = 4F481175E518194BA079A27E0472CDA1 /* WKWebView + DeleteMenuItems.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		2C3A2996E8CE10BAAB13136E41EC28CE /* WKWebView + ExternalNavigationDelegates.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F209DA4E004D46FD2B0A4B74A6C3F4 /* WKWebView + ExternalNavigationDelegates.m */; };
+		2D99B279D2710A1372DC91EFB46921DD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78303A97700CA406D0BCB9A42F086717 /* Foundation.framework */; };
+		3D8C73E8059129E64FCEC2A082707D06 /* WKWebView + SafeClearCache.m in Sources */ = {isa = PBXBuildFile; fileRef = A5DD61C4DB494FAE6BCAC97CDFE20132 /* WKWebView + SafeClearCache.m */; };
+		429A6EBD43291D407FCEA0CAB939911F /* WKWebView + SyncConfigUA.m in Sources */ = {isa = PBXBuildFile; fileRef = 161CD7888ED924CB66F8408832DFCC0D /* WKWebView + SyncConfigUA.m */; };
+		450D4C689CB45E31B447944702C8AD61 /* WKWebView + SafeEvaluateJS.m in Sources */ = {isa = PBXBuildFile; fileRef = 72839C62447821137DE2A0F8AE5BE748 /* WKWebView + SafeEvaluateJS.m */; };
+		49DA220A222A938D883AF77D03123CF4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCF78C37CDFCFDEB7867B41FA44FA26 /* UIKit.framework */; };
+		4AAE1BBD9320D434BE5F11C0888BFF1D /* UIView + RNSComponent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8ACD022423F3B5A8080A5C1382379065 /* UIView + RNSComponent.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		541D1FBFEDDFDE6DB48D8944A946AC33 /* ReusableNestingScrollview-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 94F0ACD644A5C3F36C98AED8089D7F18 /* ReusableNestingScrollview-dummy.m */; };
+		5623F75321E0DB74C33CB5CA53C952CC /* RNSComponentContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 86351EB0120CA8EBC8C50363F84E24E5 /* RNSComponentContext.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		63FDC59BAA57DAC3D5B1813B66F48187 /* WKWebView + SafeEvaluateJS.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B1AE6C9D2C7D43ABB19ECE9F47484C1 /* WKWebView + SafeEvaluateJS.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		660E8FD6D6B5C1985099F0D87F548848 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCF78C37CDFCFDEB7867B41FA44FA26 /* UIKit.framework */; };
+		788A35F68757F20FB8BFE2EB50BF5A36 /* RNSComponentItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 5BA49B5DB2A46E44EB49B3CA05F21E94 /* RNSComponentItem.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		7F509EC96B63868FBC18D323D53EDF37 /* RNSDealgateDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = DD17130F95A0AD13D8B791799FEE8BC1 /* RNSDealgateDispatcher.m */; };
+		82FB5008EB97E9DB2EB56B97A8CDA1BA /* WKWebView + SyncConfigUA.h in Headers */ = {isa = PBXBuildFile; fileRef = 09175333F34689A3B8D51397BF8DC04A /* WKWebView + SyncConfigUA.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		841606E4D6FD98C79B743AF49F8C79C1 /* WKWebView + SupportProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1621A1BAFC4C3EA94EBAE60505EF25 /* WKWebView + SupportProtocol.m */; };
+		871C7C8F7DDAA9D834B38361EFB50F47 /* WKWebView + SafeClearCache.h in Headers */ = {isa = PBXBuildFile; fileRef = FC3469543DEC74665C6A9E54B55EFFD5 /* WKWebView + SafeClearCache.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		8794FAB8F10BAE1C74D74C768C577E92 /* RNSComponentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E5C9ACF546509BC4E0F9ACF669E4ABF /* RNSComponentHandler.m */; };
+		89D843E4DCA1B29B2CD86C4D6CFAB7E2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78303A97700CA406D0BCB9A42F086717 /* Foundation.framework */; };
+		97DFDAA4558699240E82BA29573FC7DA /* WKWebView + SafeScrollTo.m in Sources */ = {isa = PBXBuildFile; fileRef = E23506F3F07848BCDA4F62B95287D6AB /* WKWebView + SafeScrollTo.m */; };
+		AAD26B3D4E0469DA93784CCF2760F582 /* WKWebViewExtensionsDef.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F34C1B291BBC485FB4940EF79A29F39 /* WKWebViewExtensionsDef.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		B5220B35F0581CC8E069278494B5C2C7 /* RNSDealgateDispatcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 08DB63D7FE6DC960F62DB4D9EDB7A79F /* RNSDealgateDispatcher.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		B5762D88A185FA4AA512B67EA276CFF6 /* RNSComponentContext.m in Sources */ = {isa = PBXBuildFile; fileRef = E104FE4A10391A2D1B491DE3DB3A856D /* RNSComponentContext.m */; };
+		BBD4D8DFC1C87694DB87F792F2AF5DF2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78303A97700CA406D0BCB9A42F086717 /* Foundation.framework */; };
+		C2F50FEF257E5C5072F0A4FAC53BDBC4 /* Pods-HybridPageKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E63D09DB0AD52ED77DEA9959A704779 /* Pods-HybridPageKit-dummy.m */; };
+		C7D995FFDDAC0FA06B8EE818103F7C23 /* RNSComponentHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = FF5ED79921A69194C7FC040E0EC9F572 /* RNSComponentHandler.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		CE9E364D338C94BDE1BF115583B6D978 /* RNSComponentViewPool.m in Sources */ = {isa = PBXBuildFile; fileRef = 558CB46D89D1D77DF4FB7C381FC0ED88 /* RNSComponentViewPool.m */; };
+		D622D51693B625460EE3A203CC2ECFB6 /* RNSComponentViewPool.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F968288F3F4E79EFEADD4A97683823C /* RNSComponentViewPool.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		DAD94442C7D57DA0AD3F20724BEBCD48 /* UIView + RNSComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = F3D7C5C3512F4427F03FC14BDA0FD6E6 /* UIView + RNSComponent.m */; };
+		DB8429CEA6AECF456638BCCF256A537A /* WKWebView + ExternalNavigationDelegates.h in Headers */ = {isa = PBXBuildFile; fileRef = 025CD226E1AD48F130F2D7FA997A6CDC /* WKWebView + ExternalNavigationDelegates.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E00CA000208962FA5A82819C91374ABB /* RNSComponentItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D7952976A35899573481AC9F612CBE /* RNSComponentItem.m */; };
+		FFD33C07E39AC14151EB5B42FD1262C8 /* WKWebViewExtension-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 84931F47FB28518E9AB9F2276F38A3EC /* WKWebViewExtension-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		32736A7B6415C0637FD6EB42F5DB6610 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4D6DC98D7F8683C99B224143B880C605;
+			remoteInfo = WKWebViewExtension;
+		};
+		F12D9660CAF0D0C0D58B85A5FDA37A52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 143B48141E5C4C14C31D61DFC8B2B828;
+			remoteInfo = ReusableNestingScrollview;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		025CD226E1AD48F130F2D7FA997A6CDC /* WKWebView + ExternalNavigationDelegates.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WKWebView + ExternalNavigationDelegates.h"; path = "WKWebViewExtension/WKWebViewExtension/Source/WKWebView + ExternalNavigationDelegates.h"; sourceTree = "<group>"; };
+		08DB63D7FE6DC960F62DB4D9EDB7A79F /* RNSDealgateDispatcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RNSDealgateDispatcher.h; path = ReusableNestingScrollview/ReusableNestingScrollview/Base/RNSDealgateDispatcher.h; sourceTree = "<group>"; };
+		09175333F34689A3B8D51397BF8DC04A /* WKWebView + SyncConfigUA.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WKWebView + SyncConfigUA.h"; path = "WKWebViewExtension/WKWebViewExtension/Source/WKWebView + SyncConfigUA.h"; sourceTree = "<group>"; };
+		161CD7888ED924CB66F8408832DFCC0D /* WKWebView + SyncConfigUA.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "WKWebView + SyncConfigUA.m"; path = "WKWebViewExtension/WKWebViewExtension/Source/WKWebView + SyncConfigUA.m"; sourceTree = "<group>"; };
+		162BDE6A4DACEB797B4600DC60DDE605 /* Pods-HybridPageKit-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HybridPageKit-resources.sh"; sourceTree = "<group>"; };
+		20F209DA4E004D46FD2B0A4B74A6C3F4 /* WKWebView + ExternalNavigationDelegates.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "WKWebView + ExternalNavigationDelegates.m"; path = "WKWebViewExtension/WKWebViewExtension/Source/WKWebView + ExternalNavigationDelegates.m"; sourceTree = "<group>"; };
+		22C09F9966F6E1B50F4660F0085FD2E6 /* WKWebViewExtension-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WKWebViewExtension-prefix.pch"; sourceTree = "<group>"; };
+		2445A3EDE59E046AAA191AB08559084A /* RNSHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RNSHandler.h; path = ReusableNestingScrollview/ReusableNestingScrollview/RNSHandler.h; sourceTree = "<group>"; };
+		2CE08899320070DFB1B10FFECB6612CD /* WKWebView + SafeScrollTo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WKWebView + SafeScrollTo.h"; path = "WKWebViewExtension/WKWebViewExtension/Source/WKWebView + SafeScrollTo.h"; sourceTree = "<group>"; };
+		3960853114683E07EFB39BBDD8198393 /* Pods-HybridPageKit-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HybridPageKit-acknowledgements.plist"; sourceTree = "<group>"; };
+		3E2CE22B988801EDB3307C870CE5BAB7 /* ReusableNestingScrollview-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ReusableNestingScrollview-prefix.pch"; sourceTree = "<group>"; };
+		4E2903C52838D5FE43041ED42C6ACAD3 /* Pods-HybridPageKit-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HybridPageKit-frameworks.sh"; sourceTree = "<group>"; };
+		4F481175E518194BA079A27E0472CDA1 /* WKWebView + DeleteMenuItems.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WKWebView + DeleteMenuItems.h"; path = "WKWebViewExtension/WKWebViewExtension/Source/WKWebView + DeleteMenuItems.h"; sourceTree = "<group>"; };
+		558CB46D89D1D77DF4FB7C381FC0ED88 /* RNSComponentViewPool.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RNSComponentViewPool.m; path = ReusableNestingScrollview/ReusableNestingScrollview/Base/RNSComponentViewPool.m; sourceTree = "<group>"; };
+		5B1AE6C9D2C7D43ABB19ECE9F47484C1 /* WKWebView + SafeEvaluateJS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WKWebView + SafeEvaluateJS.h"; path = "WKWebViewExtension/WKWebViewExtension/Source/WKWebView + SafeEvaluateJS.h"; sourceTree = "<group>"; };
+		5BA49B5DB2A46E44EB49B3CA05F21E94 /* RNSComponentItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RNSComponentItem.h; path = ReusableNestingScrollview/ReusableNestingScrollview/Base/RNSComponentItem.h; sourceTree = "<group>"; };
+		5E5C9ACF546509BC4E0F9ACF669E4ABF /* RNSComponentHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RNSComponentHandler.m; path = ReusableNestingScrollview/ReusableNestingScrollview/Base/RNSComponentHandler.m; sourceTree = "<group>"; };
+		5F968288F3F4E79EFEADD4A97683823C /* RNSComponentViewPool.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RNSComponentViewPool.h; path = ReusableNestingScrollview/ReusableNestingScrollview/Base/RNSComponentViewPool.h; sourceTree = "<group>"; };
+		6153F3289499B0A48987641C7E061940 /* WKWebView + DeleteMenuItems.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "WKWebView + DeleteMenuItems.m"; path = "WKWebViewExtension/WKWebViewExtension/Source/WKWebView + DeleteMenuItems.m"; sourceTree = "<group>"; };
+		6F34C1B291BBC485FB4940EF79A29F39 /* WKWebViewExtensionsDef.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = WKWebViewExtensionsDef.h; path = WKWebViewExtension/WKWebViewExtension/Source/WKWebViewExtensionsDef.h; sourceTree = "<group>"; };
+		72839C62447821137DE2A0F8AE5BE748 /* WKWebView + SafeEvaluateJS.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "WKWebView + SafeEvaluateJS.m"; path = "WKWebViewExtension/WKWebViewExtension/Source/WKWebView + SafeEvaluateJS.m"; sourceTree = "<group>"; };
+		78303A97700CA406D0BCB9A42F086717 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		84078BB07F20FA9FDAB5B9A90C6CA60A /* WKWebViewExtension.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WKWebViewExtension.xcconfig; sourceTree = "<group>"; };
+		84931F47FB28518E9AB9F2276F38A3EC /* WKWebViewExtension-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WKWebViewExtension-dummy.m"; sourceTree = "<group>"; };
+		86351EB0120CA8EBC8C50363F84E24E5 /* RNSComponentContext.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RNSComponentContext.h; path = ReusableNestingScrollview/ReusableNestingScrollview/Base/RNSComponentContext.h; sourceTree = "<group>"; };
+		8ACD022423F3B5A8080A5C1382379065 /* UIView + RNSComponent.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView + RNSComponent.h"; path = "ReusableNestingScrollview/ReusableNestingScrollview/Base/UIView + RNSComponent.h"; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		94F0ACD644A5C3F36C98AED8089D7F18 /* ReusableNestingScrollview-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ReusableNestingScrollview-dummy.m"; sourceTree = "<group>"; };
+		95EA9BEB6C7EABD3B967CB469352CEAB /* WKWebView + SupportProtocol.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WKWebView + SupportProtocol.h"; path = "WKWebViewExtension/WKWebViewExtension/Source/WKWebView + SupportProtocol.h"; sourceTree = "<group>"; };
+		97046B0A23BEAD7F6311DB4745405F57 /* RNSHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RNSHandler.m; path = ReusableNestingScrollview/ReusableNestingScrollview/RNSHandler.m; sourceTree = "<group>"; };
+		978F16B821E3ADE3B9440030703F4482 /* Pods-HybridPageKit-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HybridPageKit-acknowledgements.markdown"; sourceTree = "<group>"; };
+		9BB30B06CD1EFB8A8985DD2506325398 /* libWKWebViewExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libWKWebViewExtension.a; path = libWKWebViewExtension.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E63D09DB0AD52ED77DEA9959A704779 /* Pods-HybridPageKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HybridPageKit-dummy.m"; sourceTree = "<group>"; };
+		A5DD61C4DB494FAE6BCAC97CDFE20132 /* WKWebView + SafeClearCache.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "WKWebView + SafeClearCache.m"; path = "WKWebViewExtension/WKWebViewExtension/Source/WKWebView + SafeClearCache.m"; sourceTree = "<group>"; };
+		A6D7952976A35899573481AC9F612CBE /* RNSComponentItem.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RNSComponentItem.m; path = ReusableNestingScrollview/ReusableNestingScrollview/Base/RNSComponentItem.m; sourceTree = "<group>"; };
+		A8660BC3C8135EE697E4F6E1A46A3F30 /* Pods-HybridPageKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HybridPageKit.debug.xcconfig"; sourceTree = "<group>"; };
+		A882043F1142DDBA213A832C261949CB /* libReusableNestingScrollview.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libReusableNestingScrollview.a; path = libReusableNestingScrollview.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACCF78C37CDFCFDEB7867B41FA44FA26 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		ADE4043899FB4CCBEFFE138E5EBAD6FA /* Pods-HybridPageKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HybridPageKit.release.xcconfig"; sourceTree = "<group>"; };
+		B8E68E4AA06AC36F4A07BECEE81CB357 /* libPods-HybridPageKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-HybridPageKit.a"; path = "libPods-HybridPageKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BAB14A55D4DB30C8D98DB7528D9807F4 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
+		CB52573013E553B743145CBABC8DA768 /* ReusableNestingScrollview.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ReusableNestingScrollview.xcconfig; sourceTree = "<group>"; };
+		DD17130F95A0AD13D8B791799FEE8BC1 /* RNSDealgateDispatcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RNSDealgateDispatcher.m; path = ReusableNestingScrollview/ReusableNestingScrollview/Base/RNSDealgateDispatcher.m; sourceTree = "<group>"; };
+		E104FE4A10391A2D1B491DE3DB3A856D /* RNSComponentContext.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = RNSComponentContext.m; path = ReusableNestingScrollview/ReusableNestingScrollview/Base/RNSComponentContext.m; sourceTree = "<group>"; };
+		E23506F3F07848BCDA4F62B95287D6AB /* WKWebView + SafeScrollTo.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "WKWebView + SafeScrollTo.m"; path = "WKWebViewExtension/WKWebViewExtension/Source/WKWebView + SafeScrollTo.m"; sourceTree = "<group>"; };
+		F3D7C5C3512F4427F03FC14BDA0FD6E6 /* UIView + RNSComponent.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView + RNSComponent.m"; path = "ReusableNestingScrollview/ReusableNestingScrollview/Base/UIView + RNSComponent.m"; sourceTree = "<group>"; };
+		FA1621A1BAFC4C3EA94EBAE60505EF25 /* WKWebView + SupportProtocol.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "WKWebView + SupportProtocol.m"; path = "WKWebViewExtension/WKWebViewExtension/Source/WKWebView + SupportProtocol.m"; sourceTree = "<group>"; };
+		FC3469543DEC74665C6A9E54B55EFFD5 /* WKWebView + SafeClearCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "WKWebView + SafeClearCache.h"; path = "WKWebViewExtension/WKWebViewExtension/Source/WKWebView + SafeClearCache.h"; sourceTree = "<group>"; };
+		FF5ED79921A69194C7FC040E0EC9F572 /* RNSComponentHandler.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RNSComponentHandler.h; path = ReusableNestingScrollview/ReusableNestingScrollview/Base/RNSComponentHandler.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3FF5D3664C25F2D7973F8615ED44985C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2D99B279D2710A1372DC91EFB46921DD /* Foundation.framework in Frameworks */,
+				49DA220A222A938D883AF77D03123CF4 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C55B0E8DCC35965D35CAF63B101CA3DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBD4D8DFC1C87694DB87F792F2AF5DF2 /* Foundation.framework in Frameworks */,
+				660E8FD6D6B5C1985099F0D87F548848 /* UIKit.framework in Frameworks */,
+				1A1C2C34EEDF056DB44C6A988ED25580 /* WebKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF3A25A031E2AEE6DB46FED89057AF8C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89D843E4DCA1B29B2CD86C4D6CFAB7E2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D21A80A7717CA9FF6F518C4E1DFB9D0 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3BB99C105051C06698D0048999A5081B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B8E68E4AA06AC36F4A07BECEE81CB357 /* libPods-HybridPageKit.a */,
+				A882043F1142DDBA213A832C261949CB /* libReusableNestingScrollview.a */,
+				9BB30B06CD1EFB8A8985DD2506325398 /* libWKWebViewExtension.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3D21A80A7717CA9FF6F518C4E1DFB9D0 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				78303A97700CA406D0BCB9A42F086717 /* Foundation.framework */,
+				ACCF78C37CDFCFDEB7867B41FA44FA26 /* UIKit.framework */,
+				BAB14A55D4DB30C8D98DB7528D9807F4 /* WebKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		631D2F9D5B223BF576C0351013EADE99 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7507EBBC0E2C3E9F84D57C3F6B21DECD /* ReusableNestingScrollview */,
+				81FAA812D28A3D68B5BF9B9997B25084 /* WKWebViewExtension */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7507EBBC0E2C3E9F84D57C3F6B21DECD /* ReusableNestingScrollview */ = {
+			isa = PBXGroup;
+			children = (
+				86351EB0120CA8EBC8C50363F84E24E5 /* RNSComponentContext.h */,
+				E104FE4A10391A2D1B491DE3DB3A856D /* RNSComponentContext.m */,
+				FF5ED79921A69194C7FC040E0EC9F572 /* RNSComponentHandler.h */,
+				5E5C9ACF546509BC4E0F9ACF669E4ABF /* RNSComponentHandler.m */,
+				5BA49B5DB2A46E44EB49B3CA05F21E94 /* RNSComponentItem.h */,
+				A6D7952976A35899573481AC9F612CBE /* RNSComponentItem.m */,
+				5F968288F3F4E79EFEADD4A97683823C /* RNSComponentViewPool.h */,
+				558CB46D89D1D77DF4FB7C381FC0ED88 /* RNSComponentViewPool.m */,
+				08DB63D7FE6DC960F62DB4D9EDB7A79F /* RNSDealgateDispatcher.h */,
+				DD17130F95A0AD13D8B791799FEE8BC1 /* RNSDealgateDispatcher.m */,
+				2445A3EDE59E046AAA191AB08559084A /* RNSHandler.h */,
+				97046B0A23BEAD7F6311DB4745405F57 /* RNSHandler.m */,
+				8ACD022423F3B5A8080A5C1382379065 /* UIView + RNSComponent.h */,
+				F3D7C5C3512F4427F03FC14BDA0FD6E6 /* UIView + RNSComponent.m */,
+				AB3D1A4813F0A0110CB59BDDACABD34B /* Support Files */,
+			);
+			name = ReusableNestingScrollview;
+			path = ReusableNestingScrollview;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
+				631D2F9D5B223BF576C0351013EADE99 /* Pods */,
+				3BB99C105051C06698D0048999A5081B /* Products */,
+				D066A680DA525012810A014614CAD7B5 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		81FAA812D28A3D68B5BF9B9997B25084 /* WKWebViewExtension */ = {
+			isa = PBXGroup;
+			children = (
+				4F481175E518194BA079A27E0472CDA1 /* WKWebView + DeleteMenuItems.h */,
+				6153F3289499B0A48987641C7E061940 /* WKWebView + DeleteMenuItems.m */,
+				025CD226E1AD48F130F2D7FA997A6CDC /* WKWebView + ExternalNavigationDelegates.h */,
+				20F209DA4E004D46FD2B0A4B74A6C3F4 /* WKWebView + ExternalNavigationDelegates.m */,
+				FC3469543DEC74665C6A9E54B55EFFD5 /* WKWebView + SafeClearCache.h */,
+				A5DD61C4DB494FAE6BCAC97CDFE20132 /* WKWebView + SafeClearCache.m */,
+				5B1AE6C9D2C7D43ABB19ECE9F47484C1 /* WKWebView + SafeEvaluateJS.h */,
+				72839C62447821137DE2A0F8AE5BE748 /* WKWebView + SafeEvaluateJS.m */,
+				2CE08899320070DFB1B10FFECB6612CD /* WKWebView + SafeScrollTo.h */,
+				E23506F3F07848BCDA4F62B95287D6AB /* WKWebView + SafeScrollTo.m */,
+				95EA9BEB6C7EABD3B967CB469352CEAB /* WKWebView + SupportProtocol.h */,
+				FA1621A1BAFC4C3EA94EBAE60505EF25 /* WKWebView + SupportProtocol.m */,
+				09175333F34689A3B8D51397BF8DC04A /* WKWebView + SyncConfigUA.h */,
+				161CD7888ED924CB66F8408832DFCC0D /* WKWebView + SyncConfigUA.m */,
+				6F34C1B291BBC485FB4940EF79A29F39 /* WKWebViewExtensionsDef.h */,
+				CDA21A3F2FED4A74054CE41B3A0DBD65 /* Support Files */,
+			);
+			name = WKWebViewExtension;
+			path = WKWebViewExtension;
+			sourceTree = "<group>";
+		};
+		AB3D1A4813F0A0110CB59BDDACABD34B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CB52573013E553B743145CBABC8DA768 /* ReusableNestingScrollview.xcconfig */,
+				94F0ACD644A5C3F36C98AED8089D7F18 /* ReusableNestingScrollview-dummy.m */,
+				3E2CE22B988801EDB3307C870CE5BAB7 /* ReusableNestingScrollview-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ReusableNestingScrollview";
+			sourceTree = "<group>";
+		};
+		CDA21A3F2FED4A74054CE41B3A0DBD65 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				84078BB07F20FA9FDAB5B9A90C6CA60A /* WKWebViewExtension.xcconfig */,
+				84931F47FB28518E9AB9F2276F38A3EC /* WKWebViewExtension-dummy.m */,
+				22C09F9966F6E1B50F4660F0085FD2E6 /* WKWebViewExtension-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/WKWebViewExtension";
+			sourceTree = "<group>";
+		};
+		D066A680DA525012810A014614CAD7B5 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D6A81924D5E8E1F4828B81BDD0C78E0D /* Pods-HybridPageKit */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		D6A81924D5E8E1F4828B81BDD0C78E0D /* Pods-HybridPageKit */ = {
+			isa = PBXGroup;
+			children = (
+				978F16B821E3ADE3B9440030703F4482 /* Pods-HybridPageKit-acknowledgements.markdown */,
+				3960853114683E07EFB39BBDD8198393 /* Pods-HybridPageKit-acknowledgements.plist */,
+				9E63D09DB0AD52ED77DEA9959A704779 /* Pods-HybridPageKit-dummy.m */,
+				4E2903C52838D5FE43041ED42C6ACAD3 /* Pods-HybridPageKit-frameworks.sh */,
+				162BDE6A4DACEB797B4600DC60DDE605 /* Pods-HybridPageKit-resources.sh */,
+				A8660BC3C8135EE697E4F6E1A46A3F30 /* Pods-HybridPageKit.debug.xcconfig */,
+				ADE4043899FB4CCBEFFE138E5EBAD6FA /* Pods-HybridPageKit.release.xcconfig */,
+			);
+			name = "Pods-HybridPageKit";
+			path = "Target Support Files/Pods-HybridPageKit";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5BD82BC086EB9AB048CED951666FA5F6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5623F75321E0DB74C33CB5CA53C952CC /* RNSComponentContext.h in Headers */,
+				C7D995FFDDAC0FA06B8EE818103F7C23 /* RNSComponentHandler.h in Headers */,
+				788A35F68757F20FB8BFE2EB50BF5A36 /* RNSComponentItem.h in Headers */,
+				D622D51693B625460EE3A203CC2ECFB6 /* RNSComponentViewPool.h in Headers */,
+				B5220B35F0581CC8E069278494B5C2C7 /* RNSDealgateDispatcher.h in Headers */,
+				0C83B4204EAFC2EC87411CA3AE421571 /* RNSHandler.h in Headers */,
+				4AAE1BBD9320D434BE5F11C0888BFF1D /* UIView + RNSComponent.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF8C9946F911050F224C7EF4F7BBB1E7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				29223A3F05D709FE56DBE9F4F9F0C209 /* WKWebView + DeleteMenuItems.h in Headers */,
+				DB8429CEA6AECF456638BCCF256A537A /* WKWebView + ExternalNavigationDelegates.h in Headers */,
+				871C7C8F7DDAA9D834B38361EFB50F47 /* WKWebView + SafeClearCache.h in Headers */,
+				63FDC59BAA57DAC3D5B1813B66F48187 /* WKWebView + SafeEvaluateJS.h in Headers */,
+				09889FECF24EA8F980F56577B82CE15B /* WKWebView + SafeScrollTo.h in Headers */,
+				11C99C2EF7223FA98E59B897599C6A29 /* WKWebView + SupportProtocol.h in Headers */,
+				82FB5008EB97E9DB2EB56B97A8CDA1BA /* WKWebView + SyncConfigUA.h in Headers */,
+				AAD26B3D4E0469DA93784CCF2760F582 /* WKWebViewExtensionsDef.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		143B48141E5C4C14C31D61DFC8B2B828 /* ReusableNestingScrollview */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A6B1141FFBB920BC3153CBAB4DD191F /* Build configuration list for PBXNativeTarget "ReusableNestingScrollview" */;
+			buildPhases = (
+				273918F7592BE74244879315A9CB2708 /* Sources */,
+				3FF5D3664C25F2D7973F8615ED44985C /* Frameworks */,
+				5BD82BC086EB9AB048CED951666FA5F6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReusableNestingScrollview;
+			productName = ReusableNestingScrollview;
+			productReference = A882043F1142DDBA213A832C261949CB /* libReusableNestingScrollview.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		4D6DC98D7F8683C99B224143B880C605 /* WKWebViewExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 19A81F34FC6379AF165236A838A82802 /* Build configuration list for PBXNativeTarget "WKWebViewExtension" */;
+			buildPhases = (
+				922E09999D237971D750ED88E7ABE95F /* Sources */,
+				C55B0E8DCC35965D35CAF63B101CA3DB /* Frameworks */,
+				DF8C9946F911050F224C7EF4F7BBB1E7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WKWebViewExtension;
+			productName = WKWebViewExtension;
+			productReference = 9BB30B06CD1EFB8A8985DD2506325398 /* libWKWebViewExtension.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		F7FC2B4ED4D447E256FEA4A8ACA2EFFF /* Pods-HybridPageKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2199C51B5317102133D22190AF939114 /* Build configuration list for PBXNativeTarget "Pods-HybridPageKit" */;
+			buildPhases = (
+				0E9D67D6287DDACF6FBA6833727A5292 /* Sources */,
+				CF3A25A031E2AEE6DB46FED89057AF8C /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A660C1582AB088071D593C633D76FA9E /* PBXTargetDependency */,
+				9246B3D8DA800C7AEFE5F3E6CFB8386B /* PBXTargetDependency */,
+			);
+			name = "Pods-HybridPageKit";
+			productName = "Pods-HybridPageKit";
+			productReference = B8E68E4AA06AC36F4A07BECEE81CB357 /* libPods-HybridPageKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 3BB99C105051C06698D0048999A5081B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F7FC2B4ED4D447E256FEA4A8ACA2EFFF /* Pods-HybridPageKit */,
+				143B48141E5C4C14C31D61DFC8B2B828 /* ReusableNestingScrollview */,
+				4D6DC98D7F8683C99B224143B880C605 /* WKWebViewExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0E9D67D6287DDACF6FBA6833727A5292 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C2F50FEF257E5C5072F0A4FAC53BDBC4 /* Pods-HybridPageKit-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		273918F7592BE74244879315A9CB2708 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				541D1FBFEDDFDE6DB48D8944A946AC33 /* ReusableNestingScrollview-dummy.m in Sources */,
+				B5762D88A185FA4AA512B67EA276CFF6 /* RNSComponentContext.m in Sources */,
+				8794FAB8F10BAE1C74D74C768C577E92 /* RNSComponentHandler.m in Sources */,
+				E00CA000208962FA5A82819C91374ABB /* RNSComponentItem.m in Sources */,
+				CE9E364D338C94BDE1BF115583B6D978 /* RNSComponentViewPool.m in Sources */,
+				7F509EC96B63868FBC18D323D53EDF37 /* RNSDealgateDispatcher.m in Sources */,
+				09F61FEB19B7C5C0F90B0962279EB7C9 /* RNSHandler.m in Sources */,
+				DAD94442C7D57DA0AD3F20724BEBCD48 /* UIView + RNSComponent.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		922E09999D237971D750ED88E7ABE95F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				249066329F00B0FAF90C0C389841C4E5 /* WKWebView + DeleteMenuItems.m in Sources */,
+				2C3A2996E8CE10BAAB13136E41EC28CE /* WKWebView + ExternalNavigationDelegates.m in Sources */,
+				3D8C73E8059129E64FCEC2A082707D06 /* WKWebView + SafeClearCache.m in Sources */,
+				450D4C689CB45E31B447944702C8AD61 /* WKWebView + SafeEvaluateJS.m in Sources */,
+				97DFDAA4558699240E82BA29573FC7DA /* WKWebView + SafeScrollTo.m in Sources */,
+				841606E4D6FD98C79B743AF49F8C79C1 /* WKWebView + SupportProtocol.m in Sources */,
+				429A6EBD43291D407FCEA0CAB939911F /* WKWebView + SyncConfigUA.m in Sources */,
+				FFD33C07E39AC14151EB5B42FD1262C8 /* WKWebViewExtension-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9246B3D8DA800C7AEFE5F3E6CFB8386B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WKWebViewExtension;
+			target = 4D6DC98D7F8683C99B224143B880C605 /* WKWebViewExtension */;
+			targetProxy = 32736A7B6415C0637FD6EB42F5DB6610 /* PBXContainerItemProxy */;
+		};
+		A660C1582AB088071D593C633D76FA9E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ReusableNestingScrollview;
+			target = 143B48141E5C4C14C31D61DFC8B2B828 /* ReusableNestingScrollview */;
+			targetProxy = F12D9660CAF0D0C0D58B85A5FDA37A52 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		037BDCD94CF912967C84001B6A79CD1F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB52573013E553B743145CBABC8DA768 /* ReusableNestingScrollview.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/ReusableNestingScrollview/ReusableNestingScrollview-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0B057CEB07344F8EA2EA9EB01E762E07 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8660BC3C8135EE697E4F6E1A46A3F30 /* Pods-HybridPageKit.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		196AF84D8ADCA5EC0B8024B0AB962740 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB52573013E553B743145CBABC8DA768 /* ReusableNestingScrollview.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/ReusableNestingScrollview/ReusableNestingScrollview-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4C37A47C7FBB929F260788A024BD303D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84078BB07F20FA9FDAB5B9A90C6CA60A /* WKWebViewExtension.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/WKWebViewExtension/WKWebViewExtension-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7CC6CC76F1AF60407CCF090E527BD36E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84078BB07F20FA9FDAB5B9A90C6CA60A /* WKWebViewExtension.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/WKWebViewExtension/WKWebViewExtension-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B254DAA6CF0CE39F4A3D11B90A7E059A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		E4B68EE12B21C47CB798D9B1ECA6D7A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		F6DBA262A61F4C2C0255DF54B029E62D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADE4043899FB4CCBEFFE138E5EBAD6FA /* Pods-HybridPageKit.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		19A81F34FC6379AF165236A838A82802 /* Build configuration list for PBXNativeTarget "WKWebViewExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C37A47C7FBB929F260788A024BD303D /* Debug */,
+				7CC6CC76F1AF60407CCF090E527BD36E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2199C51B5317102133D22190AF939114 /* Build configuration list for PBXNativeTarget "Pods-HybridPageKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0B057CEB07344F8EA2EA9EB01E762E07 /* Debug */,
+				F6DBA262A61F4C2C0255DF54B029E62D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4B68EE12B21C47CB798D9B1ECA6D7A7 /* Debug */,
+				B254DAA6CF0CE39F4A3D11B90A7E059A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A6B1141FFBB920BC3153CBAB4DD191F /* Build configuration list for PBXNativeTarget "ReusableNestingScrollview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				037BDCD94CF912967C84001B6A79CD1F /* Debug */,
+				196AF84D8ADCA5EC0B8024B0AB962740 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

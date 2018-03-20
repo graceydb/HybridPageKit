@@ -1,0 +1,15 @@
+PODS:
+  - ReusableNestingScrollview (0.0.1)
+  - WKWebViewExtension (0.0.1)
+
+DEPENDENCIES:
+  - ReusableNestingScrollview
+  - WKWebViewExtension
+
+SPEC CHECKSUMS:
+  ReusableNestingScrollview: c5fc611d5b1b3b1ac27b04fb403fcbbb14a2f125
+  WKWebViewExtension: 1db626aec459508f9579b0e2683b7fb3aa666a2b
+
+PODFILE CHECKSUM: a41d71149f0a60168d7f44d188a43909a65710d6
+
+COCOAPODS: 1.4.0
