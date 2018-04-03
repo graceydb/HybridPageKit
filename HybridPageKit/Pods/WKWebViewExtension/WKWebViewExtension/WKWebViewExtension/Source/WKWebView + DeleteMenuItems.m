@@ -2,7 +2,7 @@
 //  WKWebView + DeleteMenuItems.m
 //  WKWebViewExtension
 //
-//  Created by dequanzhu
+//  Created by dequanzhu.
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
@@ -17,19 +17,17 @@
                   ^{
                       Class cls = NSClassFromString([NSString stringWithFormat:@"%@%@%@%@", @"W", @"K", @"Content", @"View"]);
                       if (cls) {
-                          
+
                           SEL fixSel = @selector(canPerformAction:withSender:);
                           Method method = class_getInstanceMethod(cls, fixSel);
-                          
+
                           NSCAssert(NULL != method,
                                     @"Selector %@ not found in %@ methods of class %@.",
                                     NSStringFromSelector(fixSel),
                                     class_isMetaClass(cls) ? @"class" : @"instance",
                                     cls);
-                          
-                          Class superclass = class_getSuperclass(cls);
-                          
-                          IMP originalIMP = method_getImplementation(class_getInstanceMethod(superclass,fixSel));
+
+                          IMP originalIMP = method_getImplementation(class_getInstanceMethod(cls,fixSel));
                           BOOL (*originalImplementation_)(__unsafe_unretained id, SEL, SEL, id);
 
                           IMP newIMP = imp_implementationWithBlock( ^ BOOL (__unsafe_unretained id self, SEL action, id sender){
@@ -40,7 +38,7 @@
                                   return NO;
                               }
                           });
-                          
+
                           class_replaceMethod(cls, fixSel, newIMP,  method_getTypeEncoding(method));
                       } else {
                           NSLog(@"WKWebView (DeleteMenuItems) can not find valid class");

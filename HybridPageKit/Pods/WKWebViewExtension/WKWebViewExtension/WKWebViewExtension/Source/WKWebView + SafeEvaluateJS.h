@@ -2,14 +2,14 @@
 //  WKWebView + SafeEvaluateJS.h
 //  WKWebViewExtension
 //
-//  Created by dequanzhu
+//  Created by dequanzhu.
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
 
-typedef void (^SafeEvaluateJSCompletion)(NSString *result);
+typedef void (^SafeEvaluateJSCompletion)(NSObject *result);
 
 @interface WKWebView (SafeEvaluateJS)
 /**

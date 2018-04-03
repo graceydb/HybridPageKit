@@ -2,16 +2,17 @@
 //  WKWebView + ExternalNavigationDelegates.h
 //  WKWebViewExtension
 //
-//  Created by dequanzhu
+//  Created by dequanzhu.
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
 #import "WKWebView + ExternalNavigationDelegates.h"
+#import <objc/runtime.h>
 
 @interface _WKWebViewDelegateDispatcher : NSObject<WKNavigationDelegate>
 
-@property(nonatomic, weak) id<WKNavigationDelegate> mainNavigationDelegate;
-@property(nonatomic, readonly) NSHashTable *weakNavigationDelegates;
+@property(nonatomic, weak, readwrite) id<WKNavigationDelegate> mainNavigationDelegate;
+@property(nonatomic, strong, readwrite) NSHashTable *weakNavigationDelegates;
 
 - (void)addNavigationDelegate:(id<WKNavigationDelegate>)delegate;
 - (void)removeNavigationDelegate:(id<WKNavigationDelegate>)delegate;
@@ -163,18 +164,21 @@ didFailProvisionalNavigation:(WKNavigation *)navigation
 }
 
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
-    
-    id<WKNavigationDelegate> mainDelegate = self.mainNavigationDelegate;
-    
-    if ([mainDelegate respondsToSelector:_cmd]) {
-        [mainDelegate webViewWebContentProcessDidTerminate:webView];
-    }
-    
-    for (id delegate in self.weakNavigationDelegates.allObjects) {
-        if ([delegate respondsToSelector:_cmd]) {
-            [delegate webViewWebContentProcessDidTerminate:webView];
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000
+    if (@available(iOS 9.0, *)) {
+        id<WKNavigationDelegate> mainDelegate = self.mainNavigationDelegate;
+        
+        if ([mainDelegate respondsToSelector:_cmd]) {
+            [mainDelegate webViewWebContentProcessDidTerminate:webView];
         }
-    };
+        
+        for (id delegate in self.weakNavigationDelegates.allObjects) {
+            if ([delegate respondsToSelector:_cmd]) {
+                [delegate webViewWebContentProcessDidTerminate:webView];
+            }
+        };
+    }
+#endif
 }
 
 - (void)webView:(WKWebView *)webView
@@ -199,51 +203,73 @@ didReceiveServerRedirectForProvisionalNavigation:(null_unspecified WKNavigation 
 #pragma mark -
 
 @interface WKWebView()
-@property(nonatomic,assign,readwrite) BOOL isUseExternalDelegate;
+@property(nonatomic, assign, readwrite) BOOL isUseExternalDelegate;
 @property(nonatomic, strong, readwrite) _WKWebViewDelegateDispatcher *delegateDispatcher;
 @property(nonatomic, strong, readwrite) id<WKNavigationDelegate> originalNavigationDelegate;
 @end
 
 @implementation WKWebView (ExternalNavigationDelegates)
 
+- (void)setIsUseExternalDelegate:(BOOL)isUseExternalDelegate{
+    objc_setAssociatedObject(self, @"isUseExternalDelegate", @(isUseExternalDelegate), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (BOOL)isUseExternalDelegate{
+    NSNumber *isUseExternalDelegate = objc_getAssociatedObject(self, @"isUseExternalDelegate");
+    return isUseExternalDelegate.boolValue;
+}
+
+- (void)setDelegateDispatcher:(_WKWebViewDelegateDispatcher *)delegateDispatcher{
+    objc_setAssociatedObject(self, @"delegateDispatcher", delegateDispatcher, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (_WKWebViewDelegateDispatcher *)delegateDispatcher{
+    return objc_getAssociatedObject(self, @"delegateDispatcher");
+}
+
+- (void)setOriginalNavigationDelegate:(id<WKNavigationDelegate>)originalNavigationDelegate{
+    objc_setAssociatedObject(self, @"originalNavigationDelegate", originalNavigationDelegate, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+- (id<WKNavigationDelegate>)originalNavigationDelegate{
+    return objc_getAssociatedObject(self, @"originalNavigationDelegate");
+}
+
 - (void)useExternalNavigationDelegate{
     
-    if (self.isUseExternalDelegate && self.delegateDispatcher) {
+    if ([self isUseExternalDelegate] && [self delegateDispatcher]) {
         return;
     }
     
-    self.delegateDispatcher = [[_WKWebViewDelegateDispatcher alloc] init];
-    self.originalNavigationDelegate = self.navigationDelegate;
+    [self setDelegateDispatcher:[[_WKWebViewDelegateDispatcher alloc] init]];
+    [self setOriginalNavigationDelegate:self.navigationDelegate];
     
-    [self setNavigationDelegate:self.delegateDispatcher];
-    [self.delegateDispatcher addNavigationDelegate:self.originalNavigationDelegate];
+    [self setNavigationDelegate:[self delegateDispatcher]];
+    [[self delegateDispatcher] addNavigationDelegate:[self originalNavigationDelegate]];
     
-    self.isUseExternalDelegate = YES;
+    [self setIsUseExternalDelegate:YES];
 }
 - (void)unUseExternalNavigationDelegate{
     
-    [self setNavigationDelegate:self.originalNavigationDelegate];
+    [self setNavigationDelegate:[self originalNavigationDelegate]];
     
-    self.delegateDispatcher = nil;
-    self.isUseExternalDelegate = NO;
+    [self setDelegateDispatcher:nil];
+    [self setIsUseExternalDelegate:NO];
 }
 - (void)setMainNavigationDelegate:(id<WKNavigationDelegate>)mainDelegate {
-    self.delegateDispatcher.mainNavigationDelegate = mainDelegate;
+    [self delegateDispatcher].mainNavigationDelegate = mainDelegate;
 }
 - (id<WKNavigationDelegate>)mainNavigationDelegate {
-    return self.delegateDispatcher.mainNavigationDelegate;
+    return [self delegateDispatcher].mainNavigationDelegate;
 }
 - (void)addExternalNavigationDelegate:(id<WKNavigationDelegate>)delegate {
-    [self.delegateDispatcher addNavigationDelegate:delegate];
+    [[self delegateDispatcher] addNavigationDelegate:delegate];
 }
 - (void)removeExternalNavigationDelegate:(id<WKNavigationDelegate>)delegate {
-    [self.delegateDispatcher removeNavigationDelegate:delegate];
+    [[self delegateDispatcher] removeNavigationDelegate:delegate];
 }
 - (BOOL)containsExternalNavigationDelegate:(id<WKNavigationDelegate>)delegate {
-    return [self.delegateDispatcher containNavigationDelegate:delegate];
+    return [[self delegateDispatcher] containNavigationDelegate:delegate];
 }
 - (void)clearExternalNavigationDelegates {
-    [self.delegateDispatcher removeAllNavigationDelegate];
+    [[self delegateDispatcher] removeAllNavigationDelegate];
 }
 
 @end

@@ -2,7 +2,7 @@
 //  WKWebView + SafeClearCache.m
 //  WKWebViewExtension
 //
-//  Created by dequanzhu
+//  Created by dequanzhu.
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
@@ -13,23 +13,27 @@
 + (void)safeClearAllCache {
     
     if ([[NSProcessInfo processInfo] operatingSystemVersion].majorVersion > 9){
-        NSSet *websiteDataTypes = [NSSet setWithArray:@[
-                                                        WKWebsiteDataTypeMemoryCache,
-                                                        WKWebsiteDataTypeSessionStorage,
-                                                        WKWebsiteDataTypeDiskCache,
-                                                        WKWebsiteDataTypeOfflineWebApplicationCache,
-                                                        WKWebsiteDataTypeCookies,
-                                                        WKWebsiteDataTypeLocalStorage,
-                                                        WKWebsiteDataTypeIndexedDBDatabases,
-                                                        WKWebsiteDataTypeWebSQLDatabases
-                                                        ]];
-        
-        NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
-        [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes
-                                                   modifiedSince:dateFrom
-                                               completionHandler:^{
-                                                   NSLog(@"WKWebView (SafeClearCache) Clear All Cache Done");
-                                               }];
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 110000
+        if (@available(iOS 9.0, *)) {
+            NSSet *websiteDataTypes = [NSSet setWithArray:@[
+                                                            WKWebsiteDataTypeMemoryCache,
+                                                            WKWebsiteDataTypeSessionStorage,
+                                                            WKWebsiteDataTypeDiskCache,
+                                                            WKWebsiteDataTypeOfflineWebApplicationCache,
+                                                            WKWebsiteDataTypeCookies,
+                                                            WKWebsiteDataTypeLocalStorage,
+                                                            WKWebsiteDataTypeIndexedDBDatabases,
+                                                            WKWebsiteDataTypeWebSQLDatabases
+                                                            ]];
+            
+            NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
+            [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes
+                                                       modifiedSince:dateFrom
+                                                   completionHandler:^{
+                                                       NSLog(@"WKWebView (SafeClearCache) Clear All Cache Done");
+                                          }];
+        }
+#endif
     } else {
         // iOS8
         NSSet *websiteDataTypes = [NSSet setWithArray:@[

@@ -1,8 +1,8 @@
 //
-//  WKWebViewExtensionDef.h
+//  WKWebViewExtensionsDef.h
 //  WKWebViewExtension
 //
-//  Created by dequanzhu
+//  Created by dequanzhu.
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
@@ -13,3 +13,5 @@
 #import "WKWebView + SafeEvaluateJS.h"
 #import "WKWebView + ExternalNavigationDelegates.h"
 #import "WKWebView + SyncConfigUA.h"
+#import "WKWebView + SafeCookies.h"
+

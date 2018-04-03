@@ -2,11 +2,13 @@
 //  AppDelegate.m
 //  HybridPageKit
 //
-//  Created by dequanzhu on 20/03/2018.
+//  Created by dequanzhu.
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
 #import "AppDelegate.h"
+#import "ListViewController.h"
+#import "LocalServer.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +18,14 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    UINavigationController *navigationcontroller = [[UINavigationController alloc] initWithRootViewController:[[ListViewController alloc]init]];
+    self.window.rootViewController = navigationcontroller;
+    [self.window makeKeyAndVisible];
+        
+    //
+    [LocalServer sharedInstance];
+    
     return YES;
 }
 

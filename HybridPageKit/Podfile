@@ -1,5 +1,8 @@
-platform :ios, '8.0'
+platform :ios, '11.2'
 target 'HybridPageKit' do
 	pod 'WKWebViewExtension'
 	pod 'ReusableNestingScrollview'
+	pod 'GCDWebServer'
+	pod 'GRMustache'
+	pod 'MJRefresh'
 end

@@ -1,0 +1,92 @@
+{
+    "ret": "0",
+    "articleId": "123456789", 
+    "articleTitle": {
+        "title" : "HybridPageKit",
+        "index" : "title"
+    },
+    "articleContent": "<!DOCTYPE html><html><head><meta http-equiv=\"Content-Type\" content=\"text/html;charset=UTF-8\"><meta name=\"viewport\" content=\"initial-scale=1.0, width=device-width, user-scalable=no,viewport-fit=cover\"/><meta name=\"format-detection\" content=\"telephone=no\"/><title>HybridPageKit</title></head><body id=\"body\">{{title}}<P>This is A picture\n 这是一张图片 \n</P><P>{{IMG_0}}</P><P>This is A video\n 这是一个视频 \n</P><P>{{VIDEO_0}}</P><P>This is A picture\n 这是一张图片 \n</P><P>{{IMG_1}}</P><P>This is A picture\n 这是一张图片 \n</P><P>{{IMG_2}}</P><P>This is A Gif\n 这是一张动图 \n</P><P>{{GIF_0}}</P><P>This is A picture\n 这是一张图片 \n</P><P>{{IMG_3}}</P><P>This is A Gif\n 这是一张动图 \n</P><P>{{GIF_1}}</P><P>This is A Gif\n 这是一张动图 \n</P><P>{{GIF_2}}</P><P>This is A async Ad\n 这是一个异步广告 \n</P><P>{{AD_0}}</P><P>This is A picture\n 这是一张图片 \n</P><P>{{IMG_4}}</P><P>结束了结束了</P></body></html>", 
+    "articleAttributes": {
+        "IMG_0": {
+            "desc": "HybridPageKit-TestImage-0", 
+            "url": "http://127.0.0.1:8080?type=3",
+            "width": "340",
+            "height": "200"
+        },
+        "IMG_1": {
+            "desc": "HybridPageKit-TestImage-1", 
+            "url": "http://127.0.0.1:8080?type=3",
+            "width": "340",
+            "height": "200"
+        },
+        "IMG_2": {
+            "desc": "HybridPageKit-TestImage-2", 
+            "url": "http://127.0.0.1:8080?type=3",
+            "width": "340",
+            "height": "200"
+        },
+        "IMG_3": {
+            "desc": "HybridPageKit-TestImage-3", 
+            "url": "http://127.0.0.1:8080?type=3",
+            "width": "340",
+            "height": "200"
+        },
+        "IMG_4": {
+            "desc": "HybridPageKit-TestImage-4", 
+            "url": "http://127.0.0.1:8080?type=3",
+            "width": "340",
+            "height": "200"
+        },
+        "GIF_0": {
+            "desc": "HybridPageKit-TestImage-0", 
+            "url": "http://127.0.0.1:8080?type=3",
+            "width": "340",
+            "height": "200"
+        },
+        "GIF_1": {
+            "desc": "HybridPageKit-TestImage-1", 
+            "url": "http://127.0.0.1:8080?type=3",
+            "width": "340",
+            "height": "200"
+        },
+        "GIF_2": {
+            "desc": "HybridPageKit-TestImage-2", 
+            "url": "http://127.0.0.1:8080?type=3",
+            "width": "340",
+            "height": "200"
+        },
+        "AD_0": {
+        },
+        "VIDEO_0": {
+            "desc": "HybridPageKit-VIDEO-0", 
+            "url": "http://127.0.0.1:8080?type=3",
+            "width": "340",
+            "height": "200"
+        },
+    }, 
+    "articleMedia": {
+        "index":"1",
+        "mediaName" : "HybridPageKit-Media",
+        "mediaId" : "777888",
+        "mediaDescribe": "HybridPageKit-Media", 
+        "mediaIcon": "", 
+    },   
+    "articleRelateNews": {
+        "index":"2",
+        "newsArray" : [
+            "articleRelateNews - 1",
+            "articleRelateNews - 2",
+            "articleRelateNews - 3",
+            "articleRelateNews - 4",
+        ],
+    }, 
+    "articleHotComment": {
+        "index":"3",
+        "commentArray" : [
+            "articleHotComment - 1",
+            "articleHotComment - 2",
+            "articleHotComment - 3",
+            "articleHotComment - 4",
+        ],
+    },  
+}

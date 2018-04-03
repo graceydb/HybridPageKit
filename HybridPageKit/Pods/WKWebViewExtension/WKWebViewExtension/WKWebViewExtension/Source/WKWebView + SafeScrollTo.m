@@ -2,7 +2,7 @@
 //  WKWebView + SafeScrollTo.m
 //  WKWebViewExtension
 //
-//  Created by dequanzhu
+//  Created by dequanzhu.
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
@@ -200,8 +200,9 @@ typedef void (^RunloopUtilsFailBlock)(NSInteger loopTimes);
     [[RunloopUtils sharedInstance] stopRunloopCheckWithHolder:self];
     
     [[RunloopUtils sharedInstance] startRunloopCheckWithHolder:self MaxLoopTimes:maxRunloops condition:^BOOL{
-        return self.scrollView.contentOffset.y >= offset;
+        return self.scrollView.contentSize.height >= offset;
     } successBlock:^(NSInteger loopTimes) {
+        [self.scrollView setContentOffset:CGPointMake(0, offset) animated:YES];
         if(completionBlock){
             completionBlock(YES,loopTimes);
         }

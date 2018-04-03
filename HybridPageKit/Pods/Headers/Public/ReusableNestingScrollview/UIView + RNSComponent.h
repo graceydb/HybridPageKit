@@ -1,1 +1,1 @@
-../../../ReusableNestingScrollview/ReusableNestingScrollview/ReusableNestingScrollview/Base/UIView + RNSComponent.h
+../../../ReusableNestingScrollview/ReusableNestingScrollview/Source/UIView + RNSComponent.h

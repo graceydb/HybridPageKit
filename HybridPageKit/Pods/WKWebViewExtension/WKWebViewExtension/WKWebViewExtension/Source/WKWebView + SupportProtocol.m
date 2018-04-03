@@ -2,7 +2,7 @@
 //  WKWebView + SupportProtocol.m
 //  WKWebViewExtension
 //
-//  Created by dequanzhu
+//  Created by dequanzhu.
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 

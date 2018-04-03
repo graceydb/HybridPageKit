@@ -2,7 +2,7 @@
 //  WKWebView + SafeEvaluateJS.m
 //  WKWebViewExtension
 //
-//  Created by dequanzhu
+//  Created by dequanzhu.
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
@@ -24,23 +24,15 @@
                 
                 if (!error) {
                     if (block) {
-                        
-                        NSString *resultString = @"";
                         if (!result || [result isKindOfClass:[NSNull class]]) {
-                            resultString = @"";
-                        } else if ([result isKindOfClass:[NSString class]]) {
-                            resultString = (NSString *)result;
-                        } else if ([result isKindOfClass:[NSNumber class]]) {
-                            resultString = ((NSNumber *)result).stringValue;
-                        } else if ([result isKindOfClass:[NSData class]]) {
-                            resultString = [[NSString alloc] initWithData:((NSData *)result) encoding:NSUTF8StringEncoding];
-                        } else {
+                            block(@"");
+                        } else if ([result isKindOfClass:[NSObject class]]) {
+                            block((NSObject *)result);
+                        }  else {
                             NSAssert(NO,@"WKWebView (SafeEvaluateJS) evaluate js return type:%@,js:%@",
                                       NSStringFromClass([result class]),
                                       script);
                         }
-                        
-                        block(resultString);
                     }
                 } else {
                     NSLog(@"WKWebView evaluate js Error : %@ %@", error.description, script);

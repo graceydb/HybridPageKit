@@ -5,11 +5,12 @@ An extension for WKWebView .
 Providing `WKWebView MenuItems delete` 、 `WKWebView support protocol` 、 `WKWebView clear cache or iOS8` and so on.
 
 
-1.	DeleteMenuItems
+1.	DeleteMenuItems  `iOS11 this issue has been fixed `
 
 	
 		WKWebView Support Delete System MenuItems
    		Delete System Items Without cut/copy/paste/delete
+   		
 
 2.	SupportProtocol
 
@@ -25,7 +26,7 @@ Providing `WKWebView MenuItems delete` 、 `WKWebView support protocol` 、 `WKW
 		
 5.	SafeEvaluateJS
 
-		Safe Evaluate JS And Retainify Webview For CallBack, and Make Sure CallBack IS NSString
+		Safe Evaluate JS And Retainify Webview For CallBack, and Make Sure CallBack IS NOT null
 		
 6.	ExternalNavigationDelegates
 
