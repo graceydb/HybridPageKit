@@ -26,6 +26,16 @@
     }
 
     [self.configuration.userContentController removeAllUserScripts];
+    
+    
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"jquery" ofType:@"js"];
+    NSString *jquery = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    
+    [self.configuration.userContentController addUserScript:[[WKUserScript alloc] initWithSource:jquery
+                                                                                   injectionTime:WKUserScriptInjectionTimeAtDocumentStart
+                                                                                forMainFrameOnly:YES]];
+    
+    
     NSString *jsString = [NSString stringWithFormat:@"function HPKGetAllComponentFrame(){var componentFrameDic=[];var list= document.getElementsByClassName('%@');for(var i=0;i<list.length;i++){var dom = list[i];componentFrameDic.push({'index':dom.getAttribute('data-index'),'top':dom.offsetTop,'left':dom.offsetLeft,'width':dom.clientWidth,'height':dom.clientHeight});}return componentFrameDic;}",domClass];
     [self.configuration.userContentController addUserScript:[[WKUserScript alloc] initWithSource:jsString
                                                                                    injectionTime:WKUserScriptInjectionTimeAtDocumentEnd

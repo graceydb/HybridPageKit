@@ -34,7 +34,7 @@
     if (self) {
         _componentControllerArray = [self getComponentControllerArray];
         _delegateHandler = [[HPKWebViewDelegateHandler alloc] initWithController:self];
-        [self _triggerEvent:kHPKComponentEventControllerInit];
+        [self _triggerEvent:kHPKComponentEventControllerInit para1:self];
     }
     return self;
 }
@@ -238,7 +238,7 @@
 #pragma mark - component
 
 - (void)triggerEvent:(HPKComponentEvent)event para1:(NSObject *)para1{
-    [self _triggerEvent:event para1:nil];
+    [self _triggerEvent:event para1:para1];
 }
 - (void)_triggerEvent:(HPKComponentEvent)event {
     [self _triggerEvent:event para1:nil];

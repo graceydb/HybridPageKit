@@ -23,7 +23,7 @@
 -(void)pullToRefresh{
 #warning later need a get model method
     
-    
+    __weak typeof(self) wself = self;
     _adApi = [[ArticleApi alloc]initWithApiType:kArticleApiTypeHotComment completionBlock:^(NSDictionary *responseDic, NSError *error) {
         
         NSMutableArray *arrayTmp = self.hotCommentModel.HotCommentArray.mutableCopy;
@@ -31,14 +31,14 @@
         for (NSString * comment in [responseDic objectForKey:@"hotComment"]) {
            [ arrayTmp addObject:[NSString stringWithFormat:@"%@-%@",comment,@(arrayTmp.count)]];
         }
-        [self.hotCommentModel setHotComments:arrayTmp.copy];
+        [wself.hotCommentModel setHotComments:arrayTmp.copy];
         
-        [self.hotCommentModel setComponentFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, arrayTmp.count * kHotCommentViewCellHeight)];
+        CGPoint origin = [wself.hotCommentModel getComponentFrame].origin;
         
-        [self.controller reLayoutOutWebViewComponents];
+        [wself.hotCommentModel setComponentFrame:CGRectMake(origin.x, origin.y, [UIScreen mainScreen].bounds.size.width, arrayTmp.count * kHotCommentViewCellHeight)];
         
-        //[_hotCommentView layoutWithData:self.hotCommentModel];
-        
+         [self.controller reLayoutOutWebViewComponents];
+         [_hotCommentView layoutWithData:wself.hotCommentModel];
     }];
     
 

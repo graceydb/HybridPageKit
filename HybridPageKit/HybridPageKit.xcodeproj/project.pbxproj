@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5EC64FEC206BDE800079B197 /* HPKWebViewDelegateHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5EC64FEB206BDE800079B197 /* HPKWebViewDelegateHandler.m */; };
+		5EE016F62073D6920097FAE9 /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = 5EE016F52073D6920097FAE9 /* jquery.js */; };
 		5EF39B832061594B00BF2B5A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EF39B822061594B00BF2B5A /* Images.xcassets */; };
 		B92ADA22206104F000C5CC9F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B92ADA21206104F000C5CC9F /* AppDelegate.m */; };
 		B92ADA30206104F000C5CC9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B92ADA2F206104F000C5CC9F /* main.m */; };
@@ -62,6 +63,7 @@
 		5EC64FE7206BDDC90079B197 /* HPKEventMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKEventMap.h; sourceTree = "<group>"; };
 		5EC64FEA206BDE800079B197 /* HPKWebViewDelegateHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKWebViewDelegateHandler.h; sourceTree = "<group>"; };
 		5EC64FEB206BDE800079B197 /* HPKWebViewDelegateHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPKWebViewDelegateHandler.m; sourceTree = "<group>"; };
+		5EE016F52073D6920097FAE9 /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
 		5EF39B822061594B00BF2B5A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B92ADA1D206104F000C5CC9F /* HybridPageKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HybridPageKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92ADA20206104F000C5CC9F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 		B944DC0620689F8F00BD0F06 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				5EE016F52073D6920097FAE9 /* jquery.js */,
 				B971A7F1206240B3004EFA4A /* articleContent.txt */,
 				B9314C4B207220BD0052C964 /* adContent.txt */,
 				B9314C4C207220BD0052C964 /* hotCommentContent.txt */,
@@ -461,6 +464,7 @@
 				B9D64B7A206CD128009FFB03 /* iconImage.png in Resources */,
 				B9314C4E207220BE0052C964 /* hotCommentContent.txt in Resources */,
 				B971A7F2206240B3004EFA4A /* articleContent.txt in Resources */,
+				5EE016F62073D6920097FAE9 /* jquery.js in Resources */,
 				5EF39B832061594B00BF2B5A /* Images.xcassets in Resources */,
 				B9314C4D207220BE0052C964 /* adContent.txt in Resources */,
 			);

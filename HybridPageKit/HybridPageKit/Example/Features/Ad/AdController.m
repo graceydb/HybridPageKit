@@ -66,7 +66,8 @@
     _adApi = [[ArticleApi alloc]initWithApiType:kArticleApiTypeAD completionBlock:^(NSDictionary *responseDic, NSError *error) {
         [wself.adModel setDataWithDic:responseDic];
         
-        NSString *jsStr =  [NSString stringWithFormat:@"var dom=document.getElementById('%@');dom.style.width='%@px';dom.style.width='%@px';",wself.adModel.index,@(wself.adModel.frame.size.width),@(wself.adModel.frame.size.height)];
+
+        NSString *jsStr =  [NSString stringWithFormat:@"var dom=$(\".HPK-Component-PlaceHolder[data-index*='%@']\");dom.width('%@px');dom.height('%@px');",wself.adModel.index,@(wself.adModel.frame.size.width),@(wself.adModel.frame.size.height)];
 
         [wself.webView safeAsyncEvaluateJavaScriptString:jsStr completionBlock:^(NSObject *result) {
             [wself.controller reLayoutInWebViewComponents];

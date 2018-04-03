@@ -167,6 +167,14 @@
     
     for (NSObject<RNSModelProtocol> *item in self.componentItemDic.allValues) {
         if(item.newState == item.oldState){
+            
+            if(item.newState != kRNSComponentStateNone){
+                __kindof UIView *view = [self _triggerComponentEvent:kRNSComponentViewWillPreparedComponentView withItem:item];
+                if (!CGRectEqualToRect(view.frame, [item getComponentFrame])) {
+                    view.frame = [item getComponentFrame];
+                }
+            }
+            
             continue;
         }
         

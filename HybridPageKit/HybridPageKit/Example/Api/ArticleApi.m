@@ -27,7 +27,9 @@
                 if (data) {
                     id obj = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                     if ([obj isKindOfClass:[NSDictionary class]]) {
-                        completionBlock((NSDictionary *)obj,error);
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                             completionBlock((NSDictionary *)obj,error);
+                        });
                     }
                 }
                 
