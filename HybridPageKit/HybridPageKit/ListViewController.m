@@ -7,7 +7,10 @@
 //
 
 #import "ListViewController.h"
-#import "DetailViewController.h"
+#import "HybridViewController.h"
+#import "BannerViewController.h"
+#import "SingleWebViewController.h"
+#import "FoldedViewController.h"
 
 #define HPKCollectionViewCellIdentifier @"ViewControllerCollectionViewCell"
 @interface ListViewController ()<UICollectionViewDelegate , UICollectionViewDataSource>
@@ -43,18 +46,37 @@
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    [self.navigationController pushViewController:[[DetailViewController alloc] init] animated:YES];
+    
+    __kindof HPKViewController *controller;
+    
+    if (indexPath.row == 0) {
+        controller = [[SingleWebViewController alloc] init];
+    } else if (indexPath.row == 1){
+        controller = [[HybridViewController alloc] init];
+    }else if (indexPath.row == 2){
+        controller = [[BannerViewController alloc] init];
+    }else if (indexPath.row == 3){
+        controller = [[FoldedViewController alloc] init];
+    }else if (indexPath.row == 4){
+        controller = [[HybridViewController alloc] init];
+    }
+
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
     for (UIView *subView in cell.contentView.subviews){
         if ([subView isKindOfClass:[UILabel class]]) {
             if (indexPath.row == 0) {
-                [((UILabel *)subView) setText:@"  1.Only WebView"];
+                [((UILabel *)subView) setText:@"  1. Only WebView"];
             } else if (indexPath.row == 1){
-                [((UILabel *)subView) setText:@"  2.WebView With Native Element"];
+                [((UILabel *)subView) setText:@"  2. WebView With Native Element"];
             }else if (indexPath.row == 2){
-                [((UILabel *)subView) setText:@"  3.Banner View With Native Element"];
+                [((UILabel *)subView) setText:@"  3. BannerView With Native Element"];
+            }else if (indexPath.row == 3){
+                [((UILabel *)subView) setText:@"  4. FoldedView With Native Element"];
+            }else if (indexPath.row == 4){
+                [((UILabel *)subView) setText:@"  4. Hybrid With Last Read Position"];
             }
             break;
         }
@@ -63,7 +85,7 @@
 
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 3;
+    return 5;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{

@@ -55,6 +55,15 @@
     [self _triggerEvent:kHPKComponentEventControllerViewDidLoad];
     
     __weak typeof(self) wself = self;
+    
+    HPKContainerScrollViewPullBlock pullBlock = nil;
+    if ([self respondsToSelector:@selector(pullToRefreshOperation)]) {
+        pullBlock =^{
+            [self pullToRefreshOperation];
+        };
+    }
+    
+    
     [self.view addSubview:({
         _containerScrollView = [[HPKContainerScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64) layoutBlock:^{
             CGFloat webViewContentSizeY = wself.webView.scrollView.contentSize.height - wself.webView.frame.size.height;
@@ -67,9 +76,7 @@
                 wself.webView.frame = CGRectMake(wself.webView.frame.origin.x, offsetY, wself.webView.frame.size.width, wself.webView.frame.size.height);
                 [wself reLayoutOutWebViewComponents];
             }
-        }pullBlock:^{
-            [self pullToRefreshOperation];
-        }];
+        }pullBlock:pullBlock];
         _containerScrollView.backgroundColor = [UIColor lightGrayColor];
         _containerScrollView;
     })];

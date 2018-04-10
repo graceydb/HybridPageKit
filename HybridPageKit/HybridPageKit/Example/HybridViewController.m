@@ -1,12 +1,12 @@
 //
-//  DetailViewController.m
+//  HybridViewController.m
 //  HybridPageKit
 //
 //  Created by dequanzhu.
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
-#import "DetailViewController.h"
+#import "HybridViewController.h"
 #import "ArticleApi.h"
 #import "ArticleModel.h"
 #import "HPKHtmlRenderHandler.h"
@@ -15,15 +15,14 @@
 //document.getElementById('body').style.fontSize = 'medium'
 
 
-@interface DetailViewController()<WKNavigationDelegate>
+@interface HybridViewController()<WKNavigationDelegate>
 @property(nonatomic,strong,readwrite)ArticleApi *api;
 @property(nonatomic,strong,readwrite)ArticleModel *articleModel;
 
 @property(nonatomic,strong,readwrite)HotCommentController *commentController;
 @end
 
-@implementation DetailViewController
-
+@implementation HybridViewController
 -(instancetype)init{
     self = [super init];
     if (self) {
@@ -34,7 +33,7 @@
 
 - (NSArray *)getComponentControllerArray{
     _commentController = [[HotCommentController alloc]init];
-
+    
     return @[
              [[AdController alloc]init],
              [[VideoController alloc]init],
@@ -75,8 +74,6 @@
 
 #pragma mark -
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation{
-    NSLog(@"DetailViewController external navigateion delegate");
+    NSLog(@"HybridViewController external navigateion delegate");
 }
-
-
 @end

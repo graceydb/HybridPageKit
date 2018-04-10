@@ -16,9 +16,10 @@
 @property(nonatomic,strong,readonly)HPKWebView *webView;
 @property(nonatomic,strong,readonly)HPKContainerScrollView *containerScrollView;
 
+
 //override
 - (NSArray *)getComponentControllerArray;
-- (CGFloat)componentsGap;
+- (CGFloat)nativeComponentsGap;
 - (id<WKNavigationDelegate>)getWebViewExternalNavigationDelegate;
 - (void)pullToRefreshOperation;
 

@@ -1,5 +1,5 @@
 //
-//  DetailViewController.h
+//  HybridViewController.h
 //  HybridPageKit
 //
 //  Created by dequanzhu.
@@ -8,5 +8,6 @@
 
 #import "HPKViewController.h"
 
-@interface DetailViewController : HPKViewController
+@interface HybridViewController : HPKViewController
+
 @end
