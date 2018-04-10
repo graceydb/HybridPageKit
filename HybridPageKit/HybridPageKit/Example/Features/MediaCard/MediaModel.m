@@ -46,6 +46,9 @@
 -(Class)getComponentViewClass{
     return [MediaView class];
 }
+-(Class)getComponentControllerClass{
+    return [MediaController class];
+}
 -(__kindof RNSComponentContext *)getCustomContext{
     return nil;
 }

@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, RNSComponentViewState) {
 
 typedef void (^RNSComponentViewStateChangeBlock)(RNSComponentViewState state ,NSObject<RNSModelProtocol> *componentItem ,__kindof UIView * componentView);
 
-typedef void (^RNSComponentProcessItemBlock)(NSMutableDictionary<NSString *,NSObject<RNSModelProtocol> *> * componentItemDic);
+typedef NSDictionary<NSString *,NSObject<RNSModelProtocol> *> * (^RNSComponentProcessItemBlock)(NSDictionary<NSString *,NSObject<RNSModelProtocol> *> * componentItemDic);
 
 
 @interface RNSHandler : NSObject

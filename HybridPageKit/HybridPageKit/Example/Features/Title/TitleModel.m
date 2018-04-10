@@ -34,6 +34,9 @@
 -(Class)getComponentViewClass{
     return [TitleView class];
 }
+-(Class)getComponentControllerClass{
+    return [TitleController class];
+}
 -(__kindof RNSComponentContext *)getCustomContext{
     return nil;
 }

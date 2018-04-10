@@ -47,6 +47,9 @@
 -(Class)getComponentViewClass{
     return [AdView class];
 }
+-(Class)getComponentControllerClass{
+    return [AdController class];
+}
 -(__kindof RNSComponentContext *)getCustomContext{
     return nil;
 }

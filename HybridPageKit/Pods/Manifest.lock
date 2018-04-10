@@ -6,7 +6,7 @@ PODS:
     - JRSwizzle (~> 1.0)
   - JRSwizzle (1.0)
   - MJRefresh (3.1.15.3)
-  - ReusableNestingScrollview (0.0.1)
+  - ReusableNestingScrollview (0.0.3)
   - WKWebViewExtension (0.0.2)
 
 DEPENDENCIES:
@@ -21,7 +21,7 @@ SPEC CHECKSUMS:
   GRMustache: ebe6104fd30a6d22c1f36af131e19e2dbf7cd292
   JRSwizzle: dd5ead5d913a0f29e7f558200165849f006bb1e3
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
-  ReusableNestingScrollview: 6fb9b0f6b9cbdcb64286dedc922e6e10c49d01ef
+  ReusableNestingScrollview: 3a0d68ce0d8435154a3530b6e7fe962d4482155c
   WKWebViewExtension: a1534cc03cc79205e3c84ff7e86483802c0dc0dd
 
 PODFILE CHECKSUM: 2223fce8dc1101d867d8a342af2a1b4d40031db8

@@ -42,8 +42,8 @@
 -(Class)getComponentViewClass{
     return [ImageView class];
 }
--(__kindof RNSComponentContext *)getCustomContext{
-    return nil;
+-(Class)getComponentControllerClass{
+    return [ImageController class];
 }
 -(void)setComponentOriginY:(CGFloat)originY{
     _frame = CGRectMake(_frame.origin.x, originY, _frame.size.width, _frame.size.height);

@@ -26,6 +26,10 @@
     self = [super initWithDefaultWebView:YES];
     if (self) {
         [self getRemoteData];
+        __weak typeof(self) wself = self;
+        [self setBottomPullRefreshBlock:^{
+            [wself.commentController pullToRefresh];
+        }];
     }
     return self;
 }
@@ -53,9 +57,7 @@
     return 10.f;
 }
 
-- (void)pullToRefreshOperation{
-    [_commentController pullToRefresh];
-}
+
 
 -(void)getRemoteData{
     __weak typeof(self) wself = self;

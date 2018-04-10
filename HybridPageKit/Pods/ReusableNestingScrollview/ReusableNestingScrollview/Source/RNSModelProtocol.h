@@ -15,9 +15,10 @@
 -(void)setComponentFrame:(CGRect)frame;
 -(CGRect)getComponentFrame;
 -(Class)getComponentViewClass;
--(__kindof RNSComponentContext *)getCustomContext;
 
 @optional
+-(Class)getComponentControllerClass;
+-(__kindof RNSComponentContext *)getCustomContext;
 -(void)setComponentOriginX:(CGFloat)originX;
 -(void)setComponentOriginY:(CGFloat)originY;
 -(void)setComponentWidth:(CGFloat)width;

@@ -25,6 +25,11 @@
 
 @property(nonatomic,copy,readwrite)NSArray *unSortedInWebViewComponents;
 @property(nonatomic,copy,readwrite)NSArray *sortedOutWebViewComponents;
+
+
+@property(nonatomic,copy,readwrite)HPKViewControllerBottomPullRefreshBlock bottomPullRefreshBlock;
+
+
 @end
 
 @implementation HPKViewController
@@ -37,6 +42,10 @@
         [self _triggerEvent:kHPKComponentEventControllerInit para1:self];
     }
     return self;
+}
+
+- (void)setBottomPullRefreshBlock:(HPKViewControllerBottomPullRefreshBlock)bottomPullRefreshBlock{
+    _bottomPullRefreshBlock = [bottomPullRefreshBlock copy];
 }
 
 -(void)dealloc{
@@ -59,13 +68,7 @@
     [self _triggerEvent:kHPKComponentEventControllerViewDidLoad];
     
     __weak typeof(self) wself = self;
-    
-    HPKContainerScrollViewPullBlock pullBlock = nil;
-    if ([self respondsToSelector:@selector(pullToRefreshOperation)]) {
-        pullBlock =^{
-            [self pullToRefreshOperation];
-        };
-    }
+
     
     
     [self.view addSubview:({
@@ -82,7 +85,8 @@
                     [wself reLayoutOutWebViewComponents];
                 }
             }
-        }pullBlock:pullBlock];
+        }pullBlock:_bottomPullRefreshBlock];
+        
         _containerScrollView.backgroundColor = [UIColor lightGrayColor];
         _containerScrollView;
     })];
@@ -170,21 +174,38 @@
 - (NSArray *)getComponentControllerArray{
     return @[];
 }
-- (void)pullToRefreshOperation{
-    NSLog(@"");
-}
 
 - (__kindof UIView *)getBannerView{
     return nil;
 }
+
+
+-(NSArray *)filterComponents:(NSArray *)components{
+    
+    NSArray * controllers = [self getComponentControllerArray];
+
+    return [components objectsAtIndexes:
+                           [components indexesOfObjectsPassingTest:^BOOL(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
+        for(NSObject *controller in controllers){
+            if ([controller isKindOfClass:[obj getComponentControllerClass]]) {
+                return YES;
+            }
+        }
+        return NO;
+    }]];
+}
+
 
 - (void)setArticleDetailModel:(NSObject *)model
           inWebViewComponents:(NSArray *)inWebViewComponents
          outWebViewComponents:(NSArray *)outWebViewComponents{
     [self _triggerEvent:kHPKComponentEventControllerDidReceiveData para1:self para2:model];
     
-    _unSortedInWebViewComponents = [inWebViewComponents copy];
-    _sortedOutWebViewComponents = [outWebViewComponents sortedArrayUsingComparator:^NSComparisonResult(id<RNSModelProtocol> obj1, id<RNSModelProtocol> obj2) {
+    
+    
+    
+    _unSortedInWebViewComponents = [[self filterComponents:inWebViewComponents] copy];
+    _sortedOutWebViewComponents = [[self filterComponents:outWebViewComponents] sortedArrayUsingComparator:^NSComparisonResult(id<RNSModelProtocol> obj1, id<RNSModelProtocol> obj2) {
         return ([obj1 getUniqueId] < [obj2 getUniqueId]) ? NSOrderedAscending : NSOrderedDescending;
     }];
 }
@@ -217,13 +238,13 @@
     }
     
     __weak typeof(self) wself = self;
-    [_containerViewScrollViewhandler reloadComponentViewsWithProcessBlock:^(NSMutableDictionary<NSString *,NSObject<RNSModelProtocol> *> *componentItemDic) {
+    [_containerViewScrollViewhandler reloadComponentViewsWithProcessBlock:^NSDictionary<NSString *,NSObject<RNSModelProtocol> *> *(NSDictionary<NSString *,NSObject<RNSModelProtocol> *> *componentItemDic) {
         NSMutableDictionary *dic = @{}.mutableCopy;
         for (NSObject<RNSModelProtocol> *component in wself.sortedOutWebViewComponents) {
             [dic setObject:component forKey:[component getUniqueId]];
         }
-        [componentItemDic addEntriesFromDictionary:dic.copy];
         wself.containerScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, bottom - componentGap);
+        return dic.copy;
     }];
     
 }
@@ -244,13 +265,12 @@
             [component setComponentFrame:frame];
         }
 
-        [_webViewScrollViewhandler reloadComponentViewsWithProcessBlock:^(NSMutableDictionary<NSString *,NSObject<RNSModelProtocol> *> *componentItemDic) {
-            
+        [_webViewScrollViewhandler reloadComponentViewsWithProcessBlock:^NSDictionary<NSString *,NSObject<RNSModelProtocol> *> *(NSDictionary<NSString *,NSObject<RNSModelProtocol> *> *componentItemDic) {
             NSMutableDictionary *dic = @{}.mutableCopy;
             for (NSObject<RNSModelProtocol> *component in wself.unSortedInWebViewComponents) {
                 [dic setObject:component forKey:[component getUniqueId]];
             }
-            [componentItemDic addEntriesFromDictionary:dic.copy];
+            return dic.copy;
         }];
         
         [wself reLayoutOutWebViewComponents];

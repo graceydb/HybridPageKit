@@ -42,6 +42,9 @@
 -(Class)getComponentViewClass{
     return [VideoView class];
 }
+-(Class)getComponentControllerClass{
+    return [VideoController class];
+}
 -(__kindof RNSComponentContext *)getCustomContext{
     return nil;
 }

@@ -42,6 +42,9 @@
 -(Class)getComponentViewClass{
     return [GifView class];
 }
+-(Class)getComponentControllerClass{
+    return [GifController class];
+}
 -(__kindof RNSComponentContext *)getCustomContext{
     return nil;
 }

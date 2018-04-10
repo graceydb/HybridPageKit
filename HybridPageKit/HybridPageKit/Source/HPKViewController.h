@@ -11,19 +11,24 @@
 #import "HPKComponentControllerDelegate.h"
 #import "HPKEventMap.h"
 
+typedef void (^HPKViewControllerBottomPullRefreshBlock)(void);
+
 @interface HPKViewController : UIViewController
 
 @property(nonatomic,strong,readonly)HPKWebView *webView;
 @property(nonatomic,strong,readonly)HPKContainerScrollView *containerScrollView;
 
 
+
 - (instancetype)initWithDefaultWebView:(BOOL)needWebView;
+
+
+- (void)setBottomPullRefreshBlock:(HPKViewControllerBottomPullRefreshBlock)bottomPullRefreshBlock;
 
 //override
 - (NSArray *)getComponentControllerArray;
-- (CGFloat)nativeComponentsGap;
+- (CGFloat)componentsGap;
 - (id<WKNavigationDelegate>)getWebViewExternalNavigationDelegate;
-- (void)pullToRefreshOperation;
 
 - (__kindof UIView *)getBannerView;
 

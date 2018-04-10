@@ -2,7 +2,7 @@
 //  FoldedModel.m
 //  HybridPageKit
 //
-//  Created by dequanzhu on 10/04/2018.
+//  Created by dequanzhu.
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
@@ -38,6 +38,9 @@
 }
 -(Class)getComponentViewClass{
     return [FoldedView class];
+}
+-(Class)getComponentControllerClass{
+    return [FoldedController class];
 }
 -(__kindof RNSComponentContext *)getCustomContext{
     return nil;

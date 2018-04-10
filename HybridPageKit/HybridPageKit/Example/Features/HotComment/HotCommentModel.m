@@ -43,6 +43,9 @@
 -(Class)getComponentViewClass{
     return [HotCommentView class];
 }
+-(Class)getComponentControllerClass{
+    return [HotCommentController class];
+}
 -(__kindof RNSComponentContext *)getCustomContext{
     return nil;
 }

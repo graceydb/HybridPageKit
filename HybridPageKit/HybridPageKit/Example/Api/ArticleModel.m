@@ -29,9 +29,7 @@
     if (self) {
         _contentTemplateString = [dic objectForKey:@"articleContent"];
         _articleIdStr = [dic objectForKey:@"articleId"];
-        
-        //[dic objectForKey:@"articleTitle"]
-        
+                
         [self _parserWebViewComponentWithDic:dic];
         
         _outWebViewComponents = @[[[MediaModel alloc]initWithDic:[dic objectForKey:@"articleMedia"]],

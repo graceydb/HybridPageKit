@@ -39,6 +39,9 @@
 -(Class)getComponentViewClass{
     return [RelateNewsView class];
 }
+-(Class)getComponentControllerClass{
+    return [RelateNewsController class];
+}
 -(__kindof RNSComponentContext *)getCustomContext{
     return nil;
 }
