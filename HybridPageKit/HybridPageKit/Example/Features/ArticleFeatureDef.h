@@ -37,3 +37,7 @@
 #import "ImageView.h"
 #import "ImageModel.h"
 #import "ImageController.h"
+
+#import "FoldedView.h"
+#import "FoldedModel.h"
+#import "FoldedController.h"

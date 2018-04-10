@@ -18,8 +18,8 @@
 @property(nonatomic,strong,readwrite)RNSHandler *containerViewScrollViewhandler;
 
 @property(nonatomic,strong,readwrite)HPKWebView *webView;
+@property(nonatomic,assign,readwrite)BOOL needWebView;
 @property(nonatomic,strong,readwrite)HPKContainerScrollView *containerScrollView;
-@property(nonatomic,strong,readwrite)HPKWebViewDelegateHandler *delegateHandler;
 
 @property(nonatomic,copy,readwrite)NSArray<id>*componentControllerArray;
 
@@ -29,24 +29,28 @@
 
 @implementation HPKViewController
 
-- (instancetype)init{
+- (instancetype)initWithDefaultWebView:(BOOL)needWebView{
     self = [super init];
     if (self) {
+        _needWebView = needWebView;
         _componentControllerArray = [self getComponentControllerArray];
-        _delegateHandler = [[HPKWebViewDelegateHandler alloc] initWithController:self];
         [self _triggerEvent:kHPKComponentEventControllerInit para1:self];
     }
     return self;
 }
 
 -(void)dealloc{
-    [_webView.scrollView removeObserver:self forKeyPath:@"contentSize"];
-    [[HPKWebViewPool shareInstance] recycleReusedWebView:_webView];
-    _webViewScrollViewhandler = nil;
+    
+    if (_needWebView) {
+        [_webView.scrollView removeObserver:self forKeyPath:@"contentSize"];
+        [[HPKWebViewPool shareInstance] recycleReusedWebView:_webView];
+        _webViewScrollViewhandler = nil;
+        _unSortedInWebViewComponents = nil;
+    }
+    
     _containerViewScrollViewhandler = nil;
     _containerScrollView = nil;
     _componentControllerArray = nil;
-    _unSortedInWebViewComponents = nil;
     _sortedOutWebViewComponents = nil;
 }
 
@@ -66,48 +70,51 @@
     
     [self.view addSubview:({
         _containerScrollView = [[HPKContainerScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64) layoutBlock:^{
-            CGFloat webViewContentSizeY = wself.webView.scrollView.contentSize.height - wself.webView.frame.size.height;
-            CGFloat offsetY = wself.containerScrollView.contentOffset.y;
-            if (offsetY < 0) {
-                return;
-            }
-            if (offsetY < webViewContentSizeY) {
-                wself.webView.scrollView.contentOffset = CGPointMake(wself.webView.scrollView.contentOffset.x, offsetY);
-                wself.webView.frame = CGRectMake(wself.webView.frame.origin.x, offsetY, wself.webView.frame.size.width, wself.webView.frame.size.height);
-                [wself reLayoutOutWebViewComponents];
+            if (_needWebView) {
+                CGFloat webViewContentSizeY = wself.webView.scrollView.contentSize.height - wself.webView.frame.size.height;
+                CGFloat offsetY = wself.containerScrollView.contentOffset.y;
+                if (offsetY < 0) {
+                    return;
+                }
+                if (offsetY < webViewContentSizeY) {
+                    wself.webView.scrollView.contentOffset = CGPointMake(wself.webView.scrollView.contentOffset.x, offsetY);
+                    wself.webView.frame = CGRectMake(wself.webView.frame.origin.x, offsetY, wself.webView.frame.size.width, wself.webView.frame.size.height);
+                    [wself reLayoutOutWebViewComponents];
+                }
             }
         }pullBlock:pullBlock];
         _containerScrollView.backgroundColor = [UIColor lightGrayColor];
         _containerScrollView;
     })];
     
-    
-    [_containerScrollView addSubview:({
-        _webView = [[HPKWebViewPool shareInstance] getReusedWebViewForHolder:self];
-        _webView.frame = CGRectMake(0, 0, _containerScrollView.bounds.size.width, _containerScrollView.bounds.size.height);
+    if (_needWebView) {
+        [_containerScrollView addSubview:({
+            _webView = [[HPKWebViewPool shareInstance] getReusedWebViewForHolder:self];
+            _webView.frame = CGRectMake(0, 0, _containerScrollView.bounds.size.width, _containerScrollView.bounds.size.height);
+            
+            [HPKWebView fixWKWebViewMenuItems];
+            
+            [_webView useExternalNavigationDelegate];
+            [_webView setMainNavigationDelegate:[[HPKWebViewDelegateHandler alloc] initWithController:self]];
+            [_webView addExternalNavigationDelegate:[self getWebViewExternalNavigationDelegate]];
+            
+            [HPKWebView supportProtocolWithHTTP:NO
+                              customSchemeArray:@[HPKURLProtocolHandleScheme]
+                               urlProtocolClass:[HPKURLProtocol class]];
+            
+            [_webView injectHPKJavascriptWithDomClass:@"HPK-Component-PlaceHolder"];
+            
+            [_webView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
+            
+            _webView.scrollView.scrollEnabled = NO;
+            _webView;
+        })];
+        
+        _webViewScrollViewhandler = [[RNSHandler alloc]initWithScrollView:_webView.scrollView externalScrollViewDelegate:nil scrollWorkRange:100 componentViewStateChangeBlock:^(RNSComponentViewState state, NSObject<RNSModelProtocol> *componentItem, __kindof UIView *componentView) {
+            [wself triggerComponentEventWithState:state componentItem:componentItem componentView:componentView];
+        }];
+    }
 
-        [HPKWebView fixWKWebViewMenuItems];
-        
-        [_webView useExternalNavigationDelegate];
-        [_webView setMainNavigationDelegate:_delegateHandler];
-        [_webView addExternalNavigationDelegate:[self getWebViewExternalNavigationDelegate]];
-        
-        [HPKWebView supportProtocolWithHTTP:NO
-                          customSchemeArray:@[HPKURLProtocolHandleScheme]
-                           urlProtocolClass:[HPKURLProtocol class]];
-        
-        [_webView injectHPKJavascriptWithDomClass:@"HPK-Component-PlaceHolder"];
-        
-        [_webView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
-
-        _webView.scrollView.scrollEnabled = NO;
-        _webView;
-    })];
-    
-    _webViewScrollViewhandler = [[RNSHandler alloc]initWithScrollView:_webView.scrollView externalScrollViewDelegate:nil scrollWorkRange:100 componentViewStateChangeBlock:^(RNSComponentViewState state, NSObject<RNSModelProtocol> *componentItem, __kindof UIView *componentView) {
-        [wself triggerComponentEventWithState:state componentItem:componentItem componentView:componentView];
-    }];
-    
     _containerViewScrollViewhandler = [[RNSHandler alloc]initWithScrollView:_containerScrollView externalScrollViewDelegate:nil scrollWorkRange:0 componentViewStateChangeBlock: ^(RNSComponentViewState state, NSObject<RNSModelProtocol> *componentItem, __kindof UIView *componentView) {
         [wself triggerComponentEventWithState:state componentItem:componentItem componentView:componentView];
     }];
@@ -167,6 +174,10 @@
     NSLog(@"");
 }
 
+- (__kindof UIView *)getBannerView{
+    return nil;
+}
+
 - (void)setArticleDetailModel:(NSObject *)model
           inWebViewComponents:(NSArray *)inWebViewComponents
          outWebViewComponents:(NSArray *)outWebViewComponents{
@@ -188,7 +199,16 @@
 - (void)reLayoutOutWebViewComponents{
 
     CGFloat componentGap = [self componentsGap];
-    CGFloat bottom = self.webView.frame.origin.y + self.webView.frame.size.height + componentGap;
+    
+    __kindof UIView *topView;
+    
+    if (_needWebView) {
+        topView = self.webView;
+    }else{
+        topView = [self getBannerView];
+    }
+    
+    CGFloat bottom = topView.frame.origin.y + topView.frame.size.height + componentGap;
     
     for (int i = 0; i < _sortedOutWebViewComponents.count; i++) {
         NSObject<RNSModelProtocol>* component = [_sortedOutWebViewComponents objectAtIndex:i];

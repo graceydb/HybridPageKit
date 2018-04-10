@@ -14,7 +14,6 @@
 //document.getElementById('body').style.fontSize = 'xx-large'
 //document.getElementById('body').style.fontSize = 'medium'
 
-
 @interface HybridViewController()<WKNavigationDelegate>
 @property(nonatomic,strong,readwrite)ArticleApi *api;
 @property(nonatomic,strong,readwrite)ArticleModel *articleModel;
@@ -24,7 +23,7 @@
 
 @implementation HybridViewController
 -(instancetype)init{
-    self = [super init];
+    self = [super initWithDefaultWebView:YES];
     if (self) {
         [self getRemoteData];
     }

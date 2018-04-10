@@ -24,7 +24,7 @@
 @implementation SingleWebViewController
 
 -(instancetype)init{
-    self = [super init];
+    self = [super initWithDefaultWebView:YES];
     if (self) {
         [self getRemoteData];
     }

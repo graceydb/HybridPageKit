@@ -63,16 +63,20 @@
             "width": "340",
             "height": "200"
         },
-    }, 
-    "articleMedia": {
+    },
+    "articleFoldedInfo": {
         "index":"1",
+        "foldedText" : "HybridPageKit - Folded"
+    },
+    "articleMedia": {
+        "index":"2",
         "mediaName" : "HybridPageKit-Media",
         "mediaId" : "777888",
         "mediaDescribe": "HybridPageKit-Media", 
         "mediaIcon": "", 
     },   
     "articleRelateNews": {
-        "index":"2",
+        "index":"3",
         "newsArray" : [
             "articleRelateNews - 1",
             "articleRelateNews - 2",
@@ -81,7 +85,7 @@
         ],
     }, 
     "articleHotComment": {
-        "index":"3",
+        "index":"4",
         "commentArray" : [
             "articleHotComment - 1",
             "articleHotComment - 2",

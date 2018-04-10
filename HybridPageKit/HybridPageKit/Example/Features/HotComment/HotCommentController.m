@@ -37,8 +37,8 @@
         
         [wself.hotCommentModel setComponentFrame:CGRectMake(origin.x, origin.y, [UIScreen mainScreen].bounds.size.width, arrayTmp.count * kHotCommentViewCellHeight)];
         
-         [self.controller reLayoutOutWebViewComponents];
-         [_hotCommentView layoutWithData:wself.hotCommentModel];
+         [wself.controller reLayoutOutWebViewComponents];
+         [wself.hotCommentView layoutWithData:wself.hotCommentModel];
     }];
     
 
@@ -102,16 +102,13 @@
 
 - (void)scrollViewEndDisplayComponentView:(__kindof UIView *)componentView
                            componentModel:(NSObject<RNSModelProtocol> *)componentModel{
-    NSLog(@"");
 }
 
 - (void)scrollViewWillPrepareComponentView:(__kindof UIView *)componentView
                             componentModel:(NSObject<RNSModelProtocol> *)componentModel{
-    NSLog(@"");
 }
 
 - (void)scrollViewEndPrepareComponentView:(__kindof UIView *)componentView
                            componentModel:(NSObject<RNSModelProtocol> *)componentModel{
-    NSLog(@"");
 }
 @end

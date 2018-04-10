@@ -36,7 +36,8 @@
         
         _outWebViewComponents = @[[[MediaModel alloc]initWithDic:[dic objectForKey:@"articleMedia"]],
                                   [[HotCommentModel alloc]initWithDic:[dic objectForKey:@"articleHotComment"]],
-                                  [[RelateNewsModel alloc]initWithDic:[dic objectForKey:@"articleRelateNews"]]];
+                                  [[RelateNewsModel alloc]initWithDic:[dic objectForKey:@"articleRelateNews"]],
+                                  [[FoldedModel alloc]initWithDic:[dic objectForKey:@"articleFoldedInfo"]]];
     }
     return self;
 }

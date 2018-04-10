@@ -17,11 +17,15 @@
 @property(nonatomic,strong,readonly)HPKContainerScrollView *containerScrollView;
 
 
+- (instancetype)initWithDefaultWebView:(BOOL)needWebView;
+
 //override
 - (NSArray *)getComponentControllerArray;
 - (CGFloat)nativeComponentsGap;
 - (id<WKNavigationDelegate>)getWebViewExternalNavigationDelegate;
 - (void)pullToRefreshOperation;
+
+- (__kindof UIView *)getBannerView;
 
 //set
 - (void)setArticleDetailModel:(NSObject *)model
