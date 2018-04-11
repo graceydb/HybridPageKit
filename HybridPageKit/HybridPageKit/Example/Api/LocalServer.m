@@ -54,7 +54,10 @@
     } else if(type == kArticleApiTypeHotComment){
         NSString *filePath = [[NSBundle mainBundle] pathForResource:@"hotCommentContent" ofType:@"txt"];
         return [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-    } 
+    } else if(type == kArticleApiTypeShortArticle){
+        NSString *filePath = [[NSBundle mainBundle] pathForResource:@"shortArticleContent" ofType:@"txt"];
+        return [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
+    }
 
     return @"";
 }

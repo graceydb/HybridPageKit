@@ -9,5 +9,5 @@
 #import "HPKViewController.h"
 
 @interface HybridViewController : HPKViewController
-
+-(instancetype)initWithShortContent:(BOOL)shortContent;
 @end

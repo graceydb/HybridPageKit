@@ -52,15 +52,15 @@
     if (indexPath.row == 0) {
         controller = [[SingleWebViewController alloc] init];
     } else if (indexPath.row == 1){
-        controller = [[HybridViewController alloc] init];
+        controller = [[HybridViewController alloc] initWithShortContent:NO];
     }else if (indexPath.row == 2){
         controller = [[BannerViewController alloc] init];
     }else if (indexPath.row == 3){
         controller = [[FoldedViewController alloc] init];
     }else if (indexPath.row == 4){
-        controller = [[HybridViewController alloc] init];
+        controller = [[HybridViewController alloc] initWithShortContent:NO];
     }else if (indexPath.row == 5){
-        controller = [[HybridViewController alloc] init];
+        controller = [[HybridViewController alloc] initWithShortContent:YES];
     }
 
     [self.navigationController pushViewController:controller animated:YES];

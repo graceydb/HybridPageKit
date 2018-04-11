@@ -22,10 +22,10 @@
 @end
 
 @implementation HybridViewController
--(instancetype)init{
+-(instancetype)initWithShortContent:(BOOL)shortContent{
     self = [super initWithDefaultWebView:YES];
     if (self) {
-        [self getRemoteData];
+        [self getRemoteDataWithShortContent:shortContent];
         __weak typeof(self) wself = self;
         [self setBottomPullRefreshBlock:^{
             [wself.commentController pullToRefresh];
@@ -61,9 +61,9 @@
 
 
 
--(void)getRemoteData{
+-(void)getRemoteDataWithShortContent:(BOOL)shortContent{
     __weak typeof(self) wself = self;
-    _api = [[ArticleApi alloc]initWithApiType:kArticleApiTypeArticle completionBlock:^(NSDictionary *responseDic, NSError *error) {
+    _api = [[ArticleApi alloc]initWithApiType:shortContent ? kArticleApiTypeShortArticle : kArticleApiTypeArticle completionBlock:^(NSDictionary *responseDic, NSError *error) {
         
         wself.articleModel = [[ArticleModel alloc]initWithDic:responseDic];
         

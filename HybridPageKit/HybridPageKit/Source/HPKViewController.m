@@ -11,6 +11,7 @@
 #import "HPKWebViewPool.h"
 #import "HPKWebViewDelegateHandler.h"
 #import "HPKURLProtocol.h"
+#import "MJRefresh.h"
 
 @interface HPKViewController()<WKNavigationDelegate>
 
@@ -52,6 +53,10 @@
     _bottomPullRefreshBlock = [bottomPullRefreshBlock copy];
 }
 
+- (void)stopRefreshLoadingWithMoreData:(BOOL)hasMore{
+    _containerScrollView.mj_footer.state = hasMore ? MJRefreshStateIdle:MJRefreshStateNoMoreData;
+}
+
 -(void)dealloc{
     
     if (_needWebView) {
@@ -89,7 +94,16 @@
                     [wself reLayoutOutWebViewComponents];
                 }
             }
-        }pullBlock:_bottomPullRefreshBlock];
+        }];
+        
+        if (self.bottomPullRefreshBlock) {
+            __weak typeof(self) wself = self;
+            _containerScrollView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+                if (wself.bottomPullRefreshBlock) {
+                    wself.bottomPullRefreshBlock();
+                }
+            }];
+        }
         
         _containerScrollView.backgroundColor = [UIColor lightGrayColor];
         _containerScrollView;
@@ -278,7 +292,9 @@
         }];
         
         
-        [_webView evaluateJavaScript:@"document.body.offsetHeight" completionHandler:^(id data, NSError * _Nullable error) {
+        NSString *jsStr = [NSString stringWithFormat:@"document.documentElement.offsetHeight * %d / document.documentElement.clientWidth", (int)_containerScrollView.bounds.size.width];
+        
+        [_webView evaluateJavaScript:jsStr completionHandler:^(id data, NSError * _Nullable error) {
             CGFloat height = [data floatValue];
             _webView.frame = CGRectMake(0, 0, _containerScrollView.bounds.size.width, MIN(height, _containerScrollView.bounds.size.height));
             [wself reLayoutOutWebViewComponents];

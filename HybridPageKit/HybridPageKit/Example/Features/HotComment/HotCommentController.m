@@ -26,19 +26,25 @@
     __weak typeof(self) wself = self;
     _adApi = [[ArticleApi alloc]initWithApiType:kArticleApiTypeHotComment completionBlock:^(NSDictionary *responseDic, NSError *error) {
         
-        NSMutableArray *arrayTmp = self.hotCommentModel.HotCommentArray.mutableCopy;
-
-        for (NSString * comment in [responseDic objectForKey:@"hotComment"]) {
-           [ arrayTmp addObject:[NSString stringWithFormat:@"%@-%@",comment,@(arrayTmp.count)]];
-        }
-        [wself.hotCommentModel setHotComments:arrayTmp.copy];
+        //
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            NSMutableArray *arrayTmp = self.hotCommentModel.HotCommentArray.mutableCopy;
+            
+            for (NSString * comment in [responseDic objectForKey:@"hotComment"]) {
+                [ arrayTmp addObject:[NSString stringWithFormat:@"%@-%@",comment,@(arrayTmp.count)]];
+            }
+            [wself.hotCommentModel setHotComments:arrayTmp.copy];
+            
+            CGPoint origin = [wself.hotCommentModel getComponentFrame].origin;
+            
+            [wself.hotCommentModel setComponentFrame:CGRectMake(origin.x, origin.y, [UIScreen mainScreen].bounds.size.width, arrayTmp.count * kHotCommentViewCellHeight)];
+            
+            [wself.controller reLayoutOutWebViewComponents];
+            [wself.hotCommentView layoutWithData:wself.hotCommentModel];
+            
+            [wself.controller stopRefreshLoadingWithMoreData:arrayTmp.count<50];
+        });
         
-        CGPoint origin = [wself.hotCommentModel getComponentFrame].origin;
-        
-        [wself.hotCommentModel setComponentFrame:CGRectMake(origin.x, origin.y, [UIScreen mainScreen].bounds.size.width, arrayTmp.count * kHotCommentViewCellHeight)];
-        
-         [wself.controller reLayoutOutWebViewComponents];
-         [wself.hotCommentView layoutWithData:wself.hotCommentModel];
     }];
     
 

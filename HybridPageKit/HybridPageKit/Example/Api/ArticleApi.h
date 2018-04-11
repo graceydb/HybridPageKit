@@ -10,6 +10,7 @@
 
 typedef NS_ENUM(NSInteger,ArticleApiType) {
     kArticleApiTypeArticle,
+    kArticleApiTypeShortArticle,
     kArticleApiTypeAD,
     kArticleApiTypeHotComment,
 };

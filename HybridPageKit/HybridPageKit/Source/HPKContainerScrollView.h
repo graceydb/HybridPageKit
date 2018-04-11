@@ -7,11 +7,9 @@
 //
 
 typedef void (^HPKContainerScrollViewChangeBlock)(void);
-typedef void (^HPKContainerScrollViewPullBlock) (void);
 
 @interface HPKContainerScrollView : UIScrollView
 
 - (instancetype)initWithFrame:(CGRect)frame
-                  layoutBlock:(HPKContainerScrollViewChangeBlock)layoutBlock
-                    pullBlock:(HPKContainerScrollViewPullBlock)pullBlock;
+                  layoutBlock:(HPKContainerScrollViewChangeBlock)layoutBlock;
 @end

@@ -24,6 +24,7 @@ typedef void (^HPKViewControllerBottomPullRefreshBlock)(void);
 
 
 - (void)setBottomPullRefreshBlock:(HPKViewControllerBottomPullRefreshBlock)bottomPullRefreshBlock;
+- (void)stopRefreshLoadingWithMoreData:(BOOL)hasMore;
 
 //override
 - (NSArray *)getComponentControllerArray;

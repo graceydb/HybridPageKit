@@ -17,6 +17,7 @@
 		B90B935D207CE1800029513B /* FoldedView.m in Sources */ = {isa = PBXBuildFile; fileRef = B90B935C207CE1800029513B /* FoldedView.m */; };
 		B90B9360207CE18C0029513B /* FoldedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B90B935F207CE18C0029513B /* FoldedModel.m */; };
 		B90B9363207CE1990029513B /* FoldedController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90B9362207CE1990029513B /* FoldedController.m */; };
+		B90B9365207E1BB20029513B /* shortArticleContent.txt in Resources */ = {isa = PBXBuildFile; fileRef = B90B9364207E1BB20029513B /* shortArticleContent.txt */; };
 		B92ADA22206104F000C5CC9F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B92ADA21206104F000C5CC9F /* AppDelegate.m */; };
 		B92ADA30206104F000C5CC9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B92ADA2F206104F000C5CC9F /* main.m */; };
 		B9314C4D207220BE0052C964 /* adContent.txt in Resources */ = {isa = PBXBuildFile; fileRef = B9314C4B207220BD0052C964 /* adContent.txt */; };
@@ -85,6 +86,7 @@
 		B90B935F207CE18C0029513B /* FoldedModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoldedModel.m; sourceTree = "<group>"; };
 		B90B9361207CE1990029513B /* FoldedController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoldedController.h; sourceTree = "<group>"; };
 		B90B9362207CE1990029513B /* FoldedController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoldedController.m; sourceTree = "<group>"; };
+		B90B9364207E1BB20029513B /* shortArticleContent.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shortArticleContent.txt; sourceTree = "<group>"; };
 		B92ADA1D206104F000C5CC9F /* HybridPageKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HybridPageKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92ADA20206104F000C5CC9F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B92ADA21206104F000C5CC9F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 		B944DC0620689F8F00BD0F06 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				B90B9364207E1BB20029513B /* shortArticleContent.txt */,
 				5EE016F52073D6920097FAE9 /* jquery.js */,
 				B971A7F1206240B3004EFA4A /* articleContent.txt */,
 				B9314C4B207220BD0052C964 /* adContent.txt */,
@@ -477,7 +480,7 @@
 				TargetAttributes = {
 					B92ADA1C206104F000C5CC9F = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -506,6 +509,7 @@
 			files = (
 				B9D64B7F206CE5F6009FFB03 /* gif2.jpeg in Resources */,
 				B9D64B80206CE5F6009FFB03 /* gif1.jpeg in Resources */,
+				B90B9365207E1BB20029513B /* shortArticleContent.txt in Resources */,
 				B9D64B7C206CD17F009FFB03 /* play.png in Resources */,
 				B9D64B7A206CD128009FFB03 /* iconImage.png in Resources */,
 				B9314C4E207220BE0052C964 /* hotCommentContent.txt in Resources */,
@@ -739,17 +743,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 57AQ433AD9;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HybridPageKit/PrefixHeader.pch;
 				INFOPLIST_FILE = HybridPageKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.HybridPageKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.reading.development;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c4d3161a-3386-4945-9a35-a890d7da9872";
+				PROVISIONING_PROFILE_SPECIFIER = "Kuaibao Development";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -761,12 +765,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = HybridPageKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.HybridPageKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.reading.development;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;
