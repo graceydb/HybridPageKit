@@ -20,11 +20,14 @@
 @property(nonatomic,strong,readwrite)HPKWebView *webView;
 @property(nonatomic,assign,readwrite)BOOL needWebView;
 @property(nonatomic,strong,readwrite)HPKContainerScrollView *containerScrollView;
+@property(nonatomic,strong,readwrite)HPKWebViewDelegateHandler *delegateHandler;
 
 @property(nonatomic,copy,readwrite)NSArray<id>*componentControllerArray;
 
 @property(nonatomic,copy,readwrite)NSArray *unSortedInWebViewComponents;
 @property(nonatomic,copy,readwrite)NSArray *sortedOutWebViewComponents;
+
+@property(nonatomic,assign,readwrite)CGSize lastWebViewContentSize;
 
 
 @property(nonatomic,copy,readwrite)HPKViewControllerBottomPullRefreshBlock bottomPullRefreshBlock;
@@ -39,6 +42,7 @@
     if (self) {
         _needWebView = needWebView;
         _componentControllerArray = [self getComponentControllerArray];
+        _delegateHandler = [[HPKWebViewDelegateHandler alloc] initWithController:self];
         [self _triggerEvent:kHPKComponentEventControllerInit para1:self];
     }
     return self;
@@ -99,7 +103,7 @@
             [HPKWebView fixWKWebViewMenuItems];
             
             [_webView useExternalNavigationDelegate];
-            [_webView setMainNavigationDelegate:[[HPKWebViewDelegateHandler alloc] initWithController:self]];
+            [_webView setMainNavigationDelegate:_delegateHandler];
             [_webView addExternalNavigationDelegate:[self getWebViewExternalNavigationDelegate]];
             
             [HPKWebView supportProtocolWithHTTP:NO
@@ -273,13 +277,24 @@
             return dic.copy;
         }];
         
-        [wself reLayoutOutWebViewComponents];
+        
+        [_webView evaluateJavaScript:@"document.body.offsetHeight" completionHandler:^(id data, NSError * _Nullable error) {
+            CGFloat height = [data floatValue];
+            _webView.frame = CGRectMake(0, 0, _containerScrollView.bounds.size.width, MIN(height, _containerScrollView.bounds.size.height));
+            [wself reLayoutOutWebViewComponents];
+        }];
     }];
 }
 
 #pragma mark -
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    [self reLayoutInWebViewComponents];
+    
+    CGSize newSize = [((NSValue *)[change objectForKey:NSKeyValueChangeNewKey]) CGSizeValue];
+    
+    if(!CGSizeEqualToSize(newSize,_lastWebViewContentSize)){
+        _lastWebViewContentSize = newSize;
+        [self reLayoutInWebViewComponents];
+    } 
 }
 
 #pragma mark - component
@@ -313,7 +328,14 @@
         }
         
         if ([component respondsToSelector:protocolSelector]) {
-            [component performSelector:protocolSelector withObject:para1 withObject:para2];
+            
+            if (para2 == nil) {
+                [component performSelector:protocolSelector withObject:para1];
+            }else{
+                [component performSelector:protocolSelector withObject:para1 withObject:para2];
+            }
+            
+            
         }
 #pragma clang diagnostic poppara1
     }

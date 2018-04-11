@@ -59,6 +59,8 @@
         controller = [[FoldedViewController alloc] init];
     }else if (indexPath.row == 4){
         controller = [[HybridViewController alloc] init];
+    }else if (indexPath.row == 5){
+        controller = [[HybridViewController alloc] init];
     }
 
     [self.navigationController pushViewController:controller animated:YES];
@@ -76,7 +78,9 @@
             }else if (indexPath.row == 3){
                 [((UILabel *)subView) setText:@"  4. FoldedView With Native Element"];
             }else if (indexPath.row == 4){
-                [((UILabel *)subView) setText:@"  4. Hybrid With Last Read Position"];
+                [((UILabel *)subView) setText:@"  5. Hybrid With Last Read Position"];
+            }else if (indexPath.row == 5){
+                [((UILabel *)subView) setText:@"  6. Short WebView With Native Element"];
             }
             break;
         }
@@ -85,7 +89,7 @@
 
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 5;
+    return 6;
 }
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{

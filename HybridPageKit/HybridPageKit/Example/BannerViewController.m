@@ -58,7 +58,10 @@
 }
 
 - (NSArray *)getComponentControllerArray{
-    _commentController = [[HotCommentController alloc]init];
+    
+    if (!_commentController) {
+        _commentController = [[HotCommentController alloc]init];
+    }
     
     return @[
              [[RelateNewsController alloc]init],

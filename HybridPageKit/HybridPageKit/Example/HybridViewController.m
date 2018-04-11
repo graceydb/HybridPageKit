@@ -35,8 +35,10 @@
 }
 
 - (NSArray *)getComponentControllerArray{
-    _commentController = [[HotCommentController alloc]init];
     
+    if (!_commentController) {
+        _commentController = [[HotCommentController alloc]init];
+    }
     return @[
              [[AdController alloc]init],
              [[VideoController alloc]init],

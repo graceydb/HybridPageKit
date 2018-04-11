@@ -20,7 +20,7 @@
 
 @implementation HotCommentController
 
--(void)pullToRefresh{
+- (void)pullToRefresh{
 #warning later need a get model method
     
     __weak typeof(self) wself = self;

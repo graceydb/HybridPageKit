@@ -28,7 +28,8 @@
     
     [self.controller triggerEvent:kHPKComponentEventWebViewDidFinishNavigation para1:webView];
     __weak typeof(self) wself = self;
-    [webView scrollToOffset:100
+#warning later
+    [webView scrollToOffset:0.f
                 maxRunloops:20
             completionBlock:^(BOOL success, NSInteger loopTimes) {
                 [wself.controller triggerEvent:kHPKComponentEventWebViewDidShow para1:webView];

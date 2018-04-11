@@ -57,10 +57,10 @@
     
     if ([NSThread isMainThread]) {
         if(processBlock){
-            _componentItemDic = [processBlock(_componentItemDic) copy];
+            _componentItemDic = processBlock(_componentItemDic).copy;
         }
         
-        [self detailComponentsDidUpdateWithOffsetTop:self.scrollView.contentOffset.y];
+        [self detailComponentsDidUpdateWithOffsetTop:self.scrollView.contentOffset.y forceLayout:YES];
     }else{
         __weak typeof(self) wself = self;
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -136,7 +136,7 @@
 
 #pragma mark -
 
-- (void)detailComponentsDidUpdateWithOffsetTop:(CGFloat)offsetTop{
+- (void)detailComponentsDidUpdateWithOffsetTop:(CGFloat)offsetTop forceLayout:(BOOL)forceLayout{
     
     
     if (!self.componentItemDic || self.componentItemDic.count <= 0) {
@@ -165,6 +165,10 @@
     
     for (NSObject<RNSModelProtocol> *item in self.componentItemDic.allValues) {
         if(item.newState == item.oldState){
+            if (forceLayout && item.newState != kRNSComponentStateNone) {
+                __kindof UIView *view = [self getComponentViewByItem:item];
+                view.frame = [item getComponentFrame];
+            }
             continue;
         }
         
@@ -255,10 +259,10 @@
 #pragma mark -
 
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [self detailComponentsDidUpdateWithOffsetTop:scrollView.contentOffset.y];
+    [self detailComponentsDidUpdateWithOffsetTop:scrollView.contentOffset.y forceLayout:NO];
 }
 - (void)scrollViewDidScrollTo:(CGFloat)offsetTop {
-    [self detailComponentsDidUpdateWithOffsetTop:offsetTop];
+    [self detailComponentsDidUpdateWithOffsetTop:offsetTop forceLayout:NO];
 }
 
 @end
