@@ -17,6 +17,9 @@
 @end
 
 @implementation GifModel
+
+RNSProtocolImp(_index,_frame,GifView,GifController,nil);
+
 - (instancetype)initWithIndex:(NSString *)index valueDic:(NSDictionary *)valueDic{
     self = [super init];
     if (self) {
@@ -28,30 +31,4 @@
     return self;
 }
 
-#pragma mark - RNSModelProtocol
-
--(NSString *)getUniqueId{
-    return _index;
-}
--(CGRect)getComponentFrame{
-    return _frame;
-}
--(void)setComponentFrame:(CGRect)frame{
-    _frame = frame;
-}
--(Class)getComponentViewClass{
-    return [GifView class];
-}
--(Class)getComponentControllerClass{
-    return [GifController class];
-}
--(__kindof RNSComponentContext *)getCustomContext{
-    return nil;
-}
--(void)setComponentOriginY:(CGFloat)originY{
-    _frame = CGRectMake(_frame.origin.x, originY, _frame.size.width, _frame.size.height);
-}
--(void)setComponentOriginX:(CGFloat)originX{
-    _frame = CGRectMake(originX, _frame.origin.y, _frame.size.width, _frame.size.height);
-}
 @end

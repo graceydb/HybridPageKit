@@ -13,6 +13,9 @@
 @property(nonatomic,assign,readwrite)CGRect frame;
 @end
 @implementation TitleModel
+
+RNSProtocolImp(_index,_frame,TitleView,TitleController,nil);
+
 - (instancetype)initWithDic:(NSDictionary *)dic{
     self = [super init];
     if (self) {
@@ -22,28 +25,5 @@
     }
     return self;
 }
--(NSString *)getUniqueId{
-    return _index;
-}
--(CGRect)getComponentFrame{
-    return _frame;
-}
--(void)setComponentFrame:(CGRect)frame{
-    _frame = frame;
-}
--(Class)getComponentViewClass{
-    return [TitleView class];
-}
--(Class)getComponentControllerClass{
-    return [TitleController class];
-}
--(__kindof RNSComponentContext *)getCustomContext{
-    return nil;
-}
--(void)setComponentOriginY:(CGFloat)originY{
-    _frame = CGRectMake(_frame.origin.x, originY, _frame.size.width, _frame.size.height);
-}
--(void)setComponentOriginX:(CGFloat)originX{
-    _frame = CGRectMake(originX, _frame.origin.y, _frame.size.width, _frame.size.height);
-}
+
 @end

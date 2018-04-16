@@ -20,6 +20,9 @@
 
 @end
 @implementation HotCommentModel
+
+RNSProtocolImp(_index,_frame,HotCommentView,HotCommentController,nil);
+
 - (instancetype)initWithDic:(NSDictionary *)dic{
     self = [super init];
     if (self) {
@@ -73,30 +76,4 @@
     _frame = CGRectMake(_frame.origin.x, _frame.origin.y, [UIScreen mainScreen].bounds.size.width, hotComments.count * kHotCommentViewCellHeight);
 }
 
-#pragma mark - RNSModelProtocol
-
--(NSString *)getUniqueId{
-    return _index;
-}
--(CGRect)getComponentFrame{
-    return _frame;
-}
--(void)setComponentFrame:(CGRect)frame{
-    _frame = frame;
-}
--(Class)getComponentViewClass{
-    return [HotCommentView class];
-}
--(Class)getComponentControllerClass{
-    return [HotCommentController class];
-}
--(__kindof RNSComponentContext *)getCustomContext{
-    return nil;
-}
--(void)setComponentOriginY:(CGFloat)originY{
-    _frame = CGRectMake(_frame.origin.x, originY, _frame.size.width, _frame.size.height);
-}
--(void)setComponentOriginX:(CGFloat)originX{
-    _frame = CGRectMake(originX, _frame.origin.y, _frame.size.width, _frame.size.height);
-}
 @end

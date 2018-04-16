@@ -15,6 +15,9 @@
 @end
 
 @implementation FoldedModel
+
+RNSProtocolImp(_index,_frame,FoldedView,FoldedController,nil);
+
 - (instancetype)initWithDic:(NSDictionary *)dic{
     self = [super init];
     if (self) {
@@ -25,33 +28,4 @@
     return self;
 }
 
-#pragma mark - 
-
--(NSString *)getUniqueId{
-    return _index;
-}
--(CGRect)getComponentFrame{
-    return _frame;
-}
--(void)setComponentFrame:(CGRect)frame{
-    _frame = frame;
-}
--(Class)getComponentViewClass{
-    return [FoldedView class];
-}
--(Class)getComponentControllerClass{
-    return [FoldedController class];
-}
--(__kindof RNSComponentContext *)getCustomContext{
-    return nil;
-}
--(void)setComponentOriginY:(CGFloat)originY{
-    _frame = CGRectMake(_frame.origin.x, originY, _frame.size.width, _frame.size.height);
-}
--(void)setComponentOriginX:(CGFloat)originX{
-    _frame = CGRectMake(originX, _frame.origin.y, _frame.size.width, _frame.size.height);
-}
--(void)setComponentHeight:(CGFloat)height{
-    _frame = CGRectMake(_frame.origin.x, _frame.origin.y, _frame.size.width, height);
-}
 @end
