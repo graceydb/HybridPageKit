@@ -12,8 +12,6 @@
 @interface HPKWebView : WKWebView <HPKWebViewReuseProtocol>
 @property(nonatomic, weak, readwrite) id holderObject;
 
-- (void)injectHPKJavascriptWithDomClass:(NSString *)domClass;
-
 #pragma mark - WKWebViewExtension
 
 //fix longpress MenuItems bug under iOS11

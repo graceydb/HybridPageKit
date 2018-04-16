@@ -6,6 +6,8 @@
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
+typedef void (^AdModelLoadCompletionBlock)(void);
+
 @interface AdModel : RNSObject
 @property(nonatomic,copy,readonly)NSString *index;
 @property(nonatomic,copy,readonly)NSString *imageUrl;
@@ -14,5 +16,7 @@
 @property(nonatomic,assign,readonly)CGRect frame;
 
 - (instancetype)initWithIndex:(NSString *)index valueDic:(NSDictionary *)valueDic;
-- (void)setDataWithDic:(NSDictionary *)dic;
+
+- (void)getAsyncDataWithCompletionBlock:(AdModelLoadCompletionBlock)completionBlock;
+
 @end

@@ -40,9 +40,12 @@ typedef void (^HPKViewControllerBottomPullRefreshBlock)(void);
 - (void)renderHtmlTemplate:(NSString *)htmlTemplate
             componentArray:(NSArray<NSObject <RNSModelProtocol> *> *)componentArray;
 
+- (void)reLayoutWebViewComponentsWithIndex:(NSString *)index
+                             componentSize:(CGSize)componentSize;
+- (void)reLayoutWebViewComponents;
 - (void)reLayoutExtensionComponents;
 
-- (void)reLayExtensionComponents;
+
 
 
 - (void)triggerEvent:(HPKComponentEvent)event para1:(NSObject *)para1;

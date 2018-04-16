@@ -28,9 +28,6 @@
 @property(nonatomic,copy,readwrite)NSArray *unSortedWebViewComponents;
 @property(nonatomic,copy,readwrite)NSArray *sortedExtensionComponents;
 
-@property(nonatomic,assign,readwrite)CGSize lastWebViewContentSize;
-
-
 @property(nonatomic,copy,readwrite)HPKViewControllerBottomPullRefreshBlock bottomPullRefreshBlock;
 
 
@@ -123,10 +120,8 @@
             [HPKWebView supportProtocolWithHTTP:NO
                               customSchemeArray:@[HPKURLProtocolHandleScheme]
                                urlProtocolClass:[HPKURLProtocol class]];
-            
-            [_webView injectHPKJavascriptWithDomClass:@"HPK-Component-PlaceHolder"];
-            
-            [_webView.scrollView addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
+                        
+            [_webView.scrollView addObserver:_delegateHandler forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:NULL];
             
             _webView.scrollView.scrollEnabled = NO;
             _webView;
@@ -220,10 +215,7 @@
           WebViewComponents:(NSArray *)WebViewComponents
          ExtensionComponents:(NSArray *)ExtensionComponents{
     [self _triggerEvent:kHPKComponentEventControllerDidReceiveData para1:self para2:model];
-    
-    
-    
-    
+
     _unSortedWebViewComponents = [[self filterComponents:WebViewComponents] copy];
     _sortedExtensionComponents = [[self filterComponents:ExtensionComponents] sortedArrayUsingComparator:^NSComparisonResult(id<RNSModelProtocol> obj1, id<RNSModelProtocol> obj2) {
         return ([obj1 getUniqueId] < [obj2 getUniqueId]) ? NSOrderedAscending : NSOrderedDescending;
@@ -231,11 +223,25 @@
 }
 - (void)renderHtmlTemplate:(NSString *)htmlTemplate
             componentArray:(NSArray *)componentArray{
+    
+    __weak typeof(self) wself = self;
     [[HPKHtmlRenderHandler shareInstance] asyncRenderHTMLString:htmlTemplate componentArray:componentArray completeBlock:^(NSString *finalHTMLString, NSError *error) {
         
-        [_webView loadHTMLString:finalHTMLString baseURL:nil];
+        [wself.webView loadHTMLString:finalHTMLString baseURL:nil];
     }];
 }
+
+- (void)reLayoutWebViewComponentsWithIndex:(NSString *)index
+                             componentSize:(CGSize)componentSize{
+    if (!index) {
+        return;
+    }
+    __weak typeof(self) wself = self;
+    [_webView safeAsyncEvaluateJavaScriptString:[HPKWebViewHandler setComponentJSWithIndex:index componentSize:componentSize] completionBlock:^(NSObject *result) {
+        [wself reLayoutWebViewComponents];
+    }];
+}
+
 
 - (void)reLayoutExtensionComponents{
 
@@ -268,7 +274,7 @@
     }];
     
 }
-- (void)reLayExtensionComponents{
+- (void)reLayoutWebViewComponents{
 
     __weak typeof(self) wself = self;
     [_webView evaluateJavaScript:@"HPKGetAllComponentFrame()" completionHandler:^(id _Nullable data, NSError * _Nullable error) {
@@ -302,17 +308,6 @@
             [wself reLayoutExtensionComponents];
         }];
     }];
-}
-
-#pragma mark -
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    
-    CGSize newSize = [((NSValue *)[change objectForKey:NSKeyValueChangeNewKey]) CGSizeValue];
-    
-    if(!CGSizeEqualToSize(newSize,_lastWebViewContentSize)){
-        _lastWebViewContentSize = newSize;
-        [self reLayExtensionComponents];
-    } 
 }
 
 #pragma mark - component

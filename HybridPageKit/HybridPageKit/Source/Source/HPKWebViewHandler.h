@@ -14,4 +14,11 @@
 - (void)saveLastReadPosition;
 - (CGFloat)getLastReadPosition;
 
+//js string
+
++ (NSString *)getComponentFrameJs;
++ (NSString *)componentHtmlTemplate;
++ (NSString *)setComponentJSWithIndex:(NSString *)index
+                        componentSize:(CGSize)componentSize;
+
 @end

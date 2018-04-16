@@ -7,6 +7,7 @@
 //
 
 #import "HPKComponentRendering.h"
+#import "HPKWebViewHandler.h"
 
 @interface HPKComponentRendering ()
 @property(nonatomic,copy,readwrite)NSString *componentIndex;
@@ -31,7 +32,7 @@
     }
     
     if (!_template) {
-        _template = [GRMustacheTemplate templateFromString:@"<div class='HPK-Component-PlaceHolder' style='width:{{width}}px;height:{{height}}px' data-index='{{componentIndex}}'></div>" error:nil];
+        _template = [GRMustacheTemplate templateFromString:[HPKWebViewHandler componentHtmlTemplate] error:nil];
     }
     
     CGFloat width = [UIScreen mainScreen].bounds.size.width - 16;

@@ -8,6 +8,7 @@
 
 #import "HPKWebView.h"
 #import "WKWebViewExtensionsDef.h"
+#import "HPKWebViewHandler.h"
 
 @implementation HPKWebView
 
@@ -19,27 +20,17 @@
     _holderObject = nil;
 }
 
-- (void)injectHPKJavascriptWithDomClass:(NSString *)domClass{
-    
-    if (!domClass || domClass.length <= 0) {
-        return;
+- (instancetype)initWithFrame:(CGRect)frame{
+    self = [super initWithFrame:frame];
+    if(self){
+        [self.configuration.userContentController addUserScript:[[WKUserScript alloc] initWithSource:[NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"jquery" ofType:@"js"] encoding:NSUTF8StringEncoding error:nil]
+                                                                                       injectionTime:WKUserScriptInjectionTimeAtDocumentStart
+                                                                                    forMainFrameOnly:YES]];
+        [self.configuration.userContentController addUserScript:[[WKUserScript alloc] initWithSource:[HPKWebViewHandler getComponentFrameJs]
+                                                                                       injectionTime:WKUserScriptInjectionTimeAtDocumentEnd
+                                                                                    forMainFrameOnly:YES]];
     }
-
-    [self.configuration.userContentController removeAllUserScripts];
-    
-    
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"jquery" ofType:@"js"];
-    NSString *jquery = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil];
-    
-    [self.configuration.userContentController addUserScript:[[WKUserScript alloc] initWithSource:jquery
-                                                                                   injectionTime:WKUserScriptInjectionTimeAtDocumentStart
-                                                                                forMainFrameOnly:YES]];
-    
-    
-    NSString *jsString = [NSString stringWithFormat:@"function HPKGetAllComponentFrame(){var componentFrameDic=[];var list= document.getElementsByClassName('%@');for(var i=0;i<list.length;i++){var dom = list[i];componentFrameDic.push({'index':dom.getAttribute('data-index'),'top':dom.offsetTop,'left':dom.offsetLeft,'width':dom.clientWidth,'height':dom.clientHeight});}return componentFrameDic;}",domClass];
-    [self.configuration.userContentController addUserScript:[[WKUserScript alloc] initWithSource:jsString
-                                                                                   injectionTime:WKUserScriptInjectionTimeAtDocumentEnd
-                                                                                forMainFrameOnly:YES]];
+    return self;
 }
 
 #pragma mark -

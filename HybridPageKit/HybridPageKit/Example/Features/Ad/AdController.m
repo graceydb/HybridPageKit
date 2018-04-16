@@ -7,14 +7,13 @@
 //
 
 #import "AdController.h"
-#import "ArticleApi.h"
 #import "HPKViewController.h"
 #import "ArticleModel.h"
+#import "HPKWebViewHandler.h"
 
 @interface AdController()
 @property(nonatomic,weak,readwrite) __kindof HPKViewController *controller;
 @property(nonatomic,weak,readwrite) __kindof HPKWebView *webView;
-@property(nonatomic,strong,readwrite)ArticleApi *adApi;
 @property(nonatomic,weak,readwrite)AdModel *adModel;
 @end
 
@@ -27,21 +26,7 @@
 - (void)controllerInit:(__kindof HPKViewController *)controller{
     _controller = controller;
 }
-- (void)controllerViewDidLoad:(__kindof HPKViewController *)controller{
-    
-}
-- (void)controllerViewWillAppear:(__kindof HPKViewController *)controller{
-    
-}
-- (void)controllerViewDidAppear:(__kindof HPKViewController *)controller{
-    
-}
-- (void)controllerViewWillDisappear:(__kindof HPKViewController *)controller{
-    
-}
-- (void)controllerViewDidDisappear:(__kindof HPKViewController *)controller{
-    
-}
+
 
 //data
 - (void)controller:(__kindof HPKViewController *)controller
@@ -61,22 +46,6 @@
 - (void)webViewDidFinishNavigation:(__kindof HPKWebView *)webView{
     _webView = webView;
 }
-- (void)webViewDidShow:(__kindof HPKWebView *)webView{
-    __weak typeof(self) wself = self;
-    _adApi = [[ArticleApi alloc]initWithApiType:kArticleApiTypeAD completionBlock:^(NSDictionary *responseDic, NSError *error) {
-        [wself.adModel setDataWithDic:responseDic];
-        
-
-        NSString *jsStr =  [NSString stringWithFormat:@"var dom=$(\".HPK-Component-PlaceHolder[data-index*='%@']\");dom.width('%@px');dom.height('%@px');",wself.adModel.index,@(wself.adModel.frame.size.width),@(wself.adModel.frame.size.height)];
-
-        [wself.webView safeAsyncEvaluateJavaScriptString:jsStr completionBlock:^(NSObject *result) {
-            [wself.controller reLayExtensionComponents];
-        }];
-    }];
-}
-- (void)webViewScrollViewDidScroll:(__kindof HPKWebView *)webView{
-    
-}
 
 //component scroll
 - (void)scrollViewWillDisplayComponentView:(__kindof UIView *)componentView
@@ -89,18 +58,13 @@
     [((AdView *)componentView) layoutWithData:(AdModel *)componentModel];
 }
 
-- (void)scrollViewEndDisplayComponentView:(__kindof UIView *)componentView
-                           componentModel:(RNSObject *)componentModel{
-    NSLog(@"");
-}
-
 - (void)scrollViewWillPrepareComponentView:(__kindof UIView *)componentView
                             componentModel:(RNSObject *)componentModel{
-    NSLog(@"");
+    
+    __weak typeof(self) wself = self;
+    [self.adModel getAsyncDataWithCompletionBlock:^{
+        [wself.controller reLayoutWebViewComponentsWithIndex:wself.adModel.index componentSize:wself.adModel.frame.size];
+    }];
 }
 
-- (void)scrollViewEndPrepareComponentView:(__kindof UIView *)componentView
-                           componentModel:(RNSObject *)componentModel{
-    NSLog(@"");
-}
 @end
