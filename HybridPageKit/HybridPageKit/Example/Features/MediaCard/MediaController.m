@@ -10,7 +10,7 @@
 
 @implementation MediaController
 -(BOOL)shouldResponseWithComponentView:(__kindof UIView *)componentView
-                         componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                         componentModel:(RNSObject *)componentModel{
     return [componentView class] == [MediaView class] && [componentModel class] == [MediaModel class];
 }
 
@@ -52,22 +52,22 @@
 
 //component scroll
 - (void)scrollViewWillDisplayComponentView:(__kindof UIView *)componentView
-                            componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                            componentModel:(RNSObject *)componentModel{
    [((MediaView *)componentView) layoutWithData:(MediaModel *)componentModel];
 }
 
 - (void)scrollViewEndDisplayComponentView:(__kindof UIView *)componentView
-                           componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                           componentModel:(RNSObject *)componentModel{
     NSLog(@"");
 }
 
 - (void)scrollViewWillPrepareComponentView:(__kindof UIView *)componentView
-                            componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                            componentModel:(RNSObject *)componentModel{
     NSLog(@"");
 }
 
 - (void)scrollViewEndPrepareComponentView:(__kindof UIView *)componentView
-                           componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                           componentModel:(RNSObject *)componentModel{
     NSLog(@"");
 }
 @end

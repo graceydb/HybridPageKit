@@ -14,8 +14,8 @@
 @property(nonatomic,copy,readonly)NSString *contentTemplateString;
 
 //component
-@property(nonatomic,strong,readonly)NSArray<NSObject<RNSModelProtocol> *> *inWebViewComponents;
-@property(nonatomic,strong,readonly)NSArray<NSObject<RNSModelProtocol> *> *outWebViewComponents;
+@property(nonatomic,strong,readonly)NSArray<RNSObject *> *WebViewComponents;
+@property(nonatomic,strong,readonly)NSArray<RNSObject *> *ExtensionComponents;
 
 - (instancetype)initWithDic:(NSDictionary *)dic;
 @end

@@ -168,6 +168,7 @@
             if (forceLayout && item.newState != kRNSComponentStateNone) {
                 __kindof UIView *view = [self getComponentViewByItem:item];
                 view.frame = [item getComponentFrame];
+                [self _triggerComponentEvent:kRNSComponentViewReLayoutPreparedAndVisibleComponentView withItem:item];
             }
             continue;
         }

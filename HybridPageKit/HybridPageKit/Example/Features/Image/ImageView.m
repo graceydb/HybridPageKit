@@ -9,9 +9,7 @@
 #import "ImageView.h"
 
 @implementation ImageView
-
 -(void)layoutWithData:(ImageModel *)imageModel{
     [self setImage:[UIImage imageNamed:@"iconImage.png"]];
 }
-
 @end

@@ -6,7 +6,7 @@
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
-#import "HPKComponentControllerDelegate.h"
+#import "HPKDefs.h"
 
 @interface GifController : NSObject<HPKComponentControllerDelegate>
 

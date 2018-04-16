@@ -27,8 +27,11 @@
                 if (data) {
                     id obj = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
                     if ([obj isKindOfClass:[NSDictionary class]]) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                             completionBlock((NSDictionary *)obj,error);
+                        
+                        CGFloat customDelay = (type == kArticleApiTypeAD|| type == kArticleApiTypeHotComment)? 0.6f : 0.f;
+                        
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(customDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            completionBlock((NSDictionary *)obj,error);
                         });
                     }
                 }

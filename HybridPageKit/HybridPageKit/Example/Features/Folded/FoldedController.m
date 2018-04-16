@@ -21,7 +21,7 @@
 #pragma mark -
 
 -(BOOL)shouldResponseWithComponentView:(__kindof UIView *)componentView
-                        componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                        componentModel:(RNSObject *)componentModel{
     return [componentView class] == [FoldedView class] && [componentModel class] == [FoldedModel class];
 }
 
@@ -52,26 +52,26 @@
 
 //component scroll
 - (void)scrollViewWillDisplayComponentView:(__kindof UIView *)componentView
-                            componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                            componentModel:(RNSObject *)componentModel{
 }
 
 - (void)scrollViewEndDisplayComponentView:(__kindof UIView *)componentView
-                           componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                           componentModel:(RNSObject *)componentModel{
 }
 
 - (void)scrollViewWillPrepareComponentView:(__kindof UIView *)componentView
-                            componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                            componentModel:(RNSObject *)componentModel{
     
     _foldedModel = (FoldedModel *)componentModel;
     
     __weak typeof(self) wself = self;
     [((FoldedView *)componentView) layoutWithData:_foldedModel clickBlock:^(CGFloat height) {
         [wself.foldedModel setComponentHeight:height];
-        [wself.controller reLayoutOutWebViewComponents];
+        [wself.controller reLayoutExtensionComponents];
     }];
 }
 
 - (void)scrollViewEndPrepareComponentView:(__kindof UIView *)componentView
-                           componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                           componentModel:(RNSObject *)componentModel{
 }
 @end

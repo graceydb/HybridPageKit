@@ -15,12 +15,12 @@
 @property(nonatomic,weak,readwrite) __kindof HPKViewController *controller;
 @property(nonatomic,weak,readwrite) __kindof HPKWebView *webView;
 @property(nonatomic,strong,readwrite)ArticleApi *adApi;
-@property(nonatomic,strong,readwrite)AdModel *adModel;
+@property(nonatomic,weak,readwrite)AdModel *adModel;
 @end
 
 @implementation AdController
 -(BOOL)shouldResponseWithComponentView:(__kindof UIView *)componentView
-                         componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                         componentModel:(RNSObject *)componentModel{
     return [componentView class] == [AdView class] && [componentModel class] == [AdModel class];
 }
 
@@ -48,7 +48,7 @@
     didReceiveData:(NSObject *)data{
     
     if([data isKindOfClass:[ArticleModel class]]){
-        for (NSObject *component in ((ArticleModel *)data).inWebViewComponents) {
+        for (NSObject *component in ((ArticleModel *)data).WebViewComponents) {
             if ([component isKindOfClass:[AdModel class]]) {
                 self.adModel = (AdModel *)component;
                 break;
@@ -70,7 +70,7 @@
         NSString *jsStr =  [NSString stringWithFormat:@"var dom=$(\".HPK-Component-PlaceHolder[data-index*='%@']\");dom.width('%@px');dom.height('%@px');",wself.adModel.index,@(wself.adModel.frame.size.width),@(wself.adModel.frame.size.height)];
 
         [wself.webView safeAsyncEvaluateJavaScriptString:jsStr completionBlock:^(NSObject *result) {
-            [wself.controller reLayoutInWebViewComponents];
+            [wself.controller reLayExtensionComponents];
         }];
     }];
 }
@@ -80,22 +80,27 @@
 
 //component scroll
 - (void)scrollViewWillDisplayComponentView:(__kindof UIView *)componentView
-                            componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                            componentModel:(RNSObject *)componentModel{
+    [((AdView *)componentView) layoutWithData:(AdModel *)componentModel];
+}
+
+- (void)scrollViewRelayoutComponentView:(__kindof UIView *)componentView
+                         componentModel:(RNSObject *)componentModel{
     [((AdView *)componentView) layoutWithData:(AdModel *)componentModel];
 }
 
 - (void)scrollViewEndDisplayComponentView:(__kindof UIView *)componentView
-                           componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                           componentModel:(RNSObject *)componentModel{
     NSLog(@"");
 }
 
 - (void)scrollViewWillPrepareComponentView:(__kindof UIView *)componentView
-                            componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                            componentModel:(RNSObject *)componentModel{
     NSLog(@"");
 }
 
 - (void)scrollViewEndPrepareComponentView:(__kindof UIView *)componentView
-                           componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                           componentModel:(RNSObject *)componentModel{
     NSLog(@"");
 }
 @end

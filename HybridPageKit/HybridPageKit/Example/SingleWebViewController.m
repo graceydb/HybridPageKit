@@ -53,10 +53,10 @@
         wself.articleModel = [[ArticleModel alloc]initWithDic:responseDic];
         
         //render html
-        [wself renderHtmlTemplate:_articleModel.contentTemplateString componentArray:_articleModel.inWebViewComponents];
+        [wself renderHtmlTemplate:_articleModel.contentTemplateString componentArray:_articleModel.WebViewComponents];
         
         //component callback for data
-        [wself setArticleDetailModel:wself.articleModel inWebViewComponents:wself.articleModel.inWebViewComponents outWebViewComponents:nil];
+        [wself setArticleDetailModel:wself.articleModel WebViewComponents:wself.articleModel.WebViewComponents ExtensionComponents:nil];
     }];
 }
 

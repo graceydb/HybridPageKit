@@ -11,7 +11,7 @@
 @implementation RelateNewsController
 
 -(BOOL)shouldResponseWithComponentView:(__kindof UIView *)componentView
-componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+componentModel:(RNSObject *)componentModel{
    return [componentView class] == [RelateNewsView class] && [componentModel class] == [RelateNewsModel class];
 }
 
@@ -53,22 +53,22 @@ didReceiveData:(NSObject *)data{
 
 //component scroll
 - (void)scrollViewWillDisplayComponentView:(__kindof UIView *)componentView
-                            componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                            componentModel:(RNSObject *)componentModel{
     [((RelateNewsView *)componentView) layoutWithData:(RelateNewsModel *)componentModel];
 }
 
 - (void)scrollViewEndDisplayComponentView:(__kindof UIView *)componentView
-                           componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                           componentModel:(RNSObject *)componentModel{
     NSLog(@"");
 }
 
 - (void)scrollViewWillPrepareComponentView:(__kindof UIView *)componentView
-                            componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                            componentModel:(RNSObject *)componentModel{
     NSLog(@"");
 }
 
 - (void)scrollViewEndPrepareComponentView:(__kindof UIView *)componentView
-                           componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+                           componentModel:(RNSObject *)componentModel{
     NSLog(@"");
 }
 @end

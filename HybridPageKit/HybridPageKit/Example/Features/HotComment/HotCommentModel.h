@@ -6,14 +6,16 @@
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+typedef void (^HotCommentModelLoadCompletionBlock)(void);
 
-@interface HotCommentModel : NSObject<RNSModelProtocol>
+@interface HotCommentModel : RNSObject
 @property(nonatomic,copy,readonly)NSString *index;
 @property(nonatomic,copy,readonly) NSArray * HotCommentArray;
+@property(nonatomic,assign,readonly)BOOL hasMore;
 
 - (instancetype)initWithDic:(NSDictionary *)dic;
 
--(void)setHotComments:(NSArray *)hotComments;
+
+-(void)loadMoreHotCommentsWithCompletionBlock:(HotCommentModelLoadCompletionBlock)completionBlock;
 
 @end

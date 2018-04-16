@@ -15,6 +15,7 @@ typedef NS_ENUM(NSInteger, RNSComponentViewState) {
     kRNSComponentViewWillDisplayComponentView,
     kRNSComponentViewEndDisplayComponentView,
     kRNSComponentViewEndPreparedComponentView,
+    kRNSComponentViewReLayoutPreparedAndVisibleComponentView,
 };
 
 typedef void (^RNSComponentViewStateChangeBlock)(RNSComponentViewState state ,NSObject<RNSModelProtocol> *componentItem ,__kindof UIView * componentView);

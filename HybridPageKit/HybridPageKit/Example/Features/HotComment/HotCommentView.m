@@ -62,6 +62,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HotCommentView"];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"HotCommentView"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;
 }

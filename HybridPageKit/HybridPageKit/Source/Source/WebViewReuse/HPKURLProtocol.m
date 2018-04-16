@@ -12,16 +12,11 @@
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request{
     
-    NSString *scheme = [[request URL] scheme];
-    
     if ([NSURLProtocol propertyForKey:NSStringFromClass([self class]) inRequest:request]) {
         return NO;
     }
 
-    if([scheme caseInsensitiveCompare:HPKURLProtocolHandleScheme] == NSOrderedSame){
-        return YES;
-    }
-    return NO;
+    return ([[[request URL] scheme] caseInsensitiveCompare:HPKURLProtocolHandleScheme] == NSOrderedSame);
 }
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request{
     return request;
@@ -34,7 +29,6 @@
     [self.client URLProtocolDidFinishLoading:self];
 }
 - (void)stopLoading{
-    
 }
 
 @end

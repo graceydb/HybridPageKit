@@ -1,19 +1,19 @@
 //
-//  HPKWebViewDelegateHandler.m
+//  HPKWebViewHandler.m
 //  HybridPageKit
 //
 //  Created by dequanzhu.
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
-#import "HPKWebViewDelegateHandler.h"
+#import "HPKWebViewHandler.h"
 #import "HPKViewController.h"
 
-@interface HPKWebViewDelegateHandler()
+@interface HPKWebViewHandler()
 @property(nonatomic,weak,readwrite)__kindof HPKViewController *controller;
 @end
 
-@implementation HPKWebViewDelegateHandler
+@implementation HPKWebViewHandler
 
 - (instancetype)initWithController:(__kindof HPKViewController *)controller{
     self = [super init];
@@ -24,16 +24,24 @@
 }
 
 #pragma mark -
+- (void)saveLastReadPosition{
+    // save current webview scrollview offset 
+}
+- (CGFloat)getLastReadPosition{
+    // get last webview scrollview offset by custom key
+    return 0.f;
+}
+
+#pragma mark -
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation{
     
     [self.controller triggerEvent:kHPKComponentEventWebViewDidFinishNavigation para1:webView];
     __weak typeof(self) wself = self;
-#warning later
-    [webView scrollToOffset:0.f
-                maxRunloops:20
+    [webView scrollToOffset:MAX(0.f, [self getLastReadPosition])
+                maxRunloops:50
             completionBlock:^(BOOL success, NSInteger loopTimes) {
                 [wself.controller triggerEvent:kHPKComponentEventWebViewDidShow para1:webView];
-                [wself.controller reLayoutInWebViewComponents];
+                [wself.controller reLayExtensionComponents];
             }];
 }
 @end

@@ -13,7 +13,7 @@
 		B90B9349207C9E350029513B /* BannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90B9348207C9E350029513B /* BannerViewController.m */; };
 		B90B934C207C9E490029513B /* HybridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90B934B207C9E490029513B /* HybridViewController.m */; };
 		B90B934F207CA2130029513B /* FoldedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90B934E207CA2130029513B /* FoldedViewController.m */; };
-		B90B9359207CD73F0029513B /* HPKWebViewDelegateHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B90B9358207CD73F0029513B /* HPKWebViewDelegateHandler.m */; };
+		B90B9359207CD73F0029513B /* HPKWebViewHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B90B9358207CD73F0029513B /* HPKWebViewHandler.m */; };
 		B90B935D207CE1800029513B /* FoldedView.m in Sources */ = {isa = PBXBuildFile; fileRef = B90B935C207CE1800029513B /* FoldedView.m */; };
 		B90B9360207CE18C0029513B /* FoldedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B90B935F207CE18C0029513B /* FoldedModel.m */; };
 		B90B9363207CE1990029513B /* FoldedController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90B9362207CE1990029513B /* FoldedController.m */; };
@@ -67,7 +67,6 @@
 
 /* Begin PBXFileReference section */
 		1C13DBD28613BC9A443A7A3D /* Pods-HybridPageKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HybridPageKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-HybridPageKit/Pods-HybridPageKit.release.xcconfig"; sourceTree = "<group>"; };
-		5EC64FE7206BDDC90079B197 /* HPKEventMap.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKEventMap.h; sourceTree = "<group>"; };
 		5EE016F52073D6920097FAE9 /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
 		5EF39B822061594B00BF2B5A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B90B9344207C9E1B0029513B /* SingleWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingleWebViewController.h; sourceTree = "<group>"; };
@@ -78,8 +77,8 @@
 		B90B934B207C9E490029513B /* HybridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HybridViewController.m; sourceTree = "<group>"; };
 		B90B934D207CA2130029513B /* FoldedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoldedViewController.h; sourceTree = "<group>"; };
 		B90B934E207CA2130029513B /* FoldedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoldedViewController.m; sourceTree = "<group>"; };
-		B90B9357207CD73F0029513B /* HPKWebViewDelegateHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKWebViewDelegateHandler.h; sourceTree = "<group>"; };
-		B90B9358207CD73F0029513B /* HPKWebViewDelegateHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPKWebViewDelegateHandler.m; sourceTree = "<group>"; };
+		B90B9357207CD73F0029513B /* HPKWebViewHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKWebViewHandler.h; sourceTree = "<group>"; };
+		B90B9358207CD73F0029513B /* HPKWebViewHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPKWebViewHandler.m; sourceTree = "<group>"; };
 		B90B935B207CE1800029513B /* FoldedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoldedView.h; sourceTree = "<group>"; };
 		B90B935C207CE1800029513B /* FoldedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoldedView.m; sourceTree = "<group>"; };
 		B90B935E207CE18C0029513B /* FoldedModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoldedModel.h; sourceTree = "<group>"; };
@@ -110,7 +109,6 @@
 		B944DC172068BEC200BD0F06 /* GifController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GifController.m; sourceTree = "<group>"; };
 		B944DC192068BF0100BD0F06 /* ImageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageController.h; sourceTree = "<group>"; };
 		B944DC1A2068BF0100BD0F06 /* ImageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageController.m; sourceTree = "<group>"; };
-		B944DC1F2068C21400BD0F06 /* HPKComponentControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKComponentControllerDelegate.h; sourceTree = "<group>"; };
 		B944DC23206902DE00BD0F06 /* TitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleView.h; sourceTree = "<group>"; };
 		B944DC24206902DE00BD0F06 /* TitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TitleView.m; sourceTree = "<group>"; };
 		B944DC26206902EE00BD0F06 /* TitleModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TitleModel.h; sourceTree = "<group>"; };
@@ -166,12 +164,13 @@
 		B971A83920637195004EFA4A /* HPKContainerScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKContainerScrollView.h; sourceTree = "<group>"; };
 		B971A83A20637195004EFA4A /* HPKContainerScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPKContainerScrollView.m; sourceTree = "<group>"; };
 		B971A83C20637ED9004EFA4A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		B9A3727B20848605000F9E6A /* HPKDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKDefs.h; sourceTree = "<group>"; };
 		B9D64B70206CA62A009FFB03 /* HPKURLProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKURLProtocol.h; sourceTree = "<group>"; };
 		B9D64B71206CA62A009FFB03 /* HPKURLProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPKURLProtocol.m; sourceTree = "<group>"; };
-		B9D64B79206CD128009FFB03 /* iconImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = iconImage.png; path = HybridPageKit/Example/iconImage.png; sourceTree = "<group>"; };
-		B9D64B7B206CD17E009FFB03 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = play.png; path = HybridPageKit/Example/play.png; sourceTree = "<group>"; };
-		B9D64B7D206CE5F6009FFB03 /* gif2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = gif2.jpeg; path = HybridPageKit/Example/gif2.jpeg; sourceTree = "<group>"; };
-		B9D64B7E206CE5F6009FFB03 /* gif1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = gif1.jpeg; path = HybridPageKit/Example/gif1.jpeg; sourceTree = "<group>"; };
+		B9D64B79206CD128009FFB03 /* iconImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconImage.png; sourceTree = "<group>"; };
+		B9D64B7B206CD17E009FFB03 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		B9D64B7D206CE5F6009FFB03 /* gif2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gif2.jpeg; sourceTree = "<group>"; };
+		B9D64B7E206CE5F6009FFB03 /* gif1.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = gif1.jpeg; sourceTree = "<group>"; };
 		B9F750C634990BDD6329B757 /* libPods-HybridPageKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HybridPageKit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D05E89FAEA1CC2DB38C7405B /* Pods-HybridPageKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HybridPageKit.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HybridPageKit/Pods-HybridPageKit.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,23 +204,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B90B9353207CAFE30029513B /* WebView */ = {
+		B90B9353207CAFE30029513B /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				B9D64B70206CA62A009FFB03 /* HPKURLProtocol.h */,
-				B9D64B71206CA62A009FFB03 /* HPKURLProtocol.m */,
-				B971A82C20628DED004EFA4A /* HPKComponentRendering.h */,
-				B971A82D20628DED004EFA4A /* HPKComponentRendering.m */,
-				B971A820206286A8004EFA4A /* HPKHtmlRenderHandler.h */,
-				B971A821206286A8004EFA4A /* HPKHtmlRenderHandler.m */,
-				B971A7D720611E63004EFA4A /* HPKWebViewPool.h */,
-				B971A7D620611E63004EFA4A /* HPKWebViewPool.m */,
+				B971A83920637195004EFA4A /* HPKContainerScrollView.h */,
+				B971A83A20637195004EFA4A /* HPKContainerScrollView.m */,
 				B971A7D820611E63004EFA4A /* HPKWebView.h */,
 				B971A7D920611E63004EFA4A /* HPKWebView.m */,
-				B90B9357207CD73F0029513B /* HPKWebViewDelegateHandler.h */,
-				B90B9358207CD73F0029513B /* HPKWebViewDelegateHandler.m */,
+				B90B9357207CD73F0029513B /* HPKWebViewHandler.h */,
+				B90B9358207CD73F0029513B /* HPKWebViewHandler.m */,
+				B9A3727A208484FC000F9E6A /* WebViewReuse */,
+				B9A37279208484E3000F9E6A /* HTMLRender */,
 			);
-			path = WebView;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		B90B935A207CE0980029513B /* Folded */ = {
@@ -240,10 +235,6 @@
 		B92ADA14206104F000C5CC9F = {
 			isa = PBXGroup;
 			children = (
-				B9D64B7E206CE5F6009FFB03 /* gif1.jpeg */,
-				B9D64B7D206CE5F6009FFB03 /* gif2.jpeg */,
-				B9D64B7B206CD17E009FFB03 /* play.png */,
-				B9D64B79206CD128009FFB03 /* iconImage.png */,
 				B92ADA1F206104F000C5CC9F /* HybridPageKit */,
 				B92ADA1E206104F000C5CC9F /* Products */,
 				0F7CB1AC35B750CD6D2B8248 /* Pods */,
@@ -279,11 +270,7 @@
 		B944DC0620689F8F00BD0F06 /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				B90B9364207E1BB20029513B /* shortArticleContent.txt */,
-				5EE016F52073D6920097FAE9 /* jquery.js */,
-				B971A7F1206240B3004EFA4A /* articleContent.txt */,
-				B9314C4B207220BD0052C964 /* adContent.txt */,
-				B9314C4C207220BD0052C964 /* hotCommentContent.txt */,
+				B9A37278208473AE000F9E6A /* FakeServerData */,
 				B971A7F3206250CF004EFA4A /* ArticleModel.h */,
 				B971A7F4206250CF004EFA4A /* ArticleModel.m */,
 				B971A7DC20612FA0004EFA4A /* LocalServer.h */,
@@ -307,16 +294,51 @@
 			path = Title;
 			sourceTree = "<group>";
 		};
+		B9A37278208473AE000F9E6A /* FakeServerData */ = {
+			isa = PBXGroup;
+			children = (
+				5EE016F52073D6920097FAE9 /* jquery.js */,
+				B9D64B7E206CE5F6009FFB03 /* gif1.jpeg */,
+				B9D64B7D206CE5F6009FFB03 /* gif2.jpeg */,
+				B9D64B7B206CD17E009FFB03 /* play.png */,
+				B9D64B79206CD128009FFB03 /* iconImage.png */,
+				B971A7F1206240B3004EFA4A /* articleContent.txt */,
+				B90B9364207E1BB20029513B /* shortArticleContent.txt */,
+				B9314C4B207220BD0052C964 /* adContent.txt */,
+				B9314C4C207220BD0052C964 /* hotCommentContent.txt */,
+			);
+			path = FakeServerData;
+			sourceTree = "<group>";
+		};
+		B9A37279208484E3000F9E6A /* HTMLRender */ = {
+			isa = PBXGroup;
+			children = (
+				B971A82C20628DED004EFA4A /* HPKComponentRendering.h */,
+				B971A82D20628DED004EFA4A /* HPKComponentRendering.m */,
+				B971A820206286A8004EFA4A /* HPKHtmlRenderHandler.h */,
+				B971A821206286A8004EFA4A /* HPKHtmlRenderHandler.m */,
+			);
+			path = HTMLRender;
+			sourceTree = "<group>";
+		};
+		B9A3727A208484FC000F9E6A /* WebViewReuse */ = {
+			isa = PBXGroup;
+			children = (
+				B9D64B70206CA62A009FFB03 /* HPKURLProtocol.h */,
+				B9D64B71206CA62A009FFB03 /* HPKURLProtocol.m */,
+				B971A7D720611E63004EFA4A /* HPKWebViewPool.h */,
+				B971A7D620611E63004EFA4A /* HPKWebViewPool.m */,
+			);
+			path = WebViewReuse;
+			sourceTree = "<group>";
+		};
 		B9E775DB20689ADC00A4D274 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				B90B9353207CAFE30029513B /* WebView */,
-				B944DC1F2068C21400BD0F06 /* HPKComponentControllerDelegate.h */,
-				B971A83920637195004EFA4A /* HPKContainerScrollView.h */,
-				B971A83A20637195004EFA4A /* HPKContainerScrollView.m */,
+				B90B9353207CAFE30029513B /* Source */,
 				B944DC0320689F7F00BD0F06 /* HPKViewController.h */,
 				B944DC0420689F7F00BD0F06 /* HPKViewController.m */,
-				5EC64FE7206BDDC90079B197 /* HPKEventMap.h */,
+				B9A3727B20848605000F9E6A /* HPKDefs.h */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -584,7 +606,7 @@
 				B971A7DA20611E63004EFA4A /* HPKWebViewPool.m in Sources */,
 				B944DC0C2068BD1A00BD0F06 /* HotCommentController.m in Sources */,
 				B944DC1B2068BF0100BD0F06 /* ImageController.m in Sources */,
-				B90B9359207CD73F0029513B /* HPKWebViewDelegateHandler.m in Sources */,
+				B90B9359207CD73F0029513B /* HPKWebViewHandler.m in Sources */,
 				B971A82E20628DED004EFA4A /* HPKComponentRendering.m in Sources */,
 				B944DC2B2069045E00BD0F06 /* TitleController.m in Sources */,
 				B971A80720625ADF004EFA4A /* VideoModel.m in Sources */,

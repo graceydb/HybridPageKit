@@ -82,8 +82,8 @@
 
         wself.articleModel = [[ArticleModel alloc]initWithDic:responseDic];
         //component callback for data
-        [wself setArticleDetailModel:wself.articleModel inWebViewComponents:nil outWebViewComponents:wself.articleModel.outWebViewComponents];
-        [wself reLayoutOutWebViewComponents];
+        [wself setArticleDetailModel:wself.articleModel WebViewComponents:nil ExtensionComponents:wself.articleModel.ExtensionComponents];
+        [wself reLayoutExtensionComponents];
     }];
 }
 @end

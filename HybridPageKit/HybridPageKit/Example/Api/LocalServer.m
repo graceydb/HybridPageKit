@@ -32,9 +32,6 @@
         _server = [[GCDWebServer alloc]init];
         __weak typeof(self) wself = self;
         [_server addDefaultHandlerForMethod:@"GET" requestClass:[GCDWebServerRequest class] processBlock:^GCDWebServerResponse *(__kindof GCDWebServerRequest *request) {
-            
-            
-            
             return [GCDWebServerDataResponse responseWithText:[wself _getResponseJsonWithType:((NSString *)[request.query objectForKey:@"type"]).integerValue]];
         }];
         __unused BOOL startState =[_server startWithPort:HPKLocalServerPort bonjourName:nil];

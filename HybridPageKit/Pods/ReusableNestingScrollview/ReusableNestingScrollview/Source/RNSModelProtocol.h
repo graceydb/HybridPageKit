@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "RNSComponentContext.h"
 
+#define RNSObject NSObject<RNSModelProtocol>
+
 @protocol RNSModelProtocol
 @required
 -(NSString *)getUniqueId;

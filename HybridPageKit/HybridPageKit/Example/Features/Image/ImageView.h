@@ -7,7 +7,6 @@
 //
 
 #import "ImageModel.h"
-
 @interface ImageView : UIImageView
--(void)layoutWithData:(ImageModel *)imageModel;
+- (void)layoutWithData:(ImageModel *)imageModel;
 @end

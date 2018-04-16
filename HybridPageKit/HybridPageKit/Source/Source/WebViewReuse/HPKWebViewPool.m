@@ -7,6 +7,7 @@
 //
 
 #import "HPKWebViewPool.h"
+#import "HPKWebView.h"
 
 @interface HPKWebViewPool ()
 @property(nonatomic, strong, readwrite) dispatch_semaphore_t lock;

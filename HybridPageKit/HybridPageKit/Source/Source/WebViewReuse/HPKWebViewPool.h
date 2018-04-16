@@ -6,8 +6,12 @@
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "HPKWebView.h"
+#define kHPKWebViewReuseUrlString @"HybridPageKit://reuse-webView"
+
+@protocol HPKWebViewReuseProtocol
+-(void)webViewWillReuse;
+-(void)webViewEndReuse;
+@end
 
 @interface HPKWebViewPool : NSObject
 

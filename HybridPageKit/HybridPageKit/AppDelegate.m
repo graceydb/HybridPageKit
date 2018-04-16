@@ -10,12 +10,7 @@
 #import "ListViewController.h"
 #import "LocalServer.h"
 
-@interface AppDelegate ()
-
-@end
-
 @implementation AppDelegate
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -23,9 +18,8 @@
     self.window.rootViewController = navigationcontroller;
     [self.window makeKeyAndVisible];
         
-    //
+    //start local server 
     [LocalServer sharedInstance];
-    
     return YES;
 }
 

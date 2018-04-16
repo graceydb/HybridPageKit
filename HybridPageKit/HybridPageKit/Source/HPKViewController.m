@@ -9,7 +9,7 @@
 #import "HPKViewController.h"
 #import "HPKHtmlRenderHandler.h"
 #import "HPKWebViewPool.h"
-#import "HPKWebViewDelegateHandler.h"
+#import "HPKWebViewHandler.h"
 #import "HPKURLProtocol.h"
 #import "MJRefresh.h"
 
@@ -21,12 +21,12 @@
 @property(nonatomic,strong,readwrite)HPKWebView *webView;
 @property(nonatomic,assign,readwrite)BOOL needWebView;
 @property(nonatomic,strong,readwrite)HPKContainerScrollView *containerScrollView;
-@property(nonatomic,strong,readwrite)HPKWebViewDelegateHandler *delegateHandler;
+@property(nonatomic,strong,readwrite)HPKWebViewHandler *delegateHandler;
 
 @property(nonatomic,copy,readwrite)NSArray<id>*componentControllerArray;
 
-@property(nonatomic,copy,readwrite)NSArray *unSortedInWebViewComponents;
-@property(nonatomic,copy,readwrite)NSArray *sortedOutWebViewComponents;
+@property(nonatomic,copy,readwrite)NSArray *unSortedWebViewComponents;
+@property(nonatomic,copy,readwrite)NSArray *sortedExtensionComponents;
 
 @property(nonatomic,assign,readwrite)CGSize lastWebViewContentSize;
 
@@ -43,7 +43,7 @@
     if (self) {
         _needWebView = needWebView;
         _componentControllerArray = [self getComponentControllerArray];
-        _delegateHandler = [[HPKWebViewDelegateHandler alloc] initWithController:self];
+        _delegateHandler = [[HPKWebViewHandler alloc] initWithController:self];
         [self _triggerEvent:kHPKComponentEventControllerInit para1:self];
     }
     return self;
@@ -63,13 +63,13 @@
         [_webView.scrollView removeObserver:self forKeyPath:@"contentSize"];
         [[HPKWebViewPool shareInstance] recycleReusedWebView:_webView];
         _webViewScrollViewhandler = nil;
-        _unSortedInWebViewComponents = nil;
+        _unSortedWebViewComponents = nil;
     }
     
     _containerViewScrollViewhandler = nil;
     _containerScrollView = nil;
     _componentControllerArray = nil;
-    _sortedOutWebViewComponents = nil;
+    _sortedExtensionComponents = nil;
 }
 
 - (void)viewDidLoad{
@@ -91,7 +91,7 @@
                 if (offsetY < webViewContentSizeY) {
                     wself.webView.scrollView.contentOffset = CGPointMake(wself.webView.scrollView.contentOffset.x, offsetY);
                     wself.webView.frame = CGRectMake(wself.webView.frame.origin.x, offsetY, wself.webView.frame.size.width, wself.webView.frame.size.height);
-                    [wself reLayoutOutWebViewComponents];
+                    [wself reLayoutExtensionComponents];
                 }
             }
         }];
@@ -132,18 +132,18 @@
             _webView;
         })];
         
-        _webViewScrollViewhandler = [[RNSHandler alloc]initWithScrollView:_webView.scrollView externalScrollViewDelegate:nil scrollWorkRange:100 componentViewStateChangeBlock:^(RNSComponentViewState state, NSObject<RNSModelProtocol> *componentItem, __kindof UIView *componentView) {
+        _webViewScrollViewhandler = [[RNSHandler alloc]initWithScrollView:_webView.scrollView externalScrollViewDelegate:nil scrollWorkRange:100 componentViewStateChangeBlock:^(RNSComponentViewState state, RNSObject *componentItem, __kindof UIView *componentView) {
             [wself triggerComponentEventWithState:state componentItem:componentItem componentView:componentView];
         }];
     }
 
-    _containerViewScrollViewhandler = [[RNSHandler alloc]initWithScrollView:_containerScrollView externalScrollViewDelegate:nil scrollWorkRange:0 componentViewStateChangeBlock: ^(RNSComponentViewState state, NSObject<RNSModelProtocol> *componentItem, __kindof UIView *componentView) {
+    _containerViewScrollViewhandler = [[RNSHandler alloc]initWithScrollView:_containerScrollView externalScrollViewDelegate:nil scrollWorkRange:0 componentViewStateChangeBlock: ^(RNSComponentViewState state, RNSObject *componentItem, __kindof UIView *componentView) {
         [wself triggerComponentEventWithState:state componentItem:componentItem componentView:componentView];
     }];
 }
 
 -(void)triggerComponentEventWithState:(RNSComponentViewState)state
-                        componentItem:(NSObject<RNSModelProtocol> *)componentItem
+                        componentItem:(RNSObject *)componentItem
                         componentView:(__kindof UIView *)componentView{
     
     HPKComponentEvent event;
@@ -155,6 +155,8 @@
         event = kHPKComponentEventEndDisplayComponentView;
     }else if(state == kRNSComponentViewEndPreparedComponentView){
         event = kHPKComponentEventEndPrepareComponentView;
+    }else if(state == kRNSComponentViewReLayoutPreparedAndVisibleComponentView){
+        event = kHPKComponentEventRelayoutComponentView;
     }else{
         return;
     }
@@ -215,15 +217,15 @@
 
 
 - (void)setArticleDetailModel:(NSObject *)model
-          inWebViewComponents:(NSArray *)inWebViewComponents
-         outWebViewComponents:(NSArray *)outWebViewComponents{
+          WebViewComponents:(NSArray *)WebViewComponents
+         ExtensionComponents:(NSArray *)ExtensionComponents{
     [self _triggerEvent:kHPKComponentEventControllerDidReceiveData para1:self para2:model];
     
     
     
     
-    _unSortedInWebViewComponents = [[self filterComponents:inWebViewComponents] copy];
-    _sortedOutWebViewComponents = [[self filterComponents:outWebViewComponents] sortedArrayUsingComparator:^NSComparisonResult(id<RNSModelProtocol> obj1, id<RNSModelProtocol> obj2) {
+    _unSortedWebViewComponents = [[self filterComponents:WebViewComponents] copy];
+    _sortedExtensionComponents = [[self filterComponents:ExtensionComponents] sortedArrayUsingComparator:^NSComparisonResult(id<RNSModelProtocol> obj1, id<RNSModelProtocol> obj2) {
         return ([obj1 getUniqueId] < [obj2 getUniqueId]) ? NSOrderedAscending : NSOrderedDescending;
     }];
 }
@@ -235,7 +237,7 @@
     }];
 }
 
-- (void)reLayoutOutWebViewComponents{
+- (void)reLayoutExtensionComponents{
 
     CGFloat componentGap = [self componentsGap];
     
@@ -249,16 +251,16 @@
     
     CGFloat bottom = topView.frame.origin.y + topView.frame.size.height + componentGap;
     
-    for (int i = 0; i < _sortedOutWebViewComponents.count; i++) {
-        NSObject<RNSModelProtocol>* component = [_sortedOutWebViewComponents objectAtIndex:i];
+    for (int i = 0; i < _sortedExtensionComponents.count; i++) {
+        RNSObject *component = [_sortedExtensionComponents objectAtIndex:i];
         [component setComponentOriginY:bottom];
         bottom += [component getComponentFrame].size.height + componentGap;
     }
     
     __weak typeof(self) wself = self;
-    [_containerViewScrollViewhandler reloadComponentViewsWithProcessBlock:^NSDictionary<NSString *,NSObject<RNSModelProtocol> *> *(NSDictionary<NSString *,NSObject<RNSModelProtocol> *> *componentItemDic) {
+    [_containerViewScrollViewhandler reloadComponentViewsWithProcessBlock:^NSDictionary<NSString *,RNSObject *> *(NSDictionary<NSString *,RNSObject *> *componentItemDic) {
         NSMutableDictionary *dic = @{}.mutableCopy;
-        for (NSObject<RNSModelProtocol> *component in wself.sortedOutWebViewComponents) {
+        for (RNSObject *component in wself.sortedExtensionComponents) {
             [dic setObject:component forKey:[component getUniqueId]];
         }
         wself.containerScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, bottom - componentGap);
@@ -266,12 +268,12 @@
     }];
     
 }
-- (void)reLayoutInWebViewComponents{
+- (void)reLayExtensionComponents{
 
     __weak typeof(self) wself = self;
     [_webView evaluateJavaScript:@"HPKGetAllComponentFrame()" completionHandler:^(id _Nullable data, NSError * _Nullable error) {
         NSArray *array = data;
-        for (NSObject<RNSModelProtocol> * component in wself.unSortedInWebViewComponents) {
+        for (RNSObject *component in wself.unSortedWebViewComponents) {
             CGRect frame = CGRectZero;
             NSString *key = [component getUniqueId];
             for (NSDictionary *dic in array) {
@@ -283,9 +285,9 @@
             [component setComponentFrame:frame];
         }
 
-        [_webViewScrollViewhandler reloadComponentViewsWithProcessBlock:^NSDictionary<NSString *,NSObject<RNSModelProtocol> *> *(NSDictionary<NSString *,NSObject<RNSModelProtocol> *> *componentItemDic) {
+        [_webViewScrollViewhandler reloadComponentViewsWithProcessBlock:^NSDictionary<NSString *,RNSObject *> *(NSDictionary<NSString *,RNSObject *> *componentItemDic) {
             NSMutableDictionary *dic = @{}.mutableCopy;
-            for (NSObject<RNSModelProtocol> *component in wself.unSortedInWebViewComponents) {
+            for (RNSObject *component in wself.unSortedWebViewComponents) {
                 [dic setObject:component forKey:[component getUniqueId]];
             }
             return dic.copy;
@@ -297,7 +299,7 @@
         [_webView evaluateJavaScript:jsStr completionHandler:^(id data, NSError * _Nullable error) {
             CGFloat height = [data floatValue];
             _webView.frame = CGRectMake(0, 0, _containerScrollView.bounds.size.width, MIN(height, _containerScrollView.bounds.size.height));
-            [wself reLayoutOutWebViewComponents];
+            [wself reLayoutExtensionComponents];
         }];
     }];
 }
@@ -309,7 +311,7 @@
     
     if(!CGSizeEqualToSize(newSize,_lastWebViewContentSize)){
         _lastWebViewContentSize = newSize;
-        [self reLayoutInWebViewComponents];
+        [self reLayExtensionComponents];
     } 
 }
 
@@ -326,7 +328,7 @@
 }
 - (void)_triggerEvent:(HPKComponentEvent)event para1:(NSObject *)para1 para2:(NSObject *)para2{
     
-    SEL protocolSelector = _getSelectorForEventType(event);
+    SEL protocolSelector = _getHPKComponentControllerDelegateByEventType(event);
     if (!protocolSelector) {
         NSAssert(NO, @"HPKViewController trigger invalid event:%@", @(event));
         return;

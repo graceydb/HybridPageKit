@@ -61,7 +61,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RelateNewsView"];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"RelateNewsView"];
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return cell;
 }

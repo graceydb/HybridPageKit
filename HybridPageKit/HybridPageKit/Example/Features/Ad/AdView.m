@@ -24,6 +24,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
+        self.clipsToBounds = YES;
         [self addSubview:({
             _adIcon = [[UIImageView alloc]initWithFrame:CGRectMake(8, 20, 60, 60)];
             _adIcon.layer.masksToBounds = YES;

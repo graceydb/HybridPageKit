@@ -8,8 +8,7 @@
 
 #import "HPKWebView.h"
 #import "HPKContainerScrollView.h"
-#import "HPKComponentControllerDelegate.h"
-#import "HPKEventMap.h"
+#import "HPKDefs.h"
 
 typedef void (^HPKViewControllerBottomPullRefreshBlock)(void);
 
@@ -35,14 +34,15 @@ typedef void (^HPKViewControllerBottomPullRefreshBlock)(void);
 
 //set
 - (void)setArticleDetailModel:(NSObject *)model
-          inWebViewComponents:(NSArray<NSObject <RNSModelProtocol> *> *)inWebViewComponents
-          outWebViewComponents:(NSArray<NSObject <RNSModelProtocol> *> *)outWebViewComponents;
+          WebViewComponents:(NSArray<NSObject <RNSModelProtocol> *> *)WebViewComponents
+          ExtensionComponents:(NSArray<NSObject <RNSModelProtocol> *> *)ExtensionComponents;
 
 - (void)renderHtmlTemplate:(NSString *)htmlTemplate
             componentArray:(NSArray<NSObject <RNSModelProtocol> *> *)componentArray;
 
-- (void)reLayoutOutWebViewComponents;
-- (void)reLayoutInWebViewComponents;
+- (void)reLayoutExtensionComponents;
+
+- (void)reLayExtensionComponents;
 
 
 - (void)triggerEvent:(HPKComponentEvent)event para1:(NSObject *)para1;

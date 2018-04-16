@@ -6,9 +6,7 @@
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-
-@interface FoldedModel : NSObject<RNSModelProtocol>
+@interface FoldedModel : RNSObject
 
 @property(nonatomic,copy,readonly)NSString *index;
 @property(nonatomic,copy,readonly)NSString *text;

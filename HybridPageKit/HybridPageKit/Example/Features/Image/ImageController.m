@@ -10,8 +10,8 @@
 
 @implementation ImageController
 
--(BOOL)shouldResponseWithComponentView:(__kindof UIView *)componentView
-                         componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+- (BOOL)shouldResponseWithComponentView:(__kindof UIView *)componentView
+                         componentModel:(RNSObject *)componentModel{
    return [componentView class] == [ImageView class] && [componentModel class] == [ImageModel class];
 }
 
@@ -53,19 +53,19 @@
 
 //component scroll
 - (void)scrollViewWillDisplayComponentView:(__kindof UIView *)componentView
-    componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+    componentModel:(RNSObject *)componentModel{
     [((ImageView *)componentView) layoutWithData:(ImageModel *)componentModel];
 }
 
 - (void)scrollViewEndDisplayComponentView:(__kindof UIView *)componentView
-    componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+    componentModel:(RNSObject *)componentModel{
 }
 
 - (void)scrollViewWillPrepareComponentView:(__kindof UIView *)componentView
-    componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+    componentModel:(RNSObject *)componentModel{
 }
 
 - (void)scrollViewEndPrepareComponentView:(__kindof UIView *)componentView
-    componentModel:(NSObject<RNSModelProtocol> *)componentModel{
+    componentModel:(RNSObject *)componentModel{
 }
 @end
