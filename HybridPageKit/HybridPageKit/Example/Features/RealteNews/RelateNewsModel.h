@@ -6,7 +6,7 @@
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
-@interface RelateNewsModel : RNSObject
+@interface RelateNewsModel : RNSModel
 @property(nonatomic,copy,readonly)NSString *index;
 @property(nonatomic,copy,readonly) NSArray * relateNewsArray;
 

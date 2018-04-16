@@ -21,7 +21,7 @@
 #pragma mark -
 
 -(BOOL)shouldResponseWithComponentView:(__kindof UIView *)componentView
-                        componentModel:(RNSObject *)componentModel{
+                        componentModel:(RNSModel *)componentModel{
     return [componentView class] == [FoldedView class] && [componentModel class] == [FoldedModel class];
 }
 
@@ -52,15 +52,15 @@
 
 //component scroll
 - (void)scrollViewWillDisplayComponentView:(__kindof UIView *)componentView
-                            componentModel:(RNSObject *)componentModel{
+                            componentModel:(RNSModel *)componentModel{
 }
 
 - (void)scrollViewEndDisplayComponentView:(__kindof UIView *)componentView
-                           componentModel:(RNSObject *)componentModel{
+                           componentModel:(RNSModel *)componentModel{
 }
 
 - (void)scrollViewWillPrepareComponentView:(__kindof UIView *)componentView
-                            componentModel:(RNSObject *)componentModel{
+                            componentModel:(RNSModel *)componentModel{
     
     _foldedModel = (FoldedModel *)componentModel;
     
@@ -72,6 +72,6 @@
 }
 
 - (void)scrollViewEndPrepareComponentView:(__kindof UIView *)componentView
-                           componentModel:(RNSObject *)componentModel{
+                           componentModel:(RNSModel *)componentModel{
 }
 @end

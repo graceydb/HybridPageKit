@@ -31,6 +31,13 @@
     return self;
 }
 
+- (void)dealloc{
+    if (_api) {
+        [_api cancel];
+        _api = nil;
+    }
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     [self.view addSubview:({
@@ -70,10 +77,6 @@
              ];
 }
 
--(CGFloat)componentsGap{
-    return 10.f;
-}
-
 
 
 -(void)getRemoteData{
@@ -82,7 +85,7 @@
 
         wself.articleModel = [[ArticleModel alloc]initWithDic:responseDic];
         //component callback for data
-        [wself setArticleDetailModel:wself.articleModel WebViewComponents:nil ExtensionComponents:wself.articleModel.ExtensionComponents];
+        [wself setArticleDetailModel:wself.articleModel webViewComponents:nil extensionComponents:wself.articleModel.extensionComponents];
         [wself reLayoutExtensionComponents];
     }];
 }

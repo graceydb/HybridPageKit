@@ -15,7 +15,7 @@
 
 @required
 - (BOOL)shouldResponseWithComponentView:(__kindof UIView *)componentView
-                         componentModel:(RNSObject *)componentModel;
+                         componentModel:(RNSModel *)componentModel;
 
 @optional
 //controller
@@ -37,19 +37,19 @@
 
 //component scroll
 - (void)scrollViewWillDisplayComponentView:(__kindof UIView *)componentView
-                            componentModel:(RNSObject *)componentModel;
+                            componentModel:(RNSModel *)componentModel;
 
 - (void)scrollViewEndDisplayComponentView:(__kindof UIView *)componentView
-                           componentModel:(RNSObject *)componentModel;
+                           componentModel:(RNSModel *)componentModel;
 
 - (void)scrollViewWillPrepareComponentView:(__kindof UIView *)componentView
-                            componentModel:(RNSObject *)componentModel;
+                            componentModel:(RNSModel *)componentModel;
 
 - (void)scrollViewEndPrepareComponentView:(__kindof UIView *)componentView
-                           componentModel:(RNSObject *)componentModel;
+                           componentModel:(RNSModel *)componentModel;
 
 - (void)scrollViewRelayoutComponentView:(__kindof UIView *)componentView
-                         componentModel:(RNSObject *)componentModel;
+                         componentModel:(RNSModel *)componentModel;
 @end
 
 typedef NS_ENUM(NSInteger, HPKComponentEvent) {
@@ -67,11 +67,13 @@ typedef NS_ENUM(NSInteger, HPKComponentEvent) {
     kHPKComponentEventWebViewDidShow,
     kHPKComponentEventWebViewScrollViewDidScroll,
     //component scroll
+    kHPKComponentScrollEventIndexBegin,
     kHPKComponentEventWillDisplayComponentView,
     kHPKComponentEventEndDisplayComponentView,
     kHPKComponentEventWillPrepareComponentView,
     kHPKComponentEventEndPrepareComponentView,
     kHPKComponentEventRelayoutComponentView,
+    kHPKComponentScrollEventIndexEnd,
 };
 
 static SEL _getHPKComponentControllerDelegateByEventType(HPKComponentEvent event) {

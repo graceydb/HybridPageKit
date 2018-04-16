@@ -10,7 +10,7 @@
 
 @implementation TitleController
 -(BOOL)shouldResponseWithComponentView:(__kindof UIView *)componentView
-                         componentModel:(RNSObject *)componentModel{
+                         componentModel:(RNSModel *)componentModel{
     return [componentView class] == [TitleView class] && [componentModel class] == [TitleModel class];
 }
 
@@ -52,22 +52,22 @@
 
 //component scroll
 - (void)scrollViewWillDisplayComponentView:(__kindof UIView *)componentView
-                            componentModel:(RNSObject *)componentModel{
+                            componentModel:(RNSModel *)componentModel{
     NSLog(@"");
 }
 
 - (void)scrollViewEndDisplayComponentView:(__kindof UIView *)componentView
-                           componentModel:(RNSObject *)componentModel{
+                           componentModel:(RNSModel *)componentModel{
     NSLog(@"");
 }
 
 - (void)scrollViewWillPrepareComponentView:(__kindof UIView *)componentView
-                            componentModel:(RNSObject *)componentModel{
+                            componentModel:(RNSModel *)componentModel{
     [((TitleView *)componentView) layoutWithData:(TitleModel *)componentModel];
 }
 
 - (void)scrollViewEndPrepareComponentView:(__kindof UIView *)componentView
-                           componentModel:(RNSObject *)componentModel{
+                           componentModel:(RNSModel *)componentModel{
     NSLog(@"");
 }
 @end

@@ -13,6 +13,6 @@ typedef void (^HPKHtmlRenderCompleteBlock)(NSString *finalHTMLString, NSError *e
 + (HPKHtmlRenderHandler *)shareInstance;
 
 - (void)asyncRenderHTMLString:(NSString *)htmlString
-               componentArray:(NSArray<RNSObject *> *)componentArray
+               componentArray:(NSArray<RNSModel *> *)componentArray
                 completeBlock:(HPKHtmlRenderCompleteBlock)completeBlock;
 @end

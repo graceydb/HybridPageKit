@@ -6,7 +6,7 @@
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
-@interface MediaModel : RNSObject
+@interface MediaModel : RNSModel
 @property(nonatomic,copy,readonly)NSString *index;
 @property(nonatomic,copy,readonly)NSString *mediaId;
 @property(nonatomic,copy,readonly)NSString *mediaIcon;

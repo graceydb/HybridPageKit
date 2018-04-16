@@ -6,7 +6,7 @@
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
-@interface GifModel : RNSObject
+@interface GifModel : RNSModel
 @property(nonatomic,copy,readonly)NSString *index;
 @property(nonatomic,copy,readonly)NSString *imageUrl;
 @property(nonatomic,copy,readonly)NSString *desc;

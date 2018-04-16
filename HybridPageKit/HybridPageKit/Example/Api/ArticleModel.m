@@ -16,8 +16,8 @@
 @property(nonatomic,copy,readwrite)NSString *contentTemplateString;
 
 //component
-@property(nonatomic,strong,readwrite)NSArray<RNSObject *> *WebViewComponents;
-@property(nonatomic,strong,readwrite)NSArray<RNSObject *> *ExtensionComponents;
+@property(nonatomic,strong,readwrite)NSArray<RNSModel *> *WebViewComponents;
+@property(nonatomic,strong,readwrite)NSArray<RNSModel *> *ExtensionComponents;
 
 
 @end
@@ -32,7 +32,7 @@
                 
         [self _parserWebViewComponentWithDic:dic];
         
-        _ExtensionComponents = @[[[MediaModel alloc]initWithDic:[dic objectForKey:@"articleMedia"]],
+        _extensionComponents = @[[[MediaModel alloc]initWithDic:[dic objectForKey:@"articleMedia"]],
                                   [[HotCommentModel alloc]initWithDic:[dic objectForKey:@"articleHotComment"]],
                                   [[RelateNewsModel alloc]initWithDic:[dic objectForKey:@"articleRelateNews"]],
                                   [[FoldedModel alloc]initWithDic:[dic objectForKey:@"articleFoldedInfo"]]];
@@ -44,7 +44,7 @@
 
 -(void)_parserWebViewComponentWithDic:(NSDictionary *)dic{
 
-    NSMutableArray<RNSObject *> *tmpArray = @[].mutableCopy;
+    NSMutableArray<RNSModel *> *tmpArray = @[].mutableCopy;
     
     [tmpArray addObject:[[TitleModel alloc]initWithDic:[dic objectForKey:@"articleTitle"]]];
     
@@ -70,7 +70,7 @@
         }
     }
     
-    _WebViewComponents = tmpArray.copy;
+    _webViewComponents = tmpArray.copy;
 }
 
 @end

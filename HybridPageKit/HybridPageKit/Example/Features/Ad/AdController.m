@@ -19,7 +19,7 @@
 
 @implementation AdController
 -(BOOL)shouldResponseWithComponentView:(__kindof UIView *)componentView
-                         componentModel:(RNSObject *)componentModel{
+                         componentModel:(RNSModel *)componentModel{
     return [componentView class] == [AdView class] && [componentModel class] == [AdModel class];
 }
 
@@ -33,7 +33,7 @@
     didReceiveData:(NSObject *)data{
     
     if([data isKindOfClass:[ArticleModel class]]){
-        for (NSObject *component in ((ArticleModel *)data).WebViewComponents) {
+        for (NSObject *component in ((ArticleModel *)data).webViewComponents) {
             if ([component isKindOfClass:[AdModel class]]) {
                 self.adModel = (AdModel *)component;
                 break;
@@ -49,17 +49,17 @@
 
 //component scroll
 - (void)scrollViewWillDisplayComponentView:(__kindof UIView *)componentView
-                            componentModel:(RNSObject *)componentModel{
+                            componentModel:(RNSModel *)componentModel{
     [((AdView *)componentView) layoutWithData:(AdModel *)componentModel];
 }
 
 - (void)scrollViewRelayoutComponentView:(__kindof UIView *)componentView
-                         componentModel:(RNSObject *)componentModel{
+                         componentModel:(RNSModel *)componentModel{
     [((AdView *)componentView) layoutWithData:(AdModel *)componentModel];
 }
 
 - (void)scrollViewWillPrepareComponentView:(__kindof UIView *)componentView
-                            componentModel:(RNSObject *)componentModel{
+                            componentModel:(RNSModel *)componentModel{
     
     __weak typeof(self) wself = self;
     [self.adModel getAsyncDataWithCompletionBlock:^{

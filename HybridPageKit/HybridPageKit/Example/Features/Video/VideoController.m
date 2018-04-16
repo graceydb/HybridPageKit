@@ -10,7 +10,7 @@
 
 @implementation VideoController
 -(BOOL)shouldResponseWithComponentView:(__kindof UIView *)componentView
-                         componentModel:(RNSObject *)componentModel{
+                         componentModel:(RNSModel *)componentModel{
     return [componentView class] == [VideoView class] && [componentModel class] == [VideoModel class];
 }
 
@@ -32,20 +32,20 @@
 
 //component scroll
 - (void)scrollViewWillDisplayComponentView:(__kindof UIView *)componentView
-                            componentModel:(RNSObject *)componentModel{
+                            componentModel:(RNSModel *)componentModel{
     [((VideoView *)componentView) layoutWithData:(VideoModel *)componentModel];
     
     //播放逻辑
 }
 
 - (void)scrollViewEndDisplayComponentView:(__kindof UIView *)componentView
-                           componentModel:(RNSObject *)componentModel{
+                           componentModel:(RNSModel *)componentModel{
     // 自动播放的可以停止播放，暂停
     // 也可以变成悬浮窗口悬浮
 }
 
 - (void)scrollViewWillPrepareComponentView:(__kindof UIView *)componentView
-                            componentModel:(RNSObject *)componentModel{
+                            componentModel:(RNSModel *)componentModel{
     // 视频相关的预加载及预处理
     // 提高视频加载速度，减少loading时间
 }

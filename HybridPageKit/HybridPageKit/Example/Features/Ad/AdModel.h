@@ -8,7 +8,7 @@
 
 typedef void (^AdModelLoadCompletionBlock)(void);
 
-@interface AdModel : RNSObject
+@interface AdModel : RNSModel
 @property(nonatomic,copy,readonly)NSString *index;
 @property(nonatomic,copy,readonly)NSString *imageUrl;
 @property(nonatomic,copy,readonly)NSString *title;

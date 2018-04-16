@@ -25,7 +25,7 @@
                           HTMLSafe:(BOOL *)HTMLSafe
                              error:(NSError **)error{
 
-   RNSObject *RNSObj = [context valueForMustacheKey:_componentIndex];
+   RNSModel *RNSObj = [context valueForMustacheKey:_componentIndex];
     
     if (!RNSObj) {
         return @"";

@@ -39,14 +39,14 @@
 }
 
 - (void)asyncRenderHTMLString:(NSString *)htmlString
-               componentArray:(NSArray<RNSObject *> *)componentArray
+               componentArray:(NSArray<RNSModel *> *)componentArray
                 completeBlock:(HPKHtmlRenderCompleteBlock)completeBlock{
     dispatch_async(_serialQueue, ^{
 
         NSError *error;
         
         NSMutableDictionary * componentDic = @{}.mutableCopy;
-        for (RNSObject *component in componentArray) {
+        for (RNSModel *component in componentArray) {
             [componentDic setObject:component forKey:[component getUniqueId]];
         }
                 

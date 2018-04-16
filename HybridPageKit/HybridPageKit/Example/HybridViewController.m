@@ -11,19 +11,22 @@
 #import "ArticleModel.h"
 #import "HPKHtmlRenderHandler.h"
 
-//document.getElementById('body').style.fontSize = 'xx-large'
-//document.getElementById('body').style.fontSize = 'medium'
-
 @interface HybridViewController()<WKNavigationDelegate>
 @property(nonatomic,strong,readwrite)ArticleApi *api;
 @property(nonatomic,strong,readwrite)ArticleModel *articleModel;
-
-@property(nonatomic,strong,readwrite)HotCommentController *commentController;
 @end
 
 @implementation HybridViewController
 -(instancetype)initWithShortContent:(BOOL)shortContent{
-    self = [super initWithDefaultWebView:YES];
+    self = [super initWithComponentControllerArray:@[[[AdController alloc]init],
+                                                     [[VideoController alloc]init],
+                                                     [[GifController alloc]init],
+                                                     [[ImageController alloc]init],
+                                                     [[RelateNewsController alloc]init],
+                                                     [[HotCommentController alloc]init],
+                                                     [[MediaController alloc]init],
+                                                     [[TitleController alloc]init]
+                                                     ] needWebView:YES];
     if (self) {
         [self getRemoteDataWithShortContent:shortContent];
         __weak typeof(self) wself = self;
@@ -34,44 +37,30 @@
     return self;
 }
 
-- (NSArray *)getComponentControllerArray{
-    
-    if (!_commentController) {
-        _commentController = [[HotCommentController alloc]init];
+- (void)dealloc{
+    if (_api) {
+        [_api cancel];
+        _api = nil;
     }
-    return @[
-             [[AdController alloc]init],
-             [[VideoController alloc]init],
-             [[GifController alloc]init],
-             [[ImageController alloc]init],
-             [[RelateNewsController alloc]init],
-             _commentController,
-             [[MediaController alloc]init],
-             [[TitleController alloc]init]
-             ];
 }
+
 
 -(id<WKNavigationDelegate>)getWebViewExternalNavigationDelegate{
     return self;
-}
-
--(CGFloat)componentsGap{
-    return 10.f;
 }
 
 
 
 -(void)getRemoteDataWithShortContent:(BOOL)shortContent{
     __weak typeof(self) wself = self;
-    _api = [[ArticleApi alloc]initWithApiType:shortContent ? kArticleApiTypeShortArticle : kArticleApiTypeArticle completionBlock:^(NSDictionary *responseDic, NSError *error) {
+    _api = [[ArticleApi alloc]initWithApiType: shortContent ? kArticleApiTypeShortArticle : kArticleApiTypeArticle completionBlock:^(NSDictionary *responseDic, NSError *error) {
         
-        wself.articleModel = [[ArticleModel alloc]initWithDic:responseDic];
-        
-        //render html
-        [wself renderHtmlTemplate:_articleModel.contentTemplateString componentArray:_articleModel.WebViewComponents];
-        
-        //component callback for data
-        [wself setArticleDetailModel:wself.articleModel WebViewComponents:wself.articleModel.WebViewComponents ExtensionComponents:wself.articleModel.ExtensionComponents];
+        wself.articleModel = [[ArticleModel alloc] initWithDic:responseDic];
+
+        [wself setArticleDetailModel:wself.articleModel
+                        htmlTemplate:_articleModel.contentTemplateString
+                   webViewComponents:wself.articleModel.webViewComponents
+                 extensionComponents:wself.articleModel.extensionComponents];
     }];
 }
 

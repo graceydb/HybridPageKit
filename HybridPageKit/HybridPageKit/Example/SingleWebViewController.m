@@ -7,23 +7,18 @@
 //
 
 #import "SingleWebViewController.h"
-
 #import "ArticleApi.h"
 #import "ArticleModel.h"
 #import "HPKHtmlRenderHandler.h"
 
-//document.getElementById('body').style.fontSize = 'xx-large'
-//document.getElementById('body').style.fontSize = 'medium'
-
 @interface SingleWebViewController()<WKNavigationDelegate>
 @property(nonatomic,strong,readwrite)ArticleApi *api;
 @property(nonatomic,strong,readwrite)ArticleModel *articleModel;
-
 @end
 
 @implementation SingleWebViewController
 
--(instancetype)init{
+- (instancetype)init{
     self = [super initWithDefaultWebView:YES];
     if (self) {
         [self getRemoteData];
@@ -31,8 +26,14 @@
     return self;
 }
 
+- (void)dealloc{
+    if (_api) {
+        [_api cancel];
+        _api = nil;
+    }
+}
+
 - (NSArray *)getComponentControllerArray{
-    
     return @[
              [[AdController alloc]init],
              [[VideoController alloc]init],
@@ -53,10 +54,10 @@
         wself.articleModel = [[ArticleModel alloc]initWithDic:responseDic];
         
         //render html
-        [wself renderHtmlTemplate:_articleModel.contentTemplateString componentArray:_articleModel.WebViewComponents];
+        [wself renderHtmlTemplate:_articleModel.contentTemplateString componentArray:_articleModel.webViewComponents];
         
         //component callback for data
-        [wself setArticleDetailModel:wself.articleModel WebViewComponents:wself.articleModel.WebViewComponents ExtensionComponents:nil];
+        [wself setArticleDetailModel:wself.articleModel webViewComponents:wself.articleModel.webViewComponents extensionComponents:nil];
     }];
 }
 

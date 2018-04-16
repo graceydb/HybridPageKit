@@ -29,6 +29,12 @@
     return self;
 }
 
+- (void)dealloc{
+    if (_api) {
+        [_api cancel];
+        _api = nil;
+    }
+}
 
 - (NSArray *)getComponentControllerArray{
     
@@ -43,9 +49,6 @@
              ];
 }
 
--(CGFloat)componentsGap{
-    return 10.f;
-}
 
 -(void)getRemoteData{
     __weak typeof(self) wself = self;
@@ -53,7 +56,7 @@
         
         wself.articleModel = [[ArticleModel alloc]initWithDic:responseDic];
         //component callback for data
-        [wself setArticleDetailModel:wself.articleModel WebViewComponents:nil ExtensionComponents:wself.articleModel.ExtensionComponents];
+        [wself setArticleDetailModel:wself.articleModel webViewComponents:nil extensionComponents:wself.articleModel.extensionComponents];
         [wself reLayoutExtensionComponents];
     }];
 }

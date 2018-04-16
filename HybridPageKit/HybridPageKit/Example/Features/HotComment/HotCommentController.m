@@ -29,7 +29,7 @@
 
 #pragma mark -
 -(BOOL)shouldResponseWithComponentView:(__kindof UIView *)componentView
-                         componentModel:(RNSObject *)componentModel{
+                         componentModel:(RNSModel *)componentModel{
     return [componentView class] == [HotCommentView class] && [componentModel class] == [HotCommentModel class];
 }
 
@@ -41,7 +41,7 @@
 - (void)controller:(__kindof HPKViewController *)controller
     didReceiveData:(NSObject *)data{
     if([data isKindOfClass:[ArticleModel class]]){
-        for (NSObject *component in ((ArticleModel *)data).ExtensionComponents) {
+        for (NSObject *component in ((ArticleModel *)data).extensionComponents) {
             if ([component isKindOfClass:[HotCommentModel class]]) {
                 self.hotCommentModel = (HotCommentModel *)component;
                 break;
@@ -57,13 +57,13 @@
 
 //component scroll
 - (void)scrollViewWillDisplayComponentView:(__kindof UIView *)componentView
-                            componentModel:(RNSObject *)componentModel{
+                            componentModel:(RNSModel *)componentModel{
     _hotCommentView = (HotCommentView *)componentView;
     [((HotCommentView *)componentView) layoutWithData:(HotCommentModel *)componentModel];
 }
 
 - (void)scrollViewRelayoutComponentView:(__kindof UIView *)componentView
-                         componentModel:(RNSObject *)componentModel{
+                         componentModel:(RNSModel *)componentModel{
     [((HotCommentView *)componentView) layoutWithData:(HotCommentModel *)componentModel];
 }
 

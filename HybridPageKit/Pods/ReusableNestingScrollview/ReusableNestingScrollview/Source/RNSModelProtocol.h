@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RNSComponentContext.h"
 
-#define RNSObject NSObject<RNSModelProtocol>
+#define RNSModel NSObject<RNSModelProtocol>
 
 #define RNSProtocolImp(INDEX,FRAME,VIEWCLS,CTLCLS,CONTEXT)   \
 -(NSString *)getUniqueId{return INDEX;}\

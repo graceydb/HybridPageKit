@@ -8,7 +8,7 @@
 
 typedef void (^HotCommentModelLoadCompletionBlock)(void);
 
-@interface HotCommentModel : RNSObject
+@interface HotCommentModel : RNSModel
 @property(nonatomic,copy,readonly)NSString *index;
 @property(nonatomic,copy,readonly) NSArray * HotCommentArray;
 @property(nonatomic,assign,readonly)BOOL hasMore;
