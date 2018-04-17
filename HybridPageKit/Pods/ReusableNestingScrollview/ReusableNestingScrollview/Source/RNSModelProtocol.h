@@ -23,6 +23,7 @@
 -(void)setComponentWidth:(CGFloat)width{FRAME = CGRectMake(FRAME.origin.x, FRAME.origin.y, width, FRAME.size.height);}\
 -(void)setComponentHeight:(CGFloat)height{FRAME = CGRectMake(FRAME.origin.x, FRAME.origin.y, FRAME.size.width, height);}
 
+
 @protocol RNSModelProtocol
 @required
 -(NSString *)getUniqueId;

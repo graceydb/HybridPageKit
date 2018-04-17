@@ -479,7 +479,6 @@
 				B92ADA19206104F000C5CC9F /* Sources */,
 				B92ADA1A206104F000C5CC9F /* Frameworks */,
 				B92ADA1B206104F000C5CC9F /* Resources */,
-				F45E97350524203D1B3C37F7 /* [CP] Embed Pods Frameworks */,
 				BCA758157360AF57AB9D8A4F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -579,21 +578,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HybridPageKit/Pods-HybridPageKit-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F45E97350524203D1B3C37F7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HybridPageKit/Pods-HybridPageKit-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -771,6 +755,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HybridPageKit/PrefixHeader.pch;
 				INFOPLIST_FILE = HybridPageKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HybridPageKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -791,6 +776,7 @@
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = HybridPageKit/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.HybridPageKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";

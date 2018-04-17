@@ -1,4 +1,4 @@
-platform :ios, '11.2'
+platform :ios, '8.0'
 target 'HybridPageKit' do
 	pod 'WKWebViewExtension'
 	pod 'ReusableNestingScrollview'

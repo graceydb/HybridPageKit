@@ -57,7 +57,7 @@
     
     if ([NSThread isMainThread]) {
         if(processBlock){
-            _componentItemDic = processBlock(_componentItemDic).copy;
+            _componentItemDic = [processBlock(_componentItemDic) copy];
         }
         
         [self detailComponentsDidUpdateWithOffsetTop:self.scrollView.contentOffset.y forceLayout:YES];
