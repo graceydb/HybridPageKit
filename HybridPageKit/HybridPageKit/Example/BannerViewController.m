@@ -78,11 +78,11 @@
     _api = [[ArticleApi alloc]initWithApiType:kArticleApiTypeArticle completionBlock:^(NSDictionary *responseDic, NSError *error) {
 
         wself.articleModel = [[ArticleModel alloc]initWithDic:responseDic];
-        
+
         [wself setArticleDetailModel:wself.articleModel
                       topInsetOffset:wself.bannerView.frame.origin.y + wself.bannerView.frame.size.height
                  extensionComponents:wself.articleModel.extensionComponents];
-        
+
         [wself reLayoutExtensionComponents];
     }];
 }

@@ -19,6 +19,8 @@
     self = [super initWithFrame:frame];
     if (self) {
         _layoutBlock = [layoutBlock copy];
+        self.showsVerticalScrollIndicator = NO;
+        self.showsHorizontalScrollIndicator = NO;
     }
     return self;
 }

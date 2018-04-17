@@ -67,7 +67,7 @@
 -(void)dealloc{
     
     if (_needWebView) {
-        [_webView.scrollView removeObserver:self forKeyPath:@"contentSize"];
+        [_webView.scrollView removeObserver:_webViewHandler forKeyPath:@"contentSize"];
         [[HPKWebViewPool shareInstance] recycleReusedWebView:_webView];
         _webViewScrollViewhandler = nil;
         _webViewComponents = nil;
@@ -96,11 +96,10 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     [self triggerEvent:kHPKComponentEventControllerViewDidLoad];
-    
     __weak typeof(self) wself = self;
     [self.view addSubview:({
         _containerScrollView = [[HPKContainerScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64) layoutBlock:^{
-            if (_needWebView) {
+            if (wself.needWebView) {
                 CGFloat webViewContentSizeY = wself.webView.scrollView.contentSize.height - wself.webView.frame.size.height;
                 CGFloat offsetY = wself.containerScrollView.contentOffset.y;
                 if (offsetY < 0) {
@@ -157,9 +156,6 @@
     }
 }
 
-
-
-
 #pragma mark -
 
 // hybrid view controller
@@ -170,12 +166,12 @@
           extensionComponents:(NSArray<RNSModel *> *)extensionComponents{
     
     [_webView addExternalNavigationDelegate:externalDelegate];
-    
+
     __weak typeof(self) wself = self;
     [[HPKHtmlRenderHandler shareInstance] asyncRenderHTMLString:htmlTemplate componentArray:webViewComponents completeBlock:^(NSString *finalHTMLString, NSError *error) {
         [wself.webView loadHTMLString:finalHTMLString baseURL:nil];
     }];
-    
+
     [self _setArticleDetailModel:model webViewComponents:webViewComponents extensionComponents:extensionComponents];
 }
 
@@ -185,7 +181,7 @@
           extensionComponents:(NSArray<RNSModel *> *)extensionComponents{
     
     _topInsetOffset = MAX(topInsetOffset, 0.f);
-    
+
     [self _setArticleDetailModel:model webViewComponents:nil extensionComponents:extensionComponents];
 }
 -(void)_setArticleDetailModel:(NSObject *)model
