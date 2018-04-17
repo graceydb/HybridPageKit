@@ -18,7 +18,7 @@
 
 @implementation ImageModel
 
-RNSProtocolImp(_index,_frame,ImageView,ImageController,nil);
+RNSProtocolImp(_index,_frame, ImageView, ImageController, nil);
 
 - (instancetype)initWithIndex:(NSString *)index valueDic:(NSDictionary *)valueDic{
     self = [super init];
