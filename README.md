@@ -6,10 +6,10 @@ HybridPageKit是一个针对新闻类App高性能、易扩展、组件化的通�
 
 
 <div>
-<img src="./Hybrid.gif" width="20%">
-<img src="./Short.gif" width="20%">
-<img src="./Banner.gif" width="20%">
-<img src="./Folded.gif" width="20%">
+<img src="./HybridPageKit/gifs/Hybrid.gif" width="20%">
+<img src="./HybridPageKit/gifs/Short.gif" width="20%">
+<img src="./HybridPageKit/gifs/Banner.gif" width="20%">
+<img src="./HybridPageKit/gifs/Folded.gif" width="20%">
 </div>
 
 *	使用WKWebView展示主内容，内存、稳定性有显著的提高，并且通过页面间复用WKWebView，极大提升了内容页的加载和渲染速度。
@@ -22,6 +22,12 @@ HybridPageKit是一个针对新闻类App高性能、易扩展、组件化的通�
 * 	解耦、独立全部UI组件，组件全局复用和自管理。UI组件和Controller、View完全解耦，通过初始化时注册、接收接收页面的各个生命周期事件及关键业务事件独立进行业务逻辑。支持热插拔、灵活独立，易扩展维护。
 
 
-###特性
+#特性
 
-###快速使用
+*	集成简单，几十行代码完成新闻类App的内容展示页
+*	Hybrid内容展示页，结合WebView及Native，TableView等，满足绝大多数新闻类App的内容页场景
+* 	UI组件页面内滚动复用、页面间重用，一次开发多次使用，易于扩展
+*  通过扩展和复用，提升WKWebView的基础能力
+*  统一滚动复用管理，线程安全，无需继承，易于集成现有逻辑
+
+#快速使用
