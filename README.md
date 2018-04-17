@@ -4,11 +4,13 @@
 
 HybridPageKit是一个针对新闻类App高性能、易扩展、组件化的通用内容页实现框架。
 
-<img style="display:inline-block" src="./Hybrid.gif" width="125" height="270"/>
-<img style="display:inline-block" src="./Short.gif" width="125" height="270"/>
-<img style="display:inline-block" src="./Banner.gif" width="125" height="270"/>
-<img style="display:inline-block" src="./Folded.gif" width="125" height="270"/>
 
+<div>
+<img src="./Hybrid.gif" width="20%">
+<img src="./Short.gif" width="20%">
+<img src="./Banner.gif" width="20%">
+<img src="./Folded.gif" width="20%">
+</div>
 
 *	使用WKWebView展示主内容，内存、稳定性有显著的提高，并且通过页面间复用WKWebView，极大提升了内容页的加载和渲染速度。
 	
