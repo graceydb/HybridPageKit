@@ -16,10 +16,6 @@
 
 @implementation FoldedController
 
-
-
-#pragma mark -
-
 -(BOOL)shouldResponseWithComponentView:(__kindof UIView *)componentView
                         componentModel:(RNSModel *)componentModel{
     return [componentView class] == [FoldedView class] && [componentModel class] == [FoldedModel class];
@@ -27,36 +23,6 @@
 
 - (void)controllerInit:(__kindof HPKViewController *)controller{
     _controller = controller;
-}
-- (void)controllerViewDidLoad:(__kindof HPKViewController *)controller{
-    
-}
-- (void)controllerViewWillAppear:(__kindof HPKViewController *)controller{
-    
-}
-- (void)controllerViewDidAppear:(__kindof HPKViewController *)controller{
-    
-}
-- (void)controllerViewWillDisappear:(__kindof HPKViewController *)controller{
-    
-}
-- (void)controllerViewDidDisappear:(__kindof HPKViewController *)controller{
-    
-}
-
-//data
-- (void)controller:(__kindof HPKViewController *)controller
-    didReceiveData:(NSObject *)data{
-    
-}
-
-//component scroll
-- (void)scrollViewWillDisplayComponentView:(__kindof UIView *)componentView
-                            componentModel:(RNSModel *)componentModel{
-}
-
-- (void)scrollViewEndDisplayComponentView:(__kindof UIView *)componentView
-                           componentModel:(RNSModel *)componentModel{
 }
 
 - (void)scrollViewWillPrepareComponentView:(__kindof UIView *)componentView
@@ -71,7 +37,4 @@
     }];
 }
 
-- (void)scrollViewEndPrepareComponentView:(__kindof UIView *)componentView
-                           componentModel:(RNSModel *)componentModel{
-}
 @end

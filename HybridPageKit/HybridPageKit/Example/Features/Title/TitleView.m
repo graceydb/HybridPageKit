@@ -53,7 +53,6 @@
     [_titleLabel setText:titleModel.title];
     [_titleLabel sizeToFit];
     
-    
     [_timeLabel setText:[NSString stringWithFormat:@"%@",[NSDate date]]];
     [_timeLabel sizeToFit];
     _timeLabel.frame = CGRectMake(0, _titleLabel.frame.size.height + 20, _timeLabel.frame.size.width, _timeLabel.frame.size.height);

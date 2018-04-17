@@ -12,6 +12,5 @@
 @property(nonatomic,copy,readonly)NSString *desc;
 @property(nonatomic,assign,readonly)CGRect frame;
 
-
 - (instancetype)initWithIndex:(NSString *)index valueDic:(NSDictionary *)valueDic;
 @end

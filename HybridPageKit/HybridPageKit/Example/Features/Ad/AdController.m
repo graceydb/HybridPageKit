@@ -27,7 +27,6 @@
     _controller = controller;
 }
 
-
 //data
 - (void)controller:(__kindof HPKViewController *)controller
     didReceiveData:(NSObject *)data{
@@ -63,6 +62,7 @@
     
     __weak typeof(self) wself = self;
     [self.adModel getAsyncDataWithCompletionBlock:^{
+        //异步获取数据后更新布局
         [wself.controller reLayoutWebViewComponentsWithIndex:wself.adModel.index componentSize:wself.adModel.frame.size];
     }];
 }

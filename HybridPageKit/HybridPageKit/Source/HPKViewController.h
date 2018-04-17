@@ -15,10 +15,9 @@ typedef void (^HPKViewControllerBottomPullRefreshBlock)(void);
 @property(nonatomic,assign,readwrite)CGFloat componentsGap;
 
 
-
 - (instancetype)initWithWebView:(BOOL)needWebView;
 
-- (void)setComponentControllerArray:(NSArray<NSObject<HPKComponentControllerDelegate> *> *)ComponentControllerArray;
+- (NSArray<NSObject<HPKComponentControllerDelegate> *> *)getValidComponentControllers;
 
 
 #pragma mark -  set data and render

@@ -27,19 +27,21 @@
 @property(nonatomic,strong,readwrite)RNSHandler *webViewScrollViewhandler;
 @property(nonatomic,copy,readwrite)NSArray *webViewComponents;
 
-@property(nonatomic,copy,readwrite)NSArray<id>*componentControllerArray;
+@property(nonatomic,copy,readwrite)NSArray<NSObject<HPKComponentControllerDelegate> *> *componentControllerArray;
 @property(nonatomic,copy,readwrite)HPKViewControllerBottomPullRefreshBlock bottomPullRefreshBlock;
+@property(nonatomic,assign,readwrite)CGFloat topInsetOffset;
 
 @end
 
 @implementation HPKViewController
 
-- (instancetype)initWithDefaultWebView:(BOOL)needWebView{
+- (instancetype)initWithWebView:(BOOL)needWebView{
     self = [super init];
     if (self) {
         _needWebView = needWebView;
         _componentsGap = 10.f;
-        _componentControllerArray = [self getComponentControllerArray];
+        _topInsetOffset = 0.f;
+        _componentControllerArray = [self getValidComponentControllers];
         [self triggerEvent:kHPKComponentEventControllerInit para1:self];
     }
     return self;
@@ -87,7 +89,9 @@
 
 #pragma mark -
 
-
+- (NSArray<NSObject<HPKComponentControllerDelegate> *> *)getValidComponentControllers{
+    return @[];
+}
 
 - (void)viewDidLoad{
     [super viewDidLoad];
@@ -136,7 +140,6 @@
             
             [_webView useExternalNavigationDelegate];
             [_webView setMainNavigationDelegate:_webViewHandler];
-            [_webView addExternalNavigationDelegate:[self getWebViewExternalNavigationDelegate]];
             
             [HPKWebView supportProtocolWithHTTP:NO
                               customSchemeArray:@[HPKURLProtocolHandleScheme]
@@ -159,17 +162,47 @@
 
 #pragma mark -
 
-
-
-
-
--(NSArray *)filterComponents:(NSArray *)components{
+// hybrid view controller
+- (void)setArticleDetailModel:(NSObject *)model
+                 htmlTemplate:(NSString *)htmlTemplate
+      webviewExternalDelegate:(id<WKNavigationDelegate>)externalDelegate
+            webViewComponents:(NSArray<RNSModel *> *)webViewComponents
+          extensionComponents:(NSArray<RNSModel *> *)extensionComponents{
     
-    NSArray * controllers = [self getComponentControllerArray];
+    [_webView addExternalNavigationDelegate:externalDelegate];
+    
+    __weak typeof(self) wself = self;
+    [[HPKHtmlRenderHandler shareInstance] asyncRenderHTMLString:htmlTemplate componentArray:webViewComponents completeBlock:^(NSString *finalHTMLString, NSError *error) {
+        [wself.webView loadHTMLString:finalHTMLString baseURL:nil];
+    }];
+    
+    [self _setArticleDetailModel:model webViewComponents:webViewComponents extensionComponents:extensionComponents];
+}
 
+// banner view controller & components view controller
+- (void)setArticleDetailModel:(NSObject *)model
+               topInsetOffset:(CGFloat)topInsetOffset
+          extensionComponents:(NSArray<RNSModel *> *)extensionComponents{
+    
+    _topInsetOffset = MAX(topInsetOffset, 0.f);
+    
+    [self _setArticleDetailModel:model webViewComponents:nil extensionComponents:extensionComponents];
+}
+-(void)_setArticleDetailModel:(NSObject *)model
+            webViewComponents:(NSArray<RNSModel *> *)webViewComponents
+          extensionComponents:(NSArray<RNSModel *> *)extensionComponents{
+    
+    [self triggerEvent:kHPKComponentEventControllerDidReceiveData para1:self para2:model];
+    _webViewComponents = [[self _filterComponents:webViewComponents] copy];
+    _sortedExtensionComponents = [[self _filterComponents:extensionComponents] sortedArrayUsingComparator:^NSComparisonResult(id<RNSModelProtocol> obj1, id<RNSModelProtocol> obj2) {
+        return ([obj1 getUniqueId] < [obj2 getUniqueId]) ? NSOrderedAscending : NSOrderedDescending;
+    }];
+}
+
+-(NSArray *)_filterComponents:(NSArray *)components{
     return [components objectsAtIndexes:
                            [components indexesOfObjectsPassingTest:^BOOL(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
-        for(NSObject *controller in controllers){
+        for(NSObject *controller in _componentControllerArray){
             if ([controller isKindOfClass:[obj getComponentControllerClass]]) {
                 return YES;
             }
@@ -178,24 +211,7 @@
     }]];
 }
 
-- (void)setArticleDetailModel:(NSObject *)model
-                 htmlTemplate:(NSString *)htmlTemplate
-            webViewComponents:(NSArray<RNSModel *> *)webViewComponents
-          extensionComponents:(NSArray<RNSModel *> *)extensionComponents{
-    
-    __weak typeof(self) wself = self;
-    [[HPKHtmlRenderHandler shareInstance] asyncRenderHTMLString:htmlTemplate componentArray:webViewComponents completeBlock:^(NSString *finalHTMLString, NSError *error) {
-        [wself.webView loadHTMLString:finalHTMLString baseURL:nil];
-    }];
-    
-    [self triggerEvent:kHPKComponentEventControllerDidReceiveData para1:self para2:model];
-    
-    _webViewComponents = [[self filterComponents:webViewComponents] copy];
-    _sortedExtensionComponents = [[self filterComponents:extensionComponents] sortedArrayUsingComparator:^NSComparisonResult(id<RNSModelProtocol> obj1, id<RNSModelProtocol> obj2) {
-        return ([obj1 getUniqueId] < [obj2 getUniqueId]) ? NSOrderedAscending : NSOrderedDescending;
-    }];
-    
-}
+
 
 - (void)reLayoutWebViewComponentsWithIndex:(NSString *)index
                              componentSize:(CGSize)componentSize{
@@ -211,15 +227,9 @@
 
 - (void)reLayoutExtensionComponents{
     
-    __kindof UIView *topView;
     
-    if (_needWebView) {
-        topView = self.webView;
-    }else{
-        topView = [self getBannerView];
-    }
-    
-    CGFloat bottom = topView.frame.origin.y + topView.frame.size.height + _componentsGap;
+    CGFloat bottom = (_needWebView ? (self.webView.frame.origin.y + self.webView.frame.size.height) : _topInsetOffset)
++ _componentsGap;
     
     for (int i = 0; i < _sortedExtensionComponents.count; i++) {
         RNSModel *component = [_sortedExtensionComponents objectAtIndex:i];
@@ -243,11 +253,15 @@
     __weak typeof(self) wself = self;
     
     [_webView safeAsyncEvaluateJavaScriptString:@"HPKGetAllComponentFrame()" completionBlock:^(NSObject *result) {
-        NSArray *array = result;
+        
+        if (![result isKindOfClass:[NSArray class]]) {
+            return;
+        }
+        
         for (RNSModel *component in wself.webViewComponents) {
             CGRect frame = CGRectZero;
             NSString *key = [component getUniqueId];
-            for (NSDictionary *dic in array) {
+            for (NSDictionary *dic in ((NSArray *)result)) {
                 if ([[dic objectForKey:@"index"] isEqualToString:key]) {
                     frame = CGRectMake(((NSString *)[dic objectForKey:@"left"]).floatValue, ((NSString *)[dic objectForKey:@"top"]).floatValue,((NSString *)[dic objectForKey:@"width"]).floatValue,((NSString *)[dic objectForKey:@"height"]).floatValue);
                     break;

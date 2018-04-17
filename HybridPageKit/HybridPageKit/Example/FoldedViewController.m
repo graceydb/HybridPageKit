@@ -18,13 +18,9 @@
 
 @implementation FoldedViewController
 -(instancetype)init{
-    self = [super initWithDefaultWebView:NO];
+    self = [super initWithWebView:NO];
     if (self) {
-        [self getRemoteData];
-        __weak typeof(self) wself = self;
-        [self setBottomPullRefreshBlock:^{
-            [wself.commentController pullToRefresh];
-        }];
+        [self _getRemoteData];
     }
     return self;
 }
@@ -36,10 +32,16 @@
     }
 }
 
-- (NSArray *)getComponentControllerArray{
+#pragma mark -
+
+- (NSArray<NSObject<HPKComponentControllerDelegate> *> *)getValidComponentControllers{
     
     if (!_commentController) {
         _commentController = [[HotCommentController alloc]init];
+        __weak typeof(self) wself = self;
+        [self setBottomPullRefreshBlock:^{
+            [wself.commentController pullToRefresh];
+        }];
     }
     
     return @[
@@ -49,14 +51,16 @@
              ];
 }
 
-
--(void)getRemoteData{
+-(void)_getRemoteData{
     __weak typeof(self) wself = self;
     _api = [[ArticleApi alloc]initWithApiType:kArticleApiTypeArticle completionBlock:^(NSDictionary *responseDic, NSError *error) {
         
         wself.articleModel = [[ArticleModel alloc]initWithDic:responseDic];
-        //component callback for data
-        [wself setArticleDetailModel:wself.articleModel webViewComponents:nil extensionComponents:wself.articleModel.extensionComponents];
+        
+        [wself setArticleDetailModel:wself.articleModel
+                      topInsetOffset:0.f
+                 extensionComponents:wself.articleModel.extensionComponents];
+        
         [wself reLayoutExtensionComponents];
     }];
 }

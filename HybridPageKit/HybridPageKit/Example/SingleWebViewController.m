@@ -19,9 +19,9 @@
 @implementation SingleWebViewController
 
 - (instancetype)init{
-    self = [super initWithDefaultWebView:YES];
+    self = [super initWithWebView:YES];
     if (self) {
-        [self getRemoteData];
+        [self _getRemoteData];
     }
     return self;
 }
@@ -33,7 +33,7 @@
     }
 }
 
-- (NSArray *)getComponentControllerArray{
+- (NSArray<NSObject<HPKComponentControllerDelegate> *> *)getValidComponentControllers{
     return @[
              [[AdController alloc]init],
              [[VideoController alloc]init],
@@ -43,21 +43,17 @@
              ];
 }
 
--(id<WKNavigationDelegate>)getWebViewExternalNavigationDelegate{
-    return self;
-}
-
--(void)getRemoteData{
+-(void)_getRemoteData{
     __weak typeof(self) wself = self;
     _api = [[ArticleApi alloc]initWithApiType:kArticleApiTypeArticle completionBlock:^(NSDictionary *responseDic, NSError *error) {
         
         wself.articleModel = [[ArticleModel alloc]initWithDic:responseDic];
         
-        //render html
-        [wself renderHtmlTemplate:_articleModel.contentTemplateString componentArray:_articleModel.webViewComponents];
-        
-        //component callback for data
-        [wself setArticleDetailModel:wself.articleModel webViewComponents:wself.articleModel.webViewComponents extensionComponents:nil];
+        [wself setArticleDetailModel:wself.articleModel
+                        htmlTemplate:wself.articleModel.contentTemplateString
+             webviewExternalDelegate:wself
+                   webViewComponents:wself.articleModel.webViewComponents
+                 extensionComponents:nil];
     }];
 }
 
