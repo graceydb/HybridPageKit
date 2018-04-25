@@ -1,5 +1,7 @@
 # HybridPageKit
 
+[扩展阅读](https://dequan1331.github.io/)
+
 >几十行代码完成新闻类App的内容展示页
 
 `HybridPageKit`是一个针对新闻类App高性能、易扩展、组件化的通用内容页实现框架。
@@ -20,6 +22,20 @@
 	>基于[ReusableNestingScrollview](https://github.com/dequan1331/ReusableNestingScrollview)，在不继承特殊View的情况下，通过扩展Delegate，支持WKWebView、UIWebView、UIScrollView等滚动视图中subViews全局的复用和回收
 
 * 	解耦、独立全部UI组件，组件全局复用和自管理。UI组件和Controller、View完全解耦，通过初始化时注册、接收接收页面的各个生命周期事件及关键业务事件独立进行业务逻辑。支持热插拔、灵活独立，易扩展维护。
+
+## 配置
+
+iOS 8.0 or later
+
+		
+##	安装
+
+1.	CocoaPods
+	
+	
+
+2.	下载repo并引入头文件
+
 
 
 #	特性
@@ -155,6 +171,12 @@ RNSProtocolImp(_index,_frame, ImageView, ImageController, nil);
 
 ```
 
+## 证书
 
+All source code is licensed under the [MIT License](https://github.com/dequan1331/HybridPageKit/blob/master/LICENSE).
+
+## 联系方式
+
+<img src="./contact.png">
 
 
