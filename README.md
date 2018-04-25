@@ -1,6 +1,8 @@
 # HybridPageKit
 
-[扩展阅读](https://dequan1331.github.io/)
+[扩展阅读](https://dequan1331.github.io/) | [扩展阅读](https://dequan1331.github.io/)
+
+<br>
 
 >几十行代码完成新闻类App的内容展示页
 
