@@ -114,7 +114,6 @@
         }];
         
         if (self.bottomPullRefreshBlock) {
-            __weak typeof(self) wself = self;
             _containerScrollView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
                 if (wself.bottomPullRefreshBlock) {
                     wself.bottomPullRefreshBlock();
@@ -167,7 +166,9 @@
     
     [_webView addExternalNavigationDelegate:externalDelegate];
 
-    [self _setArticleDetailModel:model webViewComponents:webViewComponents extensionComponents:extensionComponents];
+    [self _setArticleDetailModel:model
+               webViewComponents:webViewComponents
+             extensionComponents:extensionComponents];
     
     [self.webView loadHTMLString:htmlTemplate baseURL:nil];
 }
@@ -193,9 +194,10 @@
 }
 
 -(NSArray *)_filterComponents:(NSArray *)components{
+    __weak typeof(self) wself = self;
     return [components objectsAtIndexes:
                            [components indexesOfObjectsPassingTest:^BOOL(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {
-        for(NSObject *controller in _componentControllerArray){
+        for(NSObject *controller in wself.componentControllerArray){
             if ([controller isKindOfClass:[obj getComponentControllerClass]]) {
                 return YES;
             }
@@ -236,7 +238,7 @@
         for (RNSModel *component in wself.sortedExtensionComponents) {
             [dic setObject:component forKey:[component getUniqueId]];
         }
-        wself.containerScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, bottom - _componentsGap);
+        wself.containerScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, bottom - wself.componentsGap);
         return dic.copy;
     }];
     
@@ -263,7 +265,7 @@
             [component setComponentFrame:frame];
         }
         
-        [_webViewScrollViewhandler reloadComponentViewsWithProcessBlock:^NSDictionary<NSString *,RNSModel *> *(NSDictionary<NSString *,RNSModel *> *componentItemDic) {
+        [wself.webViewScrollViewhandler reloadComponentViewsWithProcessBlock:^NSDictionary<NSString *,RNSModel *> *(NSDictionary<NSString *,RNSModel *> *componentItemDic) {
             NSMutableDictionary *dic = @{}.mutableCopy;
             for (RNSModel *component in wself.webViewComponents) {
                 [dic setObject:component forKey:[component getUniqueId]];
@@ -272,11 +274,11 @@
         }];
         
         
-        NSString *jsStr = [NSString stringWithFormat:@"document.documentElement.offsetHeight * %d / document.documentElement.clientWidth", (int)_containerScrollView.bounds.size.width];
+        NSString *jsStr = [NSString stringWithFormat:@"document.documentElement.offsetHeight * %d / document.documentElement.clientWidth", (int)wself.containerScrollView.bounds.size.width];
         
-        [_webView evaluateJavaScript:jsStr completionHandler:^(id data, NSError * _Nullable error) {
+        [wself.webView evaluateJavaScript:jsStr completionHandler:^(id data, NSError * _Nullable error) {
             CGFloat height = [data floatValue];
-            _webView.frame = CGRectMake(0, 0, _containerScrollView.bounds.size.width, MIN(height, _containerScrollView.bounds.size.height));
+            wself.webView.frame = CGRectMake(0, 0, wself.containerScrollView.bounds.size.width, MIN(height, wself.containerScrollView.bounds.size.height));
             [wself reLayoutExtensionComponents];
         }];
     }];
