@@ -10,6 +10,14 @@
 #import "ArticleApi.h"
 #import "ArticleModel.h"
 #import "HtmlRenderHandler.h"
+#import "HotCommentController.h"
+#import "AdController.h"
+#import "VideoController.h"
+#import "GifController.h"
+#import "ImageController.h"
+#import "TitleController.h"
+#import "RelateNewsController.h"
+#import "MediaController.h"
 
 @interface HybridViewController()<WKNavigationDelegate>
 @property(nonatomic,strong,readwrite)ArticleApi *api;

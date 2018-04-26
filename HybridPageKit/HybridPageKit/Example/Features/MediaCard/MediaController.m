@@ -7,6 +7,8 @@
 //
 
 #import "MediaController.h"
+#import "MediaModel.h"
+#import "MediaView.h"
 
 @implementation MediaController
 -(BOOL)shouldResponseWithComponentView:(__kindof UIView *)componentView

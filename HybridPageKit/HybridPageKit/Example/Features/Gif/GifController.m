@@ -7,6 +7,8 @@
 //
 
 #import "GifController.h"
+#import "GifView.h"
+#import "GifModel.h"
 
 @implementation GifController
 

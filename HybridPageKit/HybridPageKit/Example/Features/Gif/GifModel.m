@@ -8,6 +8,7 @@
 
 #import "GifModel.h"
 #import "GifView.h"
+#import "GifController.h"
 
 @interface GifModel()
 @property(nonatomic,copy,readwrite)NSString *index;

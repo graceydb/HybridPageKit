@@ -9,7 +9,9 @@
 #import "BannerViewController.h"
 #import "ArticleApi.h"
 #import "ArticleModel.h"
-
+#import "HotCommentController.h"
+#import "RelateNewsController.h"
+#import "MediaController.h"
 
 @interface BannerViewController ()
 @property(nonatomic,strong,readwrite)UILabel *bannerView;

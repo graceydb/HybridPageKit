@@ -8,6 +8,7 @@
 
 #import "VideoModel.h"
 #import "VideoView.h"
+#import "VideoController.h"
 
 @interface VideoModel()
 @property(nonatomic,copy,readwrite)NSString *index;

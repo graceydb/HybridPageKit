@@ -8,6 +8,7 @@
 
 #import "ImageModel.h"
 #import "ImageView.h"
+#import "ImageController.h"
 
 @interface ImageModel ()
 @property(nonatomic,copy,readwrite)NSString *index;

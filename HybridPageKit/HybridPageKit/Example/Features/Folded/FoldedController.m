@@ -8,6 +8,8 @@
 
 #import "FoldedController.h"
 #import "HPKViewController.h"
+#import "FoldedView.h"
+#import "FoldedModel.h"
 
 @interface FoldedController()
 @property(nonatomic,weak,readwrite) __kindof HPKViewController *controller;

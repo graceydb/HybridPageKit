@@ -7,6 +7,7 @@
 //
 
 #import "FoldedView.h"
+#import "FoldedModel.h"
 
 @interface FoldedView()
 

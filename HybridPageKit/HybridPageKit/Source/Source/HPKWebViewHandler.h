@@ -5,6 +5,8 @@
 //  Created by dequanzhu.
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
+#import <WebKit/WebKit.h>
+#import "HPKViewController.h"
 
 @interface HPKWebViewHandler : NSObject<WKNavigationDelegate>
 

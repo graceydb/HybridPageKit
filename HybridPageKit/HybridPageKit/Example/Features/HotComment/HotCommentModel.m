@@ -9,6 +9,7 @@
 #import "HotCommentModel.h"
 #import "HotCommentView.h"
 #import "ArticleApi.h"
+#import "HotCommentController.h"
 
 @interface HotCommentModel()
 @property(nonatomic,copy,readwrite)NSString *index;

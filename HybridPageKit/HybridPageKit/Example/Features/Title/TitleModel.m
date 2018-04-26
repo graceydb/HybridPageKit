@@ -7,6 +7,9 @@
 //
 
 #import "TitleModel.h"
+#import "TitleView.h"
+#import "TitleController.h"
+
 @interface TitleModel ()
 @property(nonatomic,copy,readwrite)NSString *title;
 @property(nonatomic,copy,readwrite)NSString *index;

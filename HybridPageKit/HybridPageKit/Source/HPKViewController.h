@@ -7,6 +7,7 @@
 //
 
 #import "HPKDefs.h"
+#import <WebKit/WebKit.h>
 
 typedef void (^HPKViewControllerBottomPullRefreshBlock)(void);
 

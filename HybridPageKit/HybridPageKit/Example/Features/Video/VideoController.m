@@ -7,6 +7,8 @@
 //
 
 #import "VideoController.h"
+#import "VideoModel.h"
+#import "VideoView.h"
 
 @implementation VideoController
 -(BOOL)shouldResponseWithComponentView:(__kindof UIView *)componentView

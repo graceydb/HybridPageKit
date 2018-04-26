@@ -9,6 +9,8 @@
 #import "HotCommentController.h"
 #import "ArticleModel.h"
 #import "HPKViewController.h"
+#import "HotCommentModel.h"
+#import "HotCommentView.h"
 
 @interface HotCommentController ()
 @property(nonatomic,weak,readwrite) __kindof HPKViewController *controller;

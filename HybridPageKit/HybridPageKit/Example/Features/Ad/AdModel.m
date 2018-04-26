@@ -9,6 +9,7 @@
 #import "AdModel.h"
 #import "AdView.h"
 #import "ArticleApi.h"
+#import "AdController.h"
 
 @interface AdModel ()
 @property(nonatomic,copy,readwrite)NSString *index;

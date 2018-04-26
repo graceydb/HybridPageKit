@@ -5,6 +5,7 @@
 //  Created by dequanzhu.
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
+#import "RNSHandler.h"
 
 @interface GifModel : RNSModel
 @property(nonatomic,copy,readonly)NSString *index;

@@ -7,6 +7,8 @@
 //
 
 #import "FoldedModel.h"
+#import "FoldedController.h"
+#import "FoldedView.h"
 
 @interface FoldedModel ()
 @property(nonatomic,copy,readwrite)NSString *index;

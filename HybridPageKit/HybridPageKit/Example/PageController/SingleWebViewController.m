@@ -10,6 +10,11 @@
 #import "ArticleApi.h"
 #import "ArticleModel.h"
 #import "HtmlRenderHandler.h"
+#import "AdController.h"
+#import "VideoController.h"
+#import "GifController.h"
+#import "ImageController.h"
+#import "TitleController.h"
 
 @interface SingleWebViewController()<WKNavigationDelegate>
 @property(nonatomic,strong,readwrite)ArticleApi *api;

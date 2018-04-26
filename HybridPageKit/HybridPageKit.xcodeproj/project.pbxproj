@@ -163,7 +163,6 @@
 		B971A82D20628DED004EFA4A /* ComponentRendering.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComponentRendering.m; sourceTree = "<group>"; };
 		B971A83920637195004EFA4A /* HPKContainerScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKContainerScrollView.h; sourceTree = "<group>"; };
 		B971A83A20637195004EFA4A /* HPKContainerScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPKContainerScrollView.m; sourceTree = "<group>"; };
-		B971A83C20637ED9004EFA4A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		B9A3727B20848605000F9E6A /* HPKDefs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKDefs.h; sourceTree = "<group>"; };
 		B9D64B70206CA62A009FFB03 /* HPKURLProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKURLProtocol.h; sourceTree = "<group>"; };
 		B9D64B71206CA62A009FFB03 /* HPKURLProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPKURLProtocol.m; sourceTree = "<group>"; };
@@ -264,7 +263,6 @@
 				B92ADA2E206104F000C5CC9F /* Info.plist */,
 				B92ADA2F206104F000C5CC9F /* main.m */,
 				5EF39B822061594B00BF2B5A /* Images.xcassets */,
-				B971A83C20637ED9004EFA4A /* PrefixHeader.pch */,
 			);
 			path = HybridPageKit;
 			sourceTree = "<group>";
@@ -753,7 +751,7 @@
 				DEVELOPMENT_TEAM = "";
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = HybridPageKit/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = HybridPageKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

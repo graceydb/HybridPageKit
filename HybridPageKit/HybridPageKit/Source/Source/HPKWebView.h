@@ -8,6 +8,7 @@
 
 #import "WKWebViewExtensionsDef.h"
 #import "HPKWebViewPool.h"
+#import <WebKit/WebKit.h>
 
 @interface HPKWebView : WKWebView <HPKWebViewReuseProtocol>
 @property(nonatomic, weak, readwrite) id holderObject;

@@ -8,6 +8,7 @@
 
 #import "HPKWebViewHandler.h"
 #import "HPKViewController.h"
+#import "WKWebViewExtensionsDef.h"
 
 #define HPKWebViewHandlerComponentClass @"HPK-Component-PlaceHolder"
 

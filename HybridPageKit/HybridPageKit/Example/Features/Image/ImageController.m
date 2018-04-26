@@ -7,6 +7,8 @@
 //
 
 #import "ImageController.h"
+#import "ImageView.h"
+#import "ImageModel.h"
 
 @implementation ImageController
 

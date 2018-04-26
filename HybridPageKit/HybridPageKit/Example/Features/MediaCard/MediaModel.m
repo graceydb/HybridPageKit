@@ -8,6 +8,7 @@
 
 #import "MediaModel.h"
 #import "MediaView.h"
+#import "MediaController.h"
 
 @interface MediaModel()
 @property(nonatomic,copy,readwrite)NSString *index;

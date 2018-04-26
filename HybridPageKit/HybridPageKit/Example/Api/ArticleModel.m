@@ -7,6 +7,15 @@
 //
 
 #import "ArticleModel.h"
+#import "MediaModel.h"
+#import "TitleModel.h"
+#import "ImageModel.h"
+#import "GifModel.h"
+#import "VideoModel.h"
+#import "AdModel.h"
+#import "HotCommentModel.h"
+#import "RelateNewsModel.h"
+#import "FoldedModel.h"
 
 @interface ArticleModel()
 

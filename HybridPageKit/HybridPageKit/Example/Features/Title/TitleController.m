@@ -7,6 +7,8 @@
 //
 
 #import "TitleController.h"
+#import "TitleView.h"
+#import "TitleModel.h"
 
 @implementation TitleController
 -(BOOL)shouldResponseWithComponentView:(__kindof UIView *)componentView

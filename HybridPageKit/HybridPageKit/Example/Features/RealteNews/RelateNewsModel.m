@@ -8,6 +8,7 @@
 
 #import "RelateNewsModel.h"
 #import "RelateNewsView.h"
+#import "RelateNewsController.h"
 
 @interface RelateNewsModel()
 @property(nonatomic,copy,readwrite) NSArray * relateNewsArray;

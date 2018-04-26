@@ -10,6 +10,8 @@
 #import "HPKViewController.h"
 #import "ArticleModel.h"
 #import "HPKWebViewHandler.h"
+#import "AdModel.h"
+#import "AdView.h"
 
 @interface AdController()
 @property(nonatomic,weak,readwrite) __kindof HPKViewController *controller;

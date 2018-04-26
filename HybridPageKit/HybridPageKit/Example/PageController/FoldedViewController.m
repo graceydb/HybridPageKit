@@ -9,6 +9,10 @@
 #import "FoldedViewController.h"
 #import "ArticleApi.h"
 #import "ArticleModel.h"
+#import "HotCommentModel.h"
+#import "MediaController.h"
+#import "FoldedController.h"
+#import "HotCommentController.h"
 
 @interface FoldedViewController()
 @property(nonatomic,strong,readwrite)ArticleApi *api;

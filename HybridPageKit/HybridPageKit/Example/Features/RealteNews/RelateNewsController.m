@@ -7,6 +7,8 @@
 //
 
 #import "RelateNewsController.h"
+#import "RelateNewsModel.h"
+#import "RelateNewsView.h"
 
 @implementation RelateNewsController
 

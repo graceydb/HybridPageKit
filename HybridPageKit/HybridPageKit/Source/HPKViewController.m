@@ -13,6 +13,7 @@
 #import "MJRefresh.h"
 #import "HPKContainerScrollView.h"
 #import "HPKWebView.h"
+#import "RNSHandler.h"
 
 @interface HPKViewController()<WKNavigationDelegate>
 //container view
