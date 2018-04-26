@@ -1,26 +1,26 @@
 //
-//  HPKHtmlRenderHandler.m
+//  HtmlRenderHandler.m
 //  HybridPageKit
 //
 //  Created by dequanzhu.
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
-#import "HPKHtmlRenderHandler.h"
-#import "HPKComponentRendering.h"
+#import "HtmlRenderHandler.h"
+#import "ComponentRendering.h"
 
-@interface HPKHtmlRenderHandler ()<GRMustacheTagDelegate>
+@interface HtmlRenderHandler ()<GRMustacheTagDelegate>
 @property(nonatomic, strong, readwrite) dispatch_queue_t serialQueue;
-@property(nonatomic, strong, readwrite)HPKComponentRendering *componentRendering;
+@property(nonatomic, strong, readwrite)ComponentRendering *componentRendering;
 @end
 
-@implementation HPKHtmlRenderHandler
+@implementation HtmlRenderHandler
 
-+ (HPKHtmlRenderHandler *)shareInstance{
++ (HtmlRenderHandler *)shareInstance{
     static dispatch_once_t once;
-    static HPKHtmlRenderHandler *renderHandler = nil;
+    static HtmlRenderHandler *renderHandler = nil;
     dispatch_once(&once,^{
-        renderHandler = [[HPKHtmlRenderHandler alloc] init];
+        renderHandler = [[HtmlRenderHandler alloc] init];
     });
     return renderHandler;
 }
@@ -29,7 +29,7 @@
     self = [super init];
     if (self) {
         _serialQueue = dispatch_queue_create([NSStringFromClass([self class]) UTF8String], DISPATCH_QUEUE_SERIAL);
-        _componentRendering = [[HPKComponentRendering alloc] init];
+        _componentRendering = [[ComponentRendering alloc] init];
         
         GRMustacheConfiguration *configuration = [GRMustacheConfiguration defaultConfiguration];
         configuration.contentType = GRMustacheContentTypeText;

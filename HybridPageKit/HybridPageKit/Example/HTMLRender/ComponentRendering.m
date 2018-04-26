@@ -1,20 +1,20 @@
 //
-//  HPKComponentRendering.m
+//  ComponentRendering.m
 //  HybridPageKit
 //
 //  Created by dequanzhu.
 //  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
-#import "HPKComponentRendering.h"
+#import "ComponentRendering.h"
 #import "HPKWebViewHandler.h"
 
-@interface HPKComponentRendering ()
+@interface ComponentRendering ()
 @property(nonatomic,copy,readwrite)NSString *componentIndex;
 @property(nonatomic,strong,readwrite)GRMustacheTemplate *template;
 @end
 
-@implementation HPKComponentRendering
+@implementation ComponentRendering
 
 - (void)setComponentIndex:(NSString *)index{
     _componentIndex = index;

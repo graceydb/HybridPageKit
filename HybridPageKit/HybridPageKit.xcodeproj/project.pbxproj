@@ -54,8 +54,8 @@
 		B971A81920628511004EFA4A /* MediaView.m in Sources */ = {isa = PBXBuildFile; fileRef = B971A81820628511004EFA4A /* MediaView.m */; };
 		B971A81C2062853B004EFA4A /* HotCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B971A81B2062853B004EFA4A /* HotCommentView.m */; };
 		B971A81F20628549004EFA4A /* RelateNewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B971A81E20628549004EFA4A /* RelateNewsView.m */; };
-		B971A822206286A8004EFA4A /* HPKHtmlRenderHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B971A821206286A8004EFA4A /* HPKHtmlRenderHandler.m */; };
-		B971A82E20628DED004EFA4A /* HPKComponentRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = B971A82D20628DED004EFA4A /* HPKComponentRendering.m */; };
+		B971A822206286A8004EFA4A /* HtmlRenderHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B971A821206286A8004EFA4A /* HtmlRenderHandler.m */; };
+		B971A82E20628DED004EFA4A /* ComponentRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = B971A82D20628DED004EFA4A /* ComponentRendering.m */; };
 		B971A83B20637195004EFA4A /* HPKContainerScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = B971A83A20637195004EFA4A /* HPKContainerScrollView.m */; };
 		B9D64B72206CA62A009FFB03 /* HPKURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = B9D64B71206CA62A009FFB03 /* HPKURLProtocol.m */; };
 		B9D64B7A206CD128009FFB03 /* iconImage.png in Resources */ = {isa = PBXBuildFile; fileRef = B9D64B79206CD128009FFB03 /* iconImage.png */; };
@@ -157,10 +157,10 @@
 		B971A81B2062853B004EFA4A /* HotCommentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotCommentView.m; sourceTree = "<group>"; };
 		B971A81D20628549004EFA4A /* RelateNewsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelateNewsView.h; sourceTree = "<group>"; };
 		B971A81E20628549004EFA4A /* RelateNewsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RelateNewsView.m; sourceTree = "<group>"; };
-		B971A820206286A8004EFA4A /* HPKHtmlRenderHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKHtmlRenderHandler.h; sourceTree = "<group>"; };
-		B971A821206286A8004EFA4A /* HPKHtmlRenderHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPKHtmlRenderHandler.m; sourceTree = "<group>"; };
-		B971A82C20628DED004EFA4A /* HPKComponentRendering.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKComponentRendering.h; sourceTree = "<group>"; };
-		B971A82D20628DED004EFA4A /* HPKComponentRendering.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPKComponentRendering.m; sourceTree = "<group>"; };
+		B971A820206286A8004EFA4A /* HtmlRenderHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HtmlRenderHandler.h; sourceTree = "<group>"; };
+		B971A821206286A8004EFA4A /* HtmlRenderHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HtmlRenderHandler.m; sourceTree = "<group>"; };
+		B971A82C20628DED004EFA4A /* ComponentRendering.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComponentRendering.h; sourceTree = "<group>"; };
+		B971A82D20628DED004EFA4A /* ComponentRendering.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComponentRendering.m; sourceTree = "<group>"; };
 		B971A83920637195004EFA4A /* HPKContainerScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKContainerScrollView.h; sourceTree = "<group>"; };
 		B971A83A20637195004EFA4A /* HPKContainerScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPKContainerScrollView.m; sourceTree = "<group>"; };
 		B971A83C20637ED9004EFA4A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
@@ -209,12 +209,14 @@
 			children = (
 				B971A83920637195004EFA4A /* HPKContainerScrollView.h */,
 				B971A83A20637195004EFA4A /* HPKContainerScrollView.m */,
+				B971A7D720611E63004EFA4A /* HPKWebViewPool.h */,
+				B971A7D620611E63004EFA4A /* HPKWebViewPool.m */,
 				B971A7D820611E63004EFA4A /* HPKWebView.h */,
 				B971A7D920611E63004EFA4A /* HPKWebView.m */,
 				B90B9357207CD73F0029513B /* HPKWebViewHandler.h */,
 				B90B9358207CD73F0029513B /* HPKWebViewHandler.m */,
-				B9A3727A208484FC000F9E6A /* WebViewReuse */,
-				B9A37279208484E3000F9E6A /* HTMLRender */,
+				B9D64B70206CA62A009FFB03 /* HPKURLProtocol.h */,
+				B9D64B71206CA62A009FFB03 /* HPKURLProtocol.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -310,26 +312,30 @@
 			path = FakeServerData;
 			sourceTree = "<group>";
 		};
-		B9A37279208484E3000F9E6A /* HTMLRender */ = {
+		B9A5C1AC2091A30800D4A235 /* PageController */ = {
 			isa = PBXGroup;
 			children = (
-				B971A82C20628DED004EFA4A /* HPKComponentRendering.h */,
-				B971A82D20628DED004EFA4A /* HPKComponentRendering.m */,
-				B971A820206286A8004EFA4A /* HPKHtmlRenderHandler.h */,
-				B971A821206286A8004EFA4A /* HPKHtmlRenderHandler.m */,
+				B90B9344207C9E1B0029513B /* SingleWebViewController.h */,
+				B90B9345207C9E1B0029513B /* SingleWebViewController.m */,
+				B90B934A207C9E490029513B /* HybridViewController.h */,
+				B90B934B207C9E490029513B /* HybridViewController.m */,
+				B90B9347207C9E350029513B /* BannerViewController.h */,
+				B90B9348207C9E350029513B /* BannerViewController.m */,
+				B90B934D207CA2130029513B /* FoldedViewController.h */,
+				B90B934E207CA2130029513B /* FoldedViewController.m */,
 			);
-			path = HTMLRender;
+			path = PageController;
 			sourceTree = "<group>";
 		};
-		B9A3727A208484FC000F9E6A /* WebViewReuse */ = {
+		B9A5C1AD2091A32100D4A235 /* HTMLRender */ = {
 			isa = PBXGroup;
 			children = (
-				B9D64B70206CA62A009FFB03 /* HPKURLProtocol.h */,
-				B9D64B71206CA62A009FFB03 /* HPKURLProtocol.m */,
-				B971A7D720611E63004EFA4A /* HPKWebViewPool.h */,
-				B971A7D620611E63004EFA4A /* HPKWebViewPool.m */,
+				B971A82C20628DED004EFA4A /* ComponentRendering.h */,
+				B971A82D20628DED004EFA4A /* ComponentRendering.m */,
+				B971A820206286A8004EFA4A /* HtmlRenderHandler.h */,
+				B971A821206286A8004EFA4A /* HtmlRenderHandler.m */,
 			);
-			path = WebViewReuse;
+			path = HTMLRender;
 			sourceTree = "<group>";
 		};
 		B9E775DB20689ADC00A4D274 /* Source */ = {
@@ -346,14 +352,8 @@
 		B9E775DC20689AE700A4D274 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				B90B9344207C9E1B0029513B /* SingleWebViewController.h */,
-				B90B9345207C9E1B0029513B /* SingleWebViewController.m */,
-				B90B934A207C9E490029513B /* HybridViewController.h */,
-				B90B934B207C9E490029513B /* HybridViewController.m */,
-				B90B9347207C9E350029513B /* BannerViewController.h */,
-				B90B9348207C9E350029513B /* BannerViewController.m */,
-				B90B934D207CA2130029513B /* FoldedViewController.h */,
-				B90B934E207CA2130029513B /* FoldedViewController.m */,
+				B9A5C1AD2091A32100D4A235 /* HTMLRender */,
+				B9A5C1AC2091A30800D4A235 /* PageController */,
 				B944DC0620689F8F00BD0F06 /* Api */,
 				B9E775DD20689B6100A4D274 /* Features */,
 			);
@@ -591,7 +591,7 @@
 				B944DC0C2068BD1A00BD0F06 /* HotCommentController.m in Sources */,
 				B944DC1B2068BF0100BD0F06 /* ImageController.m in Sources */,
 				B90B9359207CD73F0029513B /* HPKWebViewHandler.m in Sources */,
-				B971A82E20628DED004EFA4A /* HPKComponentRendering.m in Sources */,
+				B971A82E20628DED004EFA4A /* ComponentRendering.m in Sources */,
 				B944DC2B2069045E00BD0F06 /* TitleController.m in Sources */,
 				B971A80720625ADF004EFA4A /* VideoModel.m in Sources */,
 				B90B9363207CE1990029513B /* FoldedController.m in Sources */,
@@ -631,7 +631,7 @@
 				B971A81020628483004EFA4A /* GifView.m in Sources */,
 				B92ADA22206104F000C5CC9F /* AppDelegate.m in Sources */,
 				B944DC28206902EE00BD0F06 /* TitleModel.m in Sources */,
-				B971A822206286A8004EFA4A /* HPKHtmlRenderHandler.m in Sources */,
+				B971A822206286A8004EFA4A /* HtmlRenderHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

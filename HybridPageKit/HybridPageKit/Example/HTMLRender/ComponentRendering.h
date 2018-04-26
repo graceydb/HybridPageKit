@@ -1,5 +1,5 @@
 //
-//  HPKComponentRendering.h
+//  ComponentRendering.h
 //  HybridPageKit
 //
 //  Created by dequanzhu.
@@ -8,7 +8,7 @@
 
 #import "GRMustache.h"
 
-@interface HPKComponentRendering : NSObject<GRMustacheRendering>
+@interface ComponentRendering : NSObject<GRMustacheRendering>
 - (void)setComponentIndex:(NSString *)index;
 - (NSString *)renderForMustacheTag:(GRMustacheTag *)tag
                            context:(GRMustacheContext *)context

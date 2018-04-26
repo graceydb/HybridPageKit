@@ -1,5 +1,5 @@
 //
-//  HPKHtmlRenderHandler.h
+//  HtmlRenderHandler.h
 //  HybridPageKit
 //
 //  Created by dequanzhu.
@@ -8,9 +8,9 @@
 
 typedef void (^HPKHtmlRenderCompleteBlock)(NSString *finalHTMLString, NSError *error);
 
-@interface HPKHtmlRenderHandler : NSObject
+@interface HtmlRenderHandler : NSObject
 
-+ (HPKHtmlRenderHandler *)shareInstance;
++ (HtmlRenderHandler *)shareInstance;
 
 - (void)asyncRenderHTMLString:(NSString *)htmlString
                componentArray:(NSArray<RNSModel *> *)componentArray

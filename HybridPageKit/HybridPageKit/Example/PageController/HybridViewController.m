@@ -9,7 +9,7 @@
 #import "HybridViewController.h"
 #import "ArticleApi.h"
 #import "ArticleModel.h"
-#import "HPKHtmlRenderHandler.h"
+#import "HtmlRenderHandler.h"
 
 @interface HybridViewController()<WKNavigationDelegate>
 @property(nonatomic,strong,readwrite)ArticleApi *api;
@@ -63,11 +63,14 @@
         
         wself.articleModel = [[ArticleModel alloc] initWithDic:responseDic];
 
-        [wself setArticleDetailModel:wself.articleModel
-                        htmlTemplate:wself.articleModel.contentTemplateString
-             webviewExternalDelegate:wself
-                   webViewComponents:wself.articleModel.webViewComponents
-                 extensionComponents:wself.articleModel.extensionComponents];
+        [[HtmlRenderHandler shareInstance] asyncRenderHTMLString:wself.articleModel.contentTemplateString componentArray:wself.articleModel.webViewComponents completeBlock:^(NSString *finalHTMLString, NSError *error) {
+            
+            [wself setArticleDetailModel:wself.articleModel
+                            htmlTemplate:finalHTMLString
+                 webviewExternalDelegate:wself
+                       webViewComponents:wself.articleModel.webViewComponents
+                     extensionComponents:wself.articleModel.extensionComponents];
+        }];
     }];
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import "HPKViewController.h"
-#import "HPKHtmlRenderHandler.h"
 #import "HPKWebViewPool.h"
 #import "HPKWebViewHandler.h"
 #import "HPKURLProtocol.h"
@@ -167,12 +166,9 @@
     
     [_webView addExternalNavigationDelegate:externalDelegate];
 
-    __weak typeof(self) wself = self;
-    [[HPKHtmlRenderHandler shareInstance] asyncRenderHTMLString:htmlTemplate componentArray:webViewComponents completeBlock:^(NSString *finalHTMLString, NSError *error) {
-        [wself.webView loadHTMLString:finalHTMLString baseURL:nil];
-    }];
-
     [self _setArticleDetailModel:model webViewComponents:webViewComponents extensionComponents:extensionComponents];
+    
+    [self.webView loadHTMLString:htmlTemplate baseURL:nil];
 }
 
 // banner view controller & components view controller
