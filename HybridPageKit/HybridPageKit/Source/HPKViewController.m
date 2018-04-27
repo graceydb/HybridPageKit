@@ -102,14 +102,24 @@
             if (wself.needWebView) {
                 CGFloat webViewContentSizeY = wself.webView.scrollView.contentSize.height - wself.webView.frame.size.height;
                 CGFloat offsetY = wself.containerScrollView.contentOffset.y;
+                CGFloat webViewNewOffset = 0.f;
+                
                 if (offsetY < 0) {
+                    wself.webView.scrollView.contentOffset = CGPointMake(wself.webView.scrollView.contentOffset.x, 0);
+                    return ;
+                }
+
+                if (offsetY <= webViewContentSizeY) {
+                    webViewNewOffset = offsetY;
+                }else if(wself.webView.scrollView.contentOffset.y < webViewContentSizeY){
+                    webViewNewOffset = webViewContentSizeY;
+                }else{
                     return;
                 }
-                if (offsetY < webViewContentSizeY) {
-                    wself.webView.scrollView.contentOffset = CGPointMake(wself.webView.scrollView.contentOffset.x, offsetY);
-                    wself.webView.frame = CGRectMake(wself.webView.frame.origin.x, offsetY, wself.webView.frame.size.width, wself.webView.frame.size.height);
-                    [wself reLayoutExtensionComponents];
-                }
+                
+                wself.webView.scrollView.contentOffset = CGPointMake(wself.webView.scrollView.contentOffset.x, webViewNewOffset);
+                wself.webView.frame = CGRectMake(wself.webView.frame.origin.x, webViewNewOffset, wself.webView.frame.size.width, wself.webView.frame.size.height);
+                [wself reLayoutExtensionComponents];
             }
         }];
         

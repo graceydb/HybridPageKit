@@ -51,13 +51,15 @@
         return nil;
     }
     
-    return [NSString stringWithFormat:@"var dom=$(\".HPK-Component-PlaceHolder[data-index*='%@']\");dom.width('%@px');dom.height('%@px');",index,@(componentSize.width),@(componentSize.height)];
+    return [NSString stringWithFormat:@"var dom=$(\".HPK-Component-PlaceHolder[data-index='%@']\");dom.width('%@px');dom.height('%@px');",index,@(componentSize.width),@(componentSize.height)];
 }
 
 #pragma mark -
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     
     CGSize newSize = [((NSValue *)[change objectForKey:NSKeyValueChangeNewKey]) CGSizeValue];
+    
+    NSLog(@"--------------%@,%@",@(newSize),@(_lastWebViewContentSize));
     
     if(!CGSizeEqualToSize(newSize,_lastWebViewContentSize)){
         _lastWebViewContentSize = newSize;
