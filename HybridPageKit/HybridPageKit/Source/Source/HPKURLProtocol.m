@@ -7,6 +7,7 @@
 //
 
 #import "HPKURLProtocol.h"
+#import "HPKWebViewPool.h"
 
 @implementation HPKURLProtocol
 
@@ -16,7 +17,7 @@
         return NO;
     }
 
-    return ([[[request URL] scheme] caseInsensitiveCompare:HPKURLProtocolHandleScheme] == NSOrderedSame);
+    return ([request.URL.absoluteString caseInsensitiveCompare:kHPKWebViewReuseUrlString] == NSOrderedSame);
 }
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request{
     return request;

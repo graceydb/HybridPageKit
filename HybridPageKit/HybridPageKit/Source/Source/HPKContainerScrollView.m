@@ -25,6 +25,10 @@
     return self;
 }
 
+-(void)dealloc{
+    _layoutBlock = nil;
+}
+
 -(void)layoutSubviews{
     [super layoutSubviews];
     if (_layoutBlock) {

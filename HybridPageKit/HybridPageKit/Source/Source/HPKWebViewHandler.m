@@ -58,9 +58,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
     
     CGSize newSize = [((NSValue *)[change objectForKey:NSKeyValueChangeNewKey]) CGSizeValue];
-    
-    NSLog(@"--------------%@,%@",@(newSize),@(_lastWebViewContentSize));
-    
+        
     if(!CGSizeEqualToSize(newSize,_lastWebViewContentSize)){
         _lastWebViewContentSize = newSize;
         [self.controller reLayoutWebViewComponents];

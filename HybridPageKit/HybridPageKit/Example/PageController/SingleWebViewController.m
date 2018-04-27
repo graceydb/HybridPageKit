@@ -51,17 +51,22 @@
 -(void)_getRemoteData{
     __weak typeof(self) wself = self;
     _api = [[ArticleApi alloc]initWithApiType:kArticleApiTypeArticle completionBlock:^(NSDictionary *responseDic, NSError *error) {
-        
         wself.articleModel = [[ArticleModel alloc]initWithDic:responseDic];
-        
-        [[HtmlRenderHandler shareInstance] asyncRenderHTMLString:wself.articleModel.contentTemplateString componentArray:wself.articleModel.webViewComponents completeBlock:^(NSString *finalHTMLString, NSError *error) {
-            
-            [wself setArticleDetailModel:wself.articleModel
-                            htmlTemplate:finalHTMLString
-                 webviewExternalDelegate:wself
-                       webViewComponents:wself.articleModel.webViewComponents
-                     extensionComponents:nil];
-        }];
+        [wself _renderAndLoadData];
+    }];
+}
+
+- (void)_renderAndLoadData{
+    
+    __weak typeof(self) wself = self;
+    [[HtmlRenderHandler shareInstance] asyncRenderHTMLString:self.articleModel.contentTemplateString
+                                              componentArray:self.articleModel.webViewComponents
+                                               completeBlock:^(NSString *finalHTMLString, NSError *error) {
+        [wself setArticleDetailModel:wself.articleModel
+                        htmlTemplate:finalHTMLString
+             webviewExternalDelegate:wself
+                   webViewComponents:wself.articleModel.webViewComponents
+                 extensionComponents:nil];
     }];
 }
 
