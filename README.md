@@ -4,7 +4,7 @@
 
 >**HybridPageKit** is a easy integration framework for Content pages of News App
 >
->Base on [ReusableNestingScrollview](https://github.com/dequan1331/ReusableNestingScrollview)、[WKWebViewExtension](https://github.com/dequan1331/WKWebViewExtension)、and the details metioned in [Extended Reading](https://dequan1331.github.io/).
+>Base on [ReusableNestingScrollview](https://github.com/dequan1331/ReusableNestingScrollview)、[WKWebViewExtension](https://github.com/dequan1331/WKWebViewExtension)、and the details metioned in [Extended Reading](https://dequan1331.github.io/index-en.html).
 
 <br>
 <div>
