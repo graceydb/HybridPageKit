@@ -18,6 +18,8 @@
 		B90B9360207CE18C0029513B /* FoldedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B90B935F207CE18C0029513B /* FoldedModel.m */; };
 		B90B9363207CE1990029513B /* FoldedController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90B9362207CE1990029513B /* FoldedController.m */; };
 		B90B9365207E1BB20029513B /* shortArticleContent.txt in Resources */ = {isa = PBXBuildFile; fileRef = B90B9364207E1BB20029513B /* shortArticleContent.txt */; };
+		B916BD40209959CE0070CB79 /* HPKViewConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = B916BD3F209959CE0070CB79 /* HPKViewConfig.m */; };
+		B916BD4320995AB40070CB79 /* _HPKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B916BD4220995AB40070CB79 /* _HPKViewController.m */; };
 		B92ADA22206104F000C5CC9F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B92ADA21206104F000C5CC9F /* AppDelegate.m */; };
 		B92ADA30206104F000C5CC9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B92ADA2F206104F000C5CC9F /* main.m */; };
 		B9314C4D207220BE0052C964 /* adContent.txt in Resources */ = {isa = PBXBuildFile; fileRef = B9314C4B207220BD0052C964 /* adContent.txt */; };
@@ -86,6 +88,10 @@
 		B90B9361207CE1990029513B /* FoldedController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FoldedController.h; sourceTree = "<group>"; };
 		B90B9362207CE1990029513B /* FoldedController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoldedController.m; sourceTree = "<group>"; };
 		B90B9364207E1BB20029513B /* shortArticleContent.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = shortArticleContent.txt; sourceTree = "<group>"; };
+		B916BD3E209959CE0070CB79 /* HPKViewConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKViewConfig.h; sourceTree = "<group>"; };
+		B916BD3F209959CE0070CB79 /* HPKViewConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPKViewConfig.m; sourceTree = "<group>"; };
+		B916BD4120995AB40070CB79 /* _HPKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _HPKViewController.h; sourceTree = "<group>"; };
+		B916BD4220995AB40070CB79 /* _HPKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _HPKViewController.m; sourceTree = "<group>"; };
 		B92ADA1D206104F000C5CC9F /* HybridPageKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HybridPageKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92ADA20206104F000C5CC9F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B92ADA21206104F000C5CC9F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -216,6 +222,8 @@
 				B90B9358207CD73F0029513B /* HPKWebViewHandler.m */,
 				B9D64B70206CA62A009FFB03 /* HPKURLProtocol.h */,
 				B9D64B71206CA62A009FFB03 /* HPKURLProtocol.m */,
+				B916BD4120995AB40070CB79 /* _HPKViewController.h */,
+				B916BD4220995AB40070CB79 /* _HPKViewController.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -343,6 +351,8 @@
 				B944DC0320689F7F00BD0F06 /* HPKViewController.h */,
 				B944DC0420689F7F00BD0F06 /* HPKViewController.m */,
 				B9A3727B20848605000F9E6A /* HPKDefs.h */,
+				B916BD3E209959CE0070CB79 /* HPKViewConfig.h */,
+				B916BD3F209959CE0070CB79 /* HPKViewConfig.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -597,6 +607,7 @@
 				B944DC0520689F7F00BD0F06 /* HPKViewController.m in Sources */,
 				B944DC25206902DE00BD0F06 /* TitleView.m in Sources */,
 				B90B934C207C9E490029513B /* HybridViewController.m in Sources */,
+				B916BD40209959CE0070CB79 /* HPKViewConfig.m in Sources */,
 				B971A80D20628466004EFA4A /* ImageView.m in Sources */,
 				B971A7EB20623541004EFA4A /* ArticleApi.m in Sources */,
 				B90B9349207C9E350029513B /* BannerViewController.m in Sources */,
@@ -630,6 +641,7 @@
 				B92ADA22206104F000C5CC9F /* AppDelegate.m in Sources */,
 				B944DC28206902EE00BD0F06 /* TitleModel.m in Sources */,
 				B971A822206286A8004EFA4A /* HtmlRenderHandler.m in Sources */,
+				B916BD4320995AB40070CB79 /* _HPKViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,7 +767,7 @@
 				INFOPLIST_FILE = HybridPageKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.-HybridPageKit";
+				PRODUCT_BUNDLE_IDENTIFIER = com.HybridPageKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -776,7 +788,7 @@
 				INFOPLIST_FILE = HybridPageKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.-HybridPageKit";
+				PRODUCT_BUNDLE_IDENTIFIER = com.HybridPageKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;

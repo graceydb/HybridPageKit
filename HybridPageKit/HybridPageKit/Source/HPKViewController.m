@@ -27,8 +27,6 @@
 @property(nonatomic,strong,readwrite)RNSHandler *webViewScrollViewhandler;
 @property(nonatomic,copy,readwrite)NSArray *webViewComponents;
 
-@property(nonatomic,copy,readwrite)NSArray<NSObject<HPKComponentControllerDelegate> *> *componentControllerArray;
-@property(nonatomic,copy,readwrite)HPKViewControllerBottomPullRefreshBlock bottomPullRefreshBlock;
 @property(nonatomic,assign,readwrite)CGFloat topInsetOffset;
 
 @end
@@ -38,30 +36,13 @@
 - (instancetype)initWithWebView:(BOOL)needWebView{
     self = [super init];
     if (self) {
+        self.componentControllerArray = [self getValidComponentControllers];
         _needWebView = needWebView;
-        _componentsGap = 10.f;
         _topInsetOffset = 0.f;
-        _componentControllerArray = [self getValidComponentControllers];
+        _viewConfig = [[HPKViewConfig alloc] init];
         [self triggerEvent:kHPKComponentEventControllerInit para1:self];
     }
     return self;
-}
-
-- (void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [self triggerEvent:kHPKComponentEventControllerViewWillAppear];
-}
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    [self triggerEvent:kHPKComponentEventControllerViewDidAppear];
-}
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
-    [self triggerEvent:kHPKComponentEventControllerViewWillDisappear];
-}
-- (void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    [self triggerEvent:kHPKComponentEventControllerViewDidDisappear];
 }
 
 -(void)dealloc{
@@ -74,18 +55,9 @@
     }
     _containerViewScrollViewhandler = nil;
     _containerScrollView = nil;
-    _componentControllerArray = nil;
     _sortedExtensionComponents = nil;
-    _bottomPullRefreshBlock = nil;
 }
 
-#pragma mark - bottom pull
-- (void)setBottomPullRefreshBlock:(HPKViewControllerBottomPullRefreshBlock)bottomPullRefreshBlock{
-    _bottomPullRefreshBlock = [bottomPullRefreshBlock copy];
-}
-- (void)stopRefreshLoadingWithMoreData:(BOOL)hasMore{
-    _containerScrollView.mj_footer.state = hasMore ? MJRefreshStateIdle:MJRefreshStateNoMoreData;
-}
 
 #pragma mark -
 
@@ -95,7 +67,6 @@
 
 - (void)viewDidLoad{
     [super viewDidLoad];
-    [self triggerEvent:kHPKComponentEventControllerViewDidLoad];
     __weak typeof(self) wself = self;
     [self.view addSubview:({
         _containerScrollView = [[HPKContainerScrollView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 64) layoutBlock:^{
@@ -122,14 +93,6 @@
                 [wself reLayoutExtensionComponents];
             }
         }];
-        
-        if (self.bottomPullRefreshBlock) {
-            _containerScrollView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-                if (wself.bottomPullRefreshBlock) {
-                    wself.bottomPullRefreshBlock();
-                }
-            }];
-        }
         
         _containerViewScrollViewhandler = [[RNSHandler alloc]initWithScrollView:_containerScrollView externalScrollViewDelegate:nil scrollWorkRange:0 componentViewStateChangeBlock: ^(RNSComponentViewState state, RNSModel *componentItem, __kindof UIView *componentView) {
             [wself _triggerComponentEventWithState:state componentItem:componentItem componentView:componentView];
@@ -232,14 +195,20 @@
 
 - (void)reLayoutExtensionComponents{
     
+    if(!_sortedExtensionComponents || _sortedExtensionComponents.count <= 0){
+        if (_needWebView && _webView) {
+            _containerScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width,_webView.scrollView.contentSize.height);
+        }
+        return;
+    }
     
     CGFloat bottom = (_needWebView ? (self.webView.frame.origin.y + self.webView.frame.size.height) : _topInsetOffset)
-+ _componentsGap;
++ self.viewConfig.componentsGap;
     
     for (int i = 0; i < _sortedExtensionComponents.count; i++) {
         RNSModel *component = [_sortedExtensionComponents objectAtIndex:i];
         [component setComponentOriginY:bottom];
-        bottom += [component getComponentFrame].size.height + _componentsGap;
+        bottom += [component getComponentFrame].size.height + self.viewConfig.componentsGap;
     }
     
     __weak typeof(self) wself = self;
@@ -248,7 +217,7 @@
         for (RNSModel *component in wself.sortedExtensionComponents) {
             [dic setObject:component forKey:[component getUniqueId]];
         }
-        wself.containerScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, bottom - wself.componentsGap);
+        wself.containerScrollView.contentSize = CGSizeMake([UIScreen mainScreen].bounds.size.width, bottom - wself.viewConfig.componentsGap);
         return dic.copy;
     }];
     
@@ -318,35 +287,4 @@
     [self triggerEvent:event para1:componentView para2:componentItem];
 }
 
-- (void)triggerEvent:(HPKComponentEvent)event {
-    [self triggerEvent:event para1:nil];
-}
-- (void)triggerEvent:(HPKComponentEvent)event para1:(NSObject *)para1{
-    [self triggerEvent:event para1:para1 para2:nil];
-}
-- (void)triggerEvent:(HPKComponentEvent)event para1:(NSObject *)para1 para2:(NSObject *)para2{
-    
-    SEL protocolSelector = _getHPKComponentControllerDelegateByEventType(event);
-    if (!protocolSelector) {
-        NSAssert(NO, @"HPKViewController trigger invalid event:%@", @(event));
-        return;
-    }
-    
-    BOOL isComponentScrollEvent = event > kHPKComponentScrollEventIndexBegin && event < kHPKComponentScrollEventIndexEnd;
-    
-    for (__kindof NSObject<HPKComponentControllerDelegate> *component in _componentControllerArray) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-        if (isComponentScrollEvent) {
-            SEL sel = @selector(shouldResponseWithComponentView:componentModel:);
-            if([component respondsToSelector:sel] && ![component performSelector:sel withObject:para1 withObject:para2]){
-                continue;
-            }
-        }
-        if ([component respondsToSelector:protocolSelector]) {
-            [component performSelector:protocolSelector withObject:para1 withObject:para2];
-        }
-#pragma clang diagnostic pop
-    }
-}
 @end

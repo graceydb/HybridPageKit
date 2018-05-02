@@ -29,15 +29,6 @@
 }
 
 #pragma mark -
-- (void)saveLastReadPosition{
-    // save current webview scrollview offset 
-}
-- (CGFloat)getLastReadPosition{
-    // get last webview scrollview offset by custom key
-    return 0.f;
-}
-
-#pragma mark -
 
 + (NSString *)getComponentFrameJs{
     return [NSString stringWithFormat:@"function HPKGetAllComponentFrame(){var componentFrameDic=[];var list= document.getElementsByClassName('%@');for(var i=0;i<list.length;i++){var dom = list[i];componentFrameDic.push({'index':dom.getAttribute('data-index'),'top':dom.offsetTop,'left':dom.offsetLeft,'width':dom.clientWidth,'height':dom.clientHeight});}return componentFrameDic;}",HPKWebViewHandlerComponentClass];
@@ -70,8 +61,8 @@
     
     [self.controller triggerEvent:kHPKComponentEventWebViewDidFinishNavigation para1:webView];
     __weak typeof(self) wself = self;
-    [webView scrollToOffset:MAX(0.f, [self getLastReadPosition])
-                maxRunloops:50
+    [webView scrollToOffset:MAX(0.f, _controller.viewConfig.lastReadPostion)
+                maxRunloops:MAX(10.f,_controller.viewConfig.scrollWaitMaxRunloops)
             completionBlock:^(BOOL success, NSInteger loopTimes) {
                 [wself.controller triggerEvent:kHPKComponentEventWebViewDidShow para1:webView];
                 [wself.controller reLayoutWebViewComponents];

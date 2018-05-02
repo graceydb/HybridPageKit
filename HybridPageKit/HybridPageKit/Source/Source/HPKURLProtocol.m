@@ -24,12 +24,18 @@
 }
 
 - (void)startLoading{
-    NSData *responseData = [@"<html><head><meta name=\"viewport\" " @"content=\"initial-scale=1.0,width=device-width,user-scalable=no\"/><title>HybridPageKit-Reuse</title></head></html>" dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *responseData = [[self _getWebViewReuseLoadString] dataUsingEncoding:NSUTF8StringEncoding];
     [self.client URLProtocol:self didReceiveResponse:[[NSURLResponse alloc]initWithURL:self.request.URL MIMEType:@"text/html" expectedContentLength:responseData.length textEncodingName:@"UTF-8"] cacheStoragePolicy:NSURLCacheStorageNotAllowed];
     [self.client URLProtocol:self didLoadData:responseData];
     [self.client URLProtocolDidFinishLoading:self];
 }
 - (void)stopLoading{
+}
+
+#pragma mark -
+
+- (NSString *)_getWebViewReuseLoadString{
+    return @"<html><head><meta name=\"viewport\" " @"content=\"initial-scale=1.0,width=device-width,user-scalable=no\"/><title>HybridPageKit-Reuse</title></head></html>";
 }
 
 @end

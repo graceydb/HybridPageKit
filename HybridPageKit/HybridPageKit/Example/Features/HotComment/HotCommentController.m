@@ -25,7 +25,6 @@
     __weak typeof(self) wself = self;
     [self.hotCommentModel loadMoreHotCommentsWithCompletionBlock:^{
         [wself.controller reLayoutExtensionComponents];
-        [wself.controller stopRefreshLoadingWithMoreData:self.hotCommentModel.hasMore];
     }];
 }
 

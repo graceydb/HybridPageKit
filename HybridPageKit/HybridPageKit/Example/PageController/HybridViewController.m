@@ -47,10 +47,6 @@
     
     if (!_commentController) {
         _commentController = [[HotCommentController alloc]init];
-        __weak typeof(self) wself = self;
-        [self setBottomPullRefreshBlock:^{
-            [wself.commentController pullToRefresh];
-        }];
     }
     
     return @[
