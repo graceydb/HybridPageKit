@@ -25,6 +25,7 @@
     __weak typeof(self) wself = self;
     [self.hotCommentModel loadMoreHotCommentsWithCompletionBlock:^{
         [wself.controller reLayoutExtensionComponents];
+        [wself.hotCommentView stopRefreshLoadingWithMoreData:wself.hotCommentModel.hasMore];
     }];
 }
 
@@ -60,12 +61,18 @@
 - (void)scrollViewWillDisplayComponentView:(__kindof UIView *)componentView
                             componentModel:(RNSModel *)componentModel{
     _hotCommentView = (HotCommentView *)componentView;
-    [((HotCommentView *)componentView) layoutWithData:(HotCommentModel *)componentModel];
+    __weak typeof(self) wself = self;
+    [((HotCommentView *)componentView) layoutWithData:(HotCommentModel *)componentModel setPullBlock:^{
+        [wself pullToRefresh];
+    }];
 }
 
 - (void)scrollViewRelayoutComponentView:(__kindof UIView *)componentView
                          componentModel:(RNSModel *)componentModel{
-    [((HotCommentView *)componentView) layoutWithData:(HotCommentModel *)componentModel];
+    __weak typeof(self) wself = self;
+    [((HotCommentView *)componentView) layoutWithData:(HotCommentModel *)componentModel setPullBlock:^{
+        [wself pullToRefresh];
+    }];
 }
 
 @end

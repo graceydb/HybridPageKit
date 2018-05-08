@@ -11,6 +11,7 @@
 @interface HotCommentView()<UITableViewDelegate, UITableViewDataSource>
 @property(nonatomic,strong,readwrite)UITableView *tableView;
 @property(nonatomic,copy,readwrite)NSArray *hotCommentData;
+@property(nonatomic,copy,readwrite)HotCommentViewPullBlock pullBlock;
 @end
 
 @implementation HotCommentView
@@ -28,20 +29,28 @@
     return self;
 }
 
+-(void)dealloc{
+    _pullBlock = nil;
+}
+
 -(void)setFrame:(CGRect)frame{
     [super setFrame:frame];
     _tableView.frame = self.bounds;
     [_tableView reloadData];
 }
 
--(void)layoutWithData:(HotCommentModel *)hotCommentModel{
+- (void)layoutWithData:(HotCommentModel *)hotCommentModel
+          setPullBlock:(HotCommentViewPullBlock)pullBlock{
     
     if (hotCommentModel == nil || hotCommentModel.HotCommentArray == nil) {
         return;
     }
-    
+    _pullBlock = [pullBlock copy];
     _hotCommentData = [hotCommentModel.HotCommentArray copy];
     [_tableView reloadData];
+}
+
+- (void)stopRefreshLoadingWithMoreData:(BOOL)hasMore{
 }
 
 #pragma mark - UITableViewDelegate

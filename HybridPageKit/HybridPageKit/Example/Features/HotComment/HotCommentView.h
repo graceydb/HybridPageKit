@@ -8,6 +8,9 @@
 
 #import "HotCommentModel.h"
 #define kHotCommentViewCellHeight 100.f
+typedef void (^HotCommentViewPullBlock)(void);
 @interface HotCommentView : UIView
--(void)layoutWithData:(HotCommentModel *)hotCommentModel;
+- (void)layoutWithData:(HotCommentModel *)hotCommentModel
+          setPullBlock:(HotCommentViewPullBlock)pullBlock;
+- (void)stopRefreshLoadingWithMoreData:(BOOL)hasMore;
 @end

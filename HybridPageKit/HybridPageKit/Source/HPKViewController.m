@@ -10,7 +10,6 @@
 #import "HPKWebViewPool.h"
 #import "HPKWebViewHandler.h"
 #import "HPKURLProtocol.h"
-#import "MJRefresh.h"
 #import "HPKContainerScrollView.h"
 #import "HPKWebView.h"
 #import "RNSHandler.h"

@@ -4,5 +4,4 @@ target 'HybridPageKit' do
 	pod 'ReusableNestingScrollview'
 	pod 'GCDWebServer'
 	pod 'GRMustache'
-	pod 'MJRefresh'
 end
