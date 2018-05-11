@@ -20,6 +20,13 @@
             _tableView =  [[UITableView alloc]initWithFrame:self.bounds];
             _tableView.delegate = self;
             _tableView.dataSource = self;
+            if (@available(iOS 11.0, *)){
+                _tableView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+            }
+            _tableView.estimatedRowHeight = 0;
+            _tableView.estimatedSectionHeaderHeight = 0;
+            _tableView.estimatedSectionFooterHeight = 0;
+            _tableView.scrollEnabled = NO;
             _tableView;
         })];
     }

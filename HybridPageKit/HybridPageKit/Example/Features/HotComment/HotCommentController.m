@@ -12,7 +12,7 @@
 #import "HotCommentModel.h"
 #import "HotCommentView.h"
 
-@interface HotCommentController ()
+@interface HotCommentController ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,weak,readwrite) __kindof HPKViewController *controller;
 @property(nonatomic,weak,readwrite)HotCommentModel *hotCommentModel;
 @property(nonatomic,weak,readwrite)HotCommentView *hotCommentView;
@@ -61,18 +61,35 @@
 - (void)scrollViewWillDisplayComponentView:(__kindof UIView *)componentView
                             componentModel:(RNSModel *)componentModel{
     _hotCommentView = (HotCommentView *)componentView;
+    _hotCommentView.delegate = self;
+    _hotCommentView.dataSource = self;
     __weak typeof(self) wself = self;
     [((HotCommentView *)componentView) layoutWithData:(HotCommentModel *)componentModel setPullBlock:^{
         [wself pullToRefresh];
     }];
 }
 
-- (void)scrollViewRelayoutComponentView:(__kindof UIView *)componentView
-                         componentModel:(RNSModel *)componentModel{
-    __weak typeof(self) wself = self;
-    [((HotCommentView *)componentView) layoutWithData:(HotCommentModel *)componentModel setPullBlock:^{
-        [wself pullToRefresh];
-    }];
+#pragma mark -
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    cell.textLabel.text = [_hotCommentModel.hotCommentArray objectAtIndex:indexPath.row];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return kHotCommentViewCellHeight;
+}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return _hotCommentModel.hotCommentArray.count;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HotCommentView"];
+    if (!cell) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"HotCommentView"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    }
+    return cell;
 }
 
 @end

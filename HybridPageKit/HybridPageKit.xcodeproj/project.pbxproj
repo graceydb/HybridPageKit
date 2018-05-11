@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E78553920A3378E007A4B4B /* UIView + HPKLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5E78553820A3378E007A4B4B /* UIView + HPKLayout.m */; };
 		5EE016F62073D6920097FAE9 /* jquery.js in Resources */ = {isa = PBXBuildFile; fileRef = 5EE016F52073D6920097FAE9 /* jquery.js */; };
 		5EF39B832061594B00BF2B5A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5EF39B822061594B00BF2B5A /* Images.xcassets */; };
 		B90B9346207C9E1B0029513B /* SingleWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B90B9345207C9E1B0029513B /* SingleWebViewController.m */; };
@@ -24,6 +25,7 @@
 		B92ADA30206104F000C5CC9F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B92ADA2F206104F000C5CC9F /* main.m */; };
 		B9314C4D207220BE0052C964 /* adContent.txt in Resources */ = {isa = PBXBuildFile; fileRef = B9314C4B207220BD0052C964 /* adContent.txt */; };
 		B9314C4E207220BE0052C964 /* hotCommentContent.txt in Resources */ = {isa = PBXBuildFile; fileRef = B9314C4C207220BD0052C964 /* hotCommentContent.txt */; };
+		B931900C20A31C460014049C /* HotCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B931900B20A31C460014049C /* HotCommentView.m */; };
 		B944DC0520689F7F00BD0F06 /* HPKViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B944DC0420689F7F00BD0F06 /* HPKViewController.m */; };
 		B944DC092068BCD500BD0F06 /* RelateNewsController.m in Sources */ = {isa = PBXBuildFile; fileRef = B944DC082068BCD500BD0F06 /* RelateNewsController.m */; };
 		B944DC0C2068BD1A00BD0F06 /* HotCommentController.m in Sources */ = {isa = PBXBuildFile; fileRef = B944DC0B2068BD1A00BD0F06 /* HotCommentController.m */; };
@@ -54,7 +56,6 @@
 		B971A81320628491004EFA4A /* VideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = B971A81220628491004EFA4A /* VideoView.m */; };
 		B971A816206284A1004EFA4A /* AdView.m in Sources */ = {isa = PBXBuildFile; fileRef = B971A815206284A1004EFA4A /* AdView.m */; };
 		B971A81920628511004EFA4A /* MediaView.m in Sources */ = {isa = PBXBuildFile; fileRef = B971A81820628511004EFA4A /* MediaView.m */; };
-		B971A81C2062853B004EFA4A /* HotCommentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B971A81B2062853B004EFA4A /* HotCommentView.m */; };
 		B971A81F20628549004EFA4A /* RelateNewsView.m in Sources */ = {isa = PBXBuildFile; fileRef = B971A81E20628549004EFA4A /* RelateNewsView.m */; };
 		B971A822206286A8004EFA4A /* HtmlRenderHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = B971A821206286A8004EFA4A /* HtmlRenderHandler.m */; };
 		B971A82E20628DED004EFA4A /* ComponentRendering.m in Sources */ = {isa = PBXBuildFile; fileRef = B971A82D20628DED004EFA4A /* ComponentRendering.m */; };
@@ -69,6 +70,8 @@
 
 /* Begin PBXFileReference section */
 		1C13DBD28613BC9A443A7A3D /* Pods-HybridPageKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HybridPageKit.release.xcconfig"; path = "Pods/Target Support Files/Pods-HybridPageKit/Pods-HybridPageKit.release.xcconfig"; sourceTree = "<group>"; };
+		5E78553720A3378E007A4B4B /* UIView + HPKLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView + HPKLayout.h"; sourceTree = "<group>"; };
+		5E78553820A3378E007A4B4B /* UIView + HPKLayout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView + HPKLayout.m"; sourceTree = "<group>"; };
 		5EE016F52073D6920097FAE9 /* jquery.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.js; sourceTree = "<group>"; };
 		5EF39B822061594B00BF2B5A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B90B9344207C9E1B0029513B /* SingleWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingleWebViewController.h; sourceTree = "<group>"; };
@@ -99,6 +102,8 @@
 		B92ADA2F206104F000C5CC9F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		B9314C4B207220BD0052C964 /* adContent.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = adContent.txt; sourceTree = "<group>"; };
 		B9314C4C207220BD0052C964 /* hotCommentContent.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hotCommentContent.txt; sourceTree = "<group>"; };
+		B931900A20A31C460014049C /* HotCommentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotCommentView.h; sourceTree = "<group>"; };
+		B931900B20A31C460014049C /* HotCommentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotCommentView.m; sourceTree = "<group>"; };
 		B944DC0320689F7F00BD0F06 /* HPKViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPKViewController.h; sourceTree = "<group>"; };
 		B944DC0420689F7F00BD0F06 /* HPKViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HPKViewController.m; sourceTree = "<group>"; };
 		B944DC072068BCD500BD0F06 /* RelateNewsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelateNewsController.h; sourceTree = "<group>"; };
@@ -159,8 +164,6 @@
 		B971A815206284A1004EFA4A /* AdView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdView.m; sourceTree = "<group>"; };
 		B971A81720628511004EFA4A /* MediaView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediaView.h; sourceTree = "<group>"; };
 		B971A81820628511004EFA4A /* MediaView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaView.m; sourceTree = "<group>"; };
-		B971A81A2062853B004EFA4A /* HotCommentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HotCommentView.h; sourceTree = "<group>"; };
-		B971A81B2062853B004EFA4A /* HotCommentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HotCommentView.m; sourceTree = "<group>"; };
 		B971A81D20628549004EFA4A /* RelateNewsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RelateNewsView.h; sourceTree = "<group>"; };
 		B971A81E20628549004EFA4A /* RelateNewsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RelateNewsView.m; sourceTree = "<group>"; };
 		B971A820206286A8004EFA4A /* HtmlRenderHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HtmlRenderHandler.h; sourceTree = "<group>"; };
@@ -224,6 +227,8 @@
 				B9D64B71206CA62A009FFB03 /* HPKURLProtocol.m */,
 				B916BD4120995AB40070CB79 /* _HPKViewController.h */,
 				B916BD4220995AB40070CB79 /* _HPKViewController.m */,
+				5E78553720A3378E007A4B4B /* UIView + HPKLayout.h */,
+				5E78553820A3378E007A4B4B /* UIView + HPKLayout.m */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -453,12 +458,12 @@
 		B9E775E320689BA700A4D274 /* HotComment */ = {
 			isa = PBXGroup;
 			children = (
-				B971A81A2062853B004EFA4A /* HotCommentView.h */,
-				B971A81B2062853B004EFA4A /* HotCommentView.m */,
 				B971A7F920625103004EFA4A /* HotCommentModel.h */,
 				B971A7FA20625103004EFA4A /* HotCommentModel.m */,
 				B944DC0A2068BD1A00BD0F06 /* HotCommentController.h */,
 				B944DC0B2068BD1A00BD0F06 /* HotCommentController.m */,
+				B931900A20A31C460014049C /* HotCommentView.h */,
+				B931900B20A31C460014049C /* HotCommentView.m */,
 			);
 			path = HotComment;
 			sourceTree = "<group>";
@@ -487,6 +492,7 @@
 				B92ADA19206104F000C5CC9F /* Sources */,
 				B92ADA1A206104F000C5CC9F /* Frameworks */,
 				B92ADA1B206104F000C5CC9F /* Resources */,
+				76B14065B2D5F7EF880EE4A5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -508,7 +514,7 @@
 				TargetAttributes = {
 					B92ADA1C206104F000C5CC9F = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -569,6 +575,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		76B14065B2D5F7EF880EE4A5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-HybridPageKit/Pods-HybridPageKit-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HybridPageKit/Pods-HybridPageKit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -580,6 +604,7 @@
 				B944DC0C2068BD1A00BD0F06 /* HotCommentController.m in Sources */,
 				B944DC1B2068BF0100BD0F06 /* ImageController.m in Sources */,
 				B90B9359207CD73F0029513B /* HPKWebViewHandler.m in Sources */,
+				B931900C20A31C460014049C /* HotCommentView.m in Sources */,
 				B971A82E20628DED004EFA4A /* ComponentRendering.m in Sources */,
 				B944DC2B2069045E00BD0F06 /* TitleController.m in Sources */,
 				B971A80720625ADF004EFA4A /* VideoModel.m in Sources */,
@@ -595,6 +620,7 @@
 				B92ADA30206104F000C5CC9F /* main.m in Sources */,
 				B971A81F20628549004EFA4A /* RelateNewsView.m in Sources */,
 				B971A81920628511004EFA4A /* MediaView.m in Sources */,
+				5E78553920A3378E007A4B4B /* UIView + HPKLayout.m in Sources */,
 				B971A7F5206250CF004EFA4A /* ArticleModel.m in Sources */,
 				B944DC182068BEC200BD0F06 /* GifController.m in Sources */,
 				B971A7DB20611E63004EFA4A /* HPKWebView.m in Sources */,
@@ -614,7 +640,6 @@
 				B971A7DE20612FA0004EFA4A /* LocalServer.m in Sources */,
 				B971A7FB20625103004EFA4A /* HotCommentModel.m in Sources */,
 				B971A81320628491004EFA4A /* VideoView.m in Sources */,
-				B971A81C2062853B004EFA4A /* HotCommentView.m in Sources */,
 				B90B934F207CA2130029513B /* FoldedViewController.m in Sources */,
 				B944DC092068BCD500BD0F06 /* RelateNewsController.m in Sources */,
 				B90B9360207CE18C0029513B /* FoldedModel.m in Sources */,
@@ -740,18 +765,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 57AQ433AD9;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = HybridPageKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.HybridPageKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.reading.development;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "c4d3161a-3386-4945-9a35-a890d7da9872";
+				PROVISIONING_PROFILE_SPECIFIER = "Kuaibao Development";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -763,13 +788,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = HybridPageKit/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.HybridPageKit;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tencent.reading.development;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = 1;

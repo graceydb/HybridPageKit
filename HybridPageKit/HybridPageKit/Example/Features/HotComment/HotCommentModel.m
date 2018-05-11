@@ -13,7 +13,7 @@
 
 @interface HotCommentModel()
 @property(nonatomic,copy,readwrite)NSString *index;
-@property(nonatomic,copy,readwrite) NSArray * HotCommentArray;
+@property(nonatomic,copy,readwrite) NSArray * hotCommentArray;
 @property(nonatomic,assign,readwrite)CGRect frame;
 @property(nonatomic,strong,readwrite)ArticleApi *loadMoreApi;
 @property(nonatomic,copy,readwrite)HotCommentModelLoadCompletionBlock completionBlock;
@@ -58,12 +58,12 @@ RNSProtocolImp(_index,_frame,HotCommentView,HotCommentController,nil);
     __weak typeof(self) wself = self;
     _loadMoreApi = [[ArticleApi alloc] initWithApiType:kArticleApiTypeHotComment completionBlock:^(NSDictionary *responseDic, NSError *error) {
         
-        NSMutableArray *arrayTmp = wself.HotCommentArray.mutableCopy;
+        NSMutableArray *arrayTmp = wself.hotCommentArray.mutableCopy;
         for (NSString * comment in [responseDic objectForKey:@"hotComment"]) {
             [arrayTmp addObject:[NSString stringWithFormat:@"%@ - %@",comment,@(arrayTmp.count + 1)]];
         }
         [wself setHotComments:arrayTmp.copy];
-        wself.hasMore = wself.HotCommentArray.count <= 20;
+        wself.hasMore = wself.hotCommentArray.count <= 20;
         
         if(wself.completionBlock){
             wself.completionBlock();
@@ -73,8 +73,8 @@ RNSProtocolImp(_index,_frame,HotCommentView,HotCommentController,nil);
 #pragma mark -
 
 -(void)setHotComments:(NSArray *)hotComments{
-    _HotCommentArray = hotComments;
-    _frame = CGRectMake(_frame.origin.x, _frame.origin.y, [UIScreen mainScreen].bounds.size.width, hotComments.count * kHotCommentViewCellHeight);
+    _hotCommentArray = hotComments;
+    _frame = CGRectMake(_frame.origin.x, _frame.origin.y, [UIScreen mainScreen].bounds.size.width, MIN(hotComments.count * kHotCommentViewCellHeight, [UIScreen mainScreen].bounds.size.height - 64));
 }
 
 @end
