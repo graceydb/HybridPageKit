@@ -24,6 +24,7 @@
 - (void)pullToRefresh{
     __weak typeof(self) wself = self;
     [self.hotCommentModel loadMoreHotCommentsWithCompletionBlock:^{
+        [wself.hotCommentView reloadData];
         [wself.controller reLayoutExtensionComponents];
         [wself.hotCommentView stopRefreshLoadingWithMoreData:wself.hotCommentModel.hasMore];
     }];

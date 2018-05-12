@@ -3,7 +3,7 @@
 //  HybridPageKit
 //
 //  Created by dequanzhu.
-//  Copyright © 2018年 HybridPageKit. All rights reserved.
+//  Copyright © 2018 HybridPageKit. All rights reserved.
 //
 
 #import "HotCommentModel.h"

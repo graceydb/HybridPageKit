@@ -63,7 +63,7 @@ RNSProtocolImp(_index,_frame,HotCommentView,HotCommentController,nil);
             [arrayTmp addObject:[NSString stringWithFormat:@"%@ - %@",comment,@(arrayTmp.count + 1)]];
         }
         [wself setHotComments:arrayTmp.copy];
-        wself.hasMore = wself.hotCommentArray.count <= 20;
+        wself.hasMore = wself.hotCommentArray.count <= 100;
         
         if(wself.completionBlock){
             wself.completionBlock();

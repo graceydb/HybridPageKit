@@ -26,12 +26,12 @@
         self.estimatedRowHeight = 0;
         self.estimatedSectionHeaderHeight = 0;
         self.estimatedSectionFooterHeight = 0;
-//        __weak typeof(self) wself = self;
-//        self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-//            if (wself.pullBlock) {
-//                wself.pullBlock();
-//            }
-//        }];
+        __weak typeof(self) wself = self;
+        self.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+            if (wself.pullBlock) {
+                wself.pullBlock();
+            }
+        }];
     }
     return self;
 }

@@ -15,7 +15,7 @@
 #import "RNSHandler.h"
 #import "UIView + HPKLayout.h"
 
-@interface HPKViewController()<WKNavigationDelegate>
+@interface HPKViewController()<WKNavigationDelegate,UIScrollViewDelegate>
 //container view
 @property(nonatomic,strong,readwrite)HPKContainerScrollView *containerScrollView;
 @property(nonatomic,strong,readwrite)RNSHandler *containerViewScrollViewhandler;
@@ -29,6 +29,7 @@
 
 @property(nonatomic,assign,readwrite)CGFloat topInsetOffset;
 @property(nonatomic,assign,readwrite)CGFloat bottomViewOriginY;
+@property(nonatomic,assign,readwrite)CGFloat componentsOffsetY;
 @end
 
 @implementation HPKViewController
@@ -40,6 +41,7 @@
         _needWebView = needWebView;
         _topInsetOffset = 0.f;
         _bottomViewOriginY = 0.f;
+        _componentsOffsetY = 0.f;
         _viewConfig = [[HPKViewConfig alloc] init];
         [self triggerEvent:kHPKComponentEventControllerInit para1:self];
     }
@@ -94,9 +96,9 @@
     }else{
         return;
     }
-
-    self.webView.scrollView.hpk_contentOffsetY = webViewNewOffset;
+    
     self.webView.hpk_top = webViewNewOffset;
+    self.webView.scrollView.hpk_contentOffsetY = webViewNewOffset;
     [self reLayoutExtensionComponents];
 }
 
@@ -114,16 +116,20 @@
     }
     
     __kindof UIScrollView *bottomScrollView = (UIScrollView *)bottomComponentView;
+    CGFloat bottomViewHeight = [bottomComponentModel getComponentFrame].size.height;
     CGFloat bottomOffset = 0.f;
     
     if (bottomScrollView.hpk_contentSizeHeight <= _containerScrollView.hpk_height) {
         return;
     }
     
-    if (bottomScrollView.hpk_contentOffsetY >= bottomScrollView.hpk_contentSizeHeight - bottomScrollView.hpk_height) {
+
+    if (bottomScrollView.hpk_contentOffsetY >= bottomScrollView.hpk_contentSizeHeight - bottomViewHeight) {
         // 容错-快速滚动到底部
         if (self.containerScrollView.hpk_contentOffsetY >= self.containerScrollView.hpk_contentSizeHeight - self.containerScrollView.hpk_height) {
-            bottomScrollView.hpk_contentOffsetY = bottomScrollView.hpk_contentSizeHeight - bottomScrollView.hpk_height;
+            bottomScrollView.hpk_top = self.containerScrollView.hpk_contentOffsetY;
+            bottomScrollView.hpk_contentOffsetY = self.containerScrollView.hpk_contentOffsetY - _bottomViewOriginY;
+            _componentsOffsetY = self.containerScrollView.hpk_contentOffsetY - _bottomViewOriginY;
             return;
         }
     }
@@ -137,9 +143,9 @@
     }else {
         bottomOffset = self.containerScrollView.hpk_contentOffsetY - _bottomViewOriginY;
     }
-    
-    bottomScrollView.hpk_contentOffsetY = bottomOffset;
+
     [self _reLayoutExtensionComponentsWithScrollOffset:bottomOffset];
+    bottomScrollView.hpk_contentOffsetY = bottomOffset;
 }
 
 - (void)viewDidLoad{
@@ -151,7 +157,7 @@
             [wself _handleBottomScrollViewScroll];
         }];
         
-        _containerViewScrollViewhandler = [[RNSHandler alloc]initWithScrollView:_containerScrollView externalScrollViewDelegate:nil scrollWorkRange:0 componentViewStateChangeBlock: ^(RNSComponentViewState state, RNSModel *componentItem, __kindof UIView *componentView) {
+        _containerViewScrollViewhandler = [[RNSHandler alloc]initWithScrollView:_containerScrollView externalScrollViewDelegate:self scrollWorkRange:0 componentViewStateChangeBlock: ^(RNSComponentViewState state, RNSModel *componentItem, __kindof UIView *componentView) {
             [wself _triggerComponentEventWithState:state componentItem:componentItem componentView:componentView];
         }];
         _containerScrollView.backgroundColor = [UIColor lightGrayColor];
@@ -236,8 +242,6 @@
     }]];
 }
 
-
-
 - (void)reLayoutWebViewComponentsWithIndex:(NSString *)index
                              componentSize:(CGSize)componentSize{
     if (!index) {
@@ -257,9 +261,9 @@
         }
         return;
     }
-    
+    _componentsOffsetY = offset;
     CGFloat bottom = (_needWebView ? (self.webView.frame.origin.y + self.webView.frame.size.height) : _topInsetOffset)
-    + self.viewConfig.componentsGap + offset;
+    + self.viewConfig.componentsGap + _componentsOffsetY;
     
     for (int i = 0; i < _sortedExtensionComponents.count; i++) {
         RNSModel *component = [_sortedExtensionComponents objectAtIndex:i];
@@ -267,6 +271,7 @@
         bottom += [component getComponentFrame].size.height + self.viewConfig.componentsGap;
         
         if (i == _sortedExtensionComponents.count - 1) {
+#warning later
             _bottomViewOriginY = [component getComponentFrame].origin.y - offset;
         }
     }
@@ -277,12 +282,12 @@
         for (RNSModel *component in wself.sortedExtensionComponents) {
             [dic setObject:component forKey:[component getUniqueId]];
         }
-        wself.containerScrollView.hpk_contentSizeHeight = bottom - wself.viewConfig.componentsGap;
+        wself.containerScrollView.hpk_contentSizeHeight = bottom;
         return dic.copy;
     }];
 }
 - (void)reLayoutExtensionComponents{
-    [self _reLayoutExtensionComponentsWithScrollOffset:0.f];
+    [self _reLayoutExtensionComponentsWithScrollOffset:_componentsOffsetY];
 }
 - (void)reLayoutWebViewComponents{
 
@@ -324,6 +329,12 @@
         }];
     }];
 }
+
+- (BOOL)scrollViewShouldScrollToTop:(UIScrollView *)scrollView{
+    //暂时禁止点击statusbar自动滚动到顶部
+    return NO;
+}
+
 
 #pragma mark - component event trigger
 
