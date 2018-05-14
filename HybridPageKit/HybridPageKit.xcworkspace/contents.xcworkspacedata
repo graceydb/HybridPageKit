@@ -2,7 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:HybridPageKit.xcodeproj">
+      location = "group:HybridPageKit/HybridPageKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:HybridPageKit-Example/HybridPageKit-Example.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
