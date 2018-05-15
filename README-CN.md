@@ -9,10 +9,10 @@
 <br>
 
 <div>
-<img src="./HybridPageKit/gifs/Hybrid.gif" width="20%">
-<img src="./HybridPageKit/gifs/Short.gif" width="20%">
-<img src="./HybridPageKit/gifs/Banner.gif" width="20%">
-<img src="./HybridPageKit/gifs/Folded.gif" width="20%">
+<img src="https://raw.githubusercontent.com/dequan1331/HybridPageKit/master/README-IMAGE/Hybrid.gif" width="20%">
+<img src="https://raw.githubusercontent.com/dequan1331/HybridPageKit/master/README-IMAGE/Short.gif" width="20%">
+<img src="https://raw.githubusercontent.com/dequan1331/HybridPageKit/master/README-IMAGE/Banner.gif" width="20%">
+<img src="https://raw.githubusercontent.com/dequan1331/HybridPageKit/master/README-IMAGE/Folded.gif" width="20%">
 </div>
 
 ## 配置 & 安装
@@ -167,6 +167,6 @@ All source code is licensed under the [MIT License](https://github.com/dequan133
 
 ## 联系方式
 
-<img src="./contact.png">
+<img src="https://raw.githubusercontent.com/dequan1331/HybridPageKit/master/README-IMAGE/contact.png">
 
 
